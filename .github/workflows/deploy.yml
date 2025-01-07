@@ -1,0 +1,60 @@
+name: Publish shared docs
+
+on:
+  push:
+    branches:
+      - master
+      - main
+    paths:
+      - .knosys/sites/default/**
+  workflow_dispatch:
+
+jobs:
+  publish-shared:
+    runs-on: ubuntu-latest
+    env:
+      SITE_REPO: ourairyu/pro
+    steps:
+      - name: Create temp dirs
+        run: mkdir site-src site-dist
+      - uses: actions/checkout@v3
+        with:
+          repository: ${{ env.SITE_REPO }}
+          ref: main
+          path: site-src
+      - uses: actions/checkout@v3
+        with:
+          repository: ${{ env.SITE_REPO }}
+          ref: gh-pages
+          persist-credentials: false
+          path: site-dist
+      - name: Install Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 14.15.3
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: 2.3
+          bundler-cache: true
+      - name: Generate site
+        run: |
+          cd site-src
+          gem update --system 3.2.3
+          bundler
+          npm i
+          npm run deploy default ../site-dist
+          cd ..
+      - name: Commit changes
+        run: |
+          cd site-dist
+          git config --local user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git config --local user.name "github-actions[bot]"
+          git add .
+          git commit -m "chore: deploy site via GitHub Actions"
+      - uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GH_TOKEN }}
+          repository: ${{ env.SITE_REPO }}
+          branch: gh-pages
+          directory: site-dist
