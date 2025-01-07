@@ -1,0 +1,32 @@
+@import "../../helper";
+
+
+
+.MurmurImages {
+  margin: {
+    right: -3px;
+    left: -3px;
+  }
+  overflow: hidden;
+  @include pie-clearfix;
+
+  &-item {
+    padding: 3px;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &-image {
+    background: transparent none 50% 50% no-repeat;
+    background-size: cover;
+    @include aspect_ratio(1, 1);
+  }
+
+  &-item img,
+  &-image {
+    border-radius: 6px;
+    background-color: #fff;
+  }
+}

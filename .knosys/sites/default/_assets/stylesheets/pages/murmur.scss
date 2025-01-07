@@ -1,0 +1,25 @@
+@import "../helper";
+@import "./murmur/image";
+@import "./murmur/cite";
+@import "./murmur/backup";
+
+
+
+.Murmur {
+  &-meta {
+    @include pie-clearfix;
+  }
+
+  &-avatar {
+    float: left;
+    margin-right: 12px;
+    @include circle(64px);
+  }
+
+  &-name {
+    font: {
+      size: 24px;
+      weight: 500;
+    }
+  }
+}

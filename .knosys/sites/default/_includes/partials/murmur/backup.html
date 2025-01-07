@@ -1,0 +1,28 @@
+{% assign _inc_murmur = site.data.murmurs.murmur.items[include.murmur] %}
+{% if _inc_murmur.backup %}
+  <div class="Murmur-backup">
+    <span>分身：</span>
+    <ul>
+      {% for _inc_backup in _inc_murmur.backup %}
+        {% assign _inc_media = _inc_backup[0] %}
+        {% assign _inc_flag = _inc_backup[1] %}
+        {% assign _inc_parts = _inc_flag | split: "-" %}
+        <li>
+          {% if _inc_media == "instagram" %}
+            {% assign _inc_last_index = _inc_parts.size | minus: 1 %}
+            {% assign _inc_slug = _inc_parts | slice: 1, _inc_last_index | join: "-" %}
+            <a href="https://instagram.com/p/{{ _inc_slug }}" title="到 Instagram 查看" target="_blank" rel="external nofollow"><i class="fa fa-instagram"></i></a>
+          {% elsif _inc_media == "twitter" %}
+            <a href="https://twitter.com/{{ _inc_parts[0] }}/status/{{ _inc_parts[1] }}" title="到 Twitter 查看" target="_blank" rel="external nofollow"><i class="fa fa-twitter"></i></a>
+          {% elsif _inc_media == "weibo" %}
+            <a href="https://weibo.com/1818955207/{{ _inc_flag }}" title="到微博查看" target="_blank" rel="external nofollow"><i class="fa fa-weibo"></i></a>
+          {% elsif _inc_media == "zhihu" %}
+            <a href="https://www.zhihu.com/pin/{{ _inc_parts[1] }}" title="到知乎查看" target="_blank" rel="external nofollow">知</a>
+          {% elsif _inc_media == "juejin"" %}
+            <a href="https://juejin.cn/pin/{{ _inc_parts[1] }}" title="到掘金查看" target="_blank" rel="external nofollow">掘</a>
+          {% endif %}
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+{% endif %}

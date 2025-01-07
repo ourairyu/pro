@@ -1,0 +1,97 @@
+personas:
+  - name:
+      zh: 欧雷
+      en: Ourairyu
+    slug: ourairyu
+    url: https://ourai.ws/
+    period:
+      start: 2009-05
+    description: >
+      不走寻常路且专注于消除「人生」与「协同」中「混沌」的反混沌工程师。内容以对世界、人生和软件等的思考以及日常生活为主。
+  - name:
+      zh: 飛鳥修羅丸
+      en: AsuShura
+    slug: shuramaru
+    url: https://shuramaru.com/
+    period:
+      start: 2022-03-01
+    description: >
+      喜欢动画、漫画和游戏的御宅族。内容以与「宅」相关的为主。
+
+websites:
+  - name:
+      zh: 前端知识与技能考核评价体系
+      en: F.E.S.
+    slug: fes
+    url: https://fes.ourai.ws/
+    period:
+      start: 2016-01
+    description: >
+      帮助面试者与面试官更好地进行面试。暂时仅为前端面试题库。
+  - name:
+      zh: 反混沌
+      en: Anti-chaos
+    slug: ntks
+    url: https://ntks.ourai.ws/
+    period:
+      start: 2018-01
+    description: >
+      打造通过促进前端工业化进程，从而让前端开发更加有序，让业务开发专注业务的知识型社区。
+  - name:
+      zh: 宅主义
+      en: Otakuism
+    slug: otakuism
+    url: https://otaku-ism.com/
+    period:
+      start: 2019-01
+    description: >
+      暂为动画、漫画、游戏等的资料库，目标是为「宅文化」在国内的正确传播与发展贡献一份力量！
+  - name:
+      zh: QiiDB
+      en: QiiDB
+    slug: qiidb
+    url: https://qiidb.github.io/
+    period:
+      start: 2021-12-30
+    description: >
+      打破基础数据垄断，任何人都可随便使用的开放资料库。
+
+open-source:
+  - name:
+      zh: Handie
+      en: Handie
+    slug: handie
+    url: https://handiejs.github.io/
+    # period:
+    #   start: 2009-05
+    description: >
+      针对 JS-based 技术栈提供尽可能一致体验的渐进式配置驱动企业级中后台前端应用开发框架。以模型驱动、领域驱动等作为指导思想进行设计，能够显著提高代码可读性和模块的可复用性与可插拔性，进而提升整个应用的可维护性。
+  - name:
+      zh: Petals
+      en: Petals
+    slug: petals
+    url: https://petals-ui.github.io/
+    # period:
+    #   start: 2009-05
+    description: >
+      跨 JS-based 技术栈控件（UI 组件）体系，为基于组件的前端开发而生，提供一些半成品原子控件。标准化控件 API 以使其成品能够成为「可交换组件」。
+
+family-business:
+  - name:
+      zh: 雷叔的生活研究
+      en: Ourai's Life Research
+    slug: ourais-life-research
+    url: https://oreilia.com/projects/ourais-life-research/
+    # period:
+    #   start: 2009-05
+    description: >
+      思考并探索提升生活体验的思维方式与实操方法。
+  - name:
+      zh: 姜姜的手作料理
+      en: Julia's Handmade Food
+    slug: julias-handmade-food
+    url: https://oreilia.com/projects/julias-handmade-food/
+    period:
+      start: 2023-04-30
+    description: >
+      甜美可爱的朱莉娅亲自特制的手作料理，不想来尝一尝吗？😋

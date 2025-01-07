@@ -1,0 +1,104 @@
+- organization:
+    name:
+      zh: 杭州安恒信息技术有限公司
+      en: DBAPPSecurity
+    alias: 安恒
+    slug: dbappsecurity
+    website: http://www.dbappsecurity.com.cn/
+  period:
+    start: 2011-04-01
+    end: 2013-01-15
+  job:
+    description: >
+      负责信息安全产品的前端部分的架构和开发。2011 年年末，公司决定开发新产品，由于是从零开始，并且缺少交互设计师，产品的原型设计就落到了我的肩上，让我体验了一次开发之外的角色。在职期间曾被评为「优秀新人员工」。
+    detail:
+      title: 一个 32 岁「老」码农的复盘：初出茅庐
+      url: https://ourai.ws/posts/work-experience-at-seika-and-dbappsecurity/#section-1
+
+- organization:
+    name:
+      zh: 杭州刺暮软件科技有限公司
+      en: Cimu Ltd.
+    alias: 刺暮
+    slug: cimu
+    website: http://www.cimu.com.cn/
+  period:
+    start: 2013-03
+    end: 2015-09-11
+  job:
+    description: >
+      负责在线教育产品「有渔」的前端部分的架构、开发、维护、优化和规范制定等。为了提高协作效率，降低沟通成本，与交互设计师和 UI 设计师合作整理制定出一份交流用的 UI 文档，使用 Jekyll 在 GitHub 上搭建了在线浏览的页面。
+    detail:
+      title: 一个 32 岁「老」码农的复盘：崭露头角
+      url: https://ourai.ws/posts/work-experience-at-cimu-and-maihaoche/#section
+
+- organization:
+    name:
+       zh: 杭州一骑轻尘信息技术有限公司
+       en: Yijiqingchen Ltd.
+    alias: 买好车/卖好车
+    slug: maihaoche
+    website: https://www.maihaoche.com/
+    logo: youyu
+  period:
+    start: 2015-09-14
+    end: 2018-07-13
+  job:
+    name: 前端工程师兼前端技术管理
+    description: >
+      带头与前端团队负责人及其他成员制定编码规范和前端工程文件结构，确定所要使用的技术、基础库和构建工具。推动研发部门 Git 使用的规范化：采用 Git Flow 进行分支管理；Git 操作的基本原则和注意事项等。
+    detail:
+      title: 一个 32 岁「老」码农的复盘：崭露头角
+      url: https://ourai.ws/posts/work-experience-at-cimu-and-maihaoche/#section-1
+
+- organization:
+    name:
+       zh: 京东
+       en: JD.com
+    alias: 京东
+    slug: joybuy
+    website: https://www.yunxiu.com/
+  period:
+    start: 2018-10-09
+    end: 2019-06-24
+  job:
+    name: 汽后杭研前端负责人
+    description: >
+      管理杭州研发中心前端团队，制定规范、各业务线目标并推进落地。开发并维护「京东云修」Web 系统，在进行新功能开发的同时，带领该业务线其他的前端工程师一起用 React 技术栈重构并分离原来用 jQuery 实现的业务模块。
+    detail:
+      title: 一个 32 岁「老」码农的复盘：小尝管理
+      url: https://ourai.ws/posts/work-experience-at-joybuy/
+
+- organization:
+    name:
+       zh: 数式科技
+       en: ShuShi
+    alias: 数式
+    slug: shushi
+    website: https://shushi.pro/
+  period:
+    start: 2019-07-15
+    end: 2020-09-01
+  job:
+    description: >
+      主要参与低代码中台底座「PAMIRS」前端部分的逻辑层、表现层、视图可视化编辑器等的设计与开发；支援了云南中烟项目的交付。
+    detail:
+      title: 一个 32 岁「老」码农的复盘：确立方向
+      url: https://ourai.ws/posts/work-experience-at-shushi/
+
+- organization:
+    name:
+       zh: 税友
+       en: ServYou
+    alias: 税友
+    slug: servyou
+    website: https://www.servyou.com.cn/
+  period:
+    start: 2020-12-28
+    end: 2023-01-15
+  job:
+    description: >
+      支撑知识中心、推荐中心、规则引擎、算法平台等 Web 应用的日常业务需求；制定并推进前端团队编码风格、目录结构划分等规范落地，使用 Handie 对遗留项目进行配置化改造，并推广配置化（低代码化）的开发方式。
+    detail:
+      title: 我在税友这两年（上）
+      url: https://ourai.ws/posts/work-experience-at-servyou-part-1/

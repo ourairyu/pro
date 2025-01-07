@@ -1,0 +1,127 @@
+{% assign _inc_limit_count = include.limit %}
+{% assign _inc_page_number = include.page | default: 1 | plus: 0 %}
+{% assign _inc_moments = site.data.social.moments.items %}
+{% assign _inc_moment_type = include.type | default: "all" %}
+{% assign _inc_moment_classify = include.classify | default: "none" %}
+{% assign _inc_moment_year = include.year %}
+{% assign _inc_mode = include.mode | default: "pager" %}
+
+{% if _inc_moment_year %}
+  {% assign _inc_homepage_path = "/moments/" | append: _inc_moment_year %}
+  {% assign _inc_paginated_path = _inc_homepage_path | append: "/pages" %}
+  {% assign _inc_numerical_year = _inc_moment_year | plus: 0 %}
+  {% assign _inc_total_count = 0 %}
+
+  {% for moment in _inc_moments reversed %}
+    {% assign _inc_numerical_item_year = moment.date | date: "%Y" | plus: 0 %}
+
+    {% if _inc_numerical_year > _inc_numerical_item_year %}
+      {% break %}
+    {% elsif _inc_numerical_item_year == _inc_numerical_year %}
+      {% assign _inc_total_count = _inc_total_count | plus: 1 %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% if _inc_moment_type == "animation" %}
+    {% assign _inc_moment_type = "anime" %}
+  {% endif %}
+
+  {% if _inc_moment_type != "all" %}
+    {% assign _inc_moments = _inc_moments | where: "type", _inc_moment_type %}
+  {% endif %}
+
+  {% if _inc_moment_classify == "none" %}
+    {% if _inc_moment_type == "all" %}
+      {% assign _inc_homepage_path = "/moments" %}
+      {% assign _inc_paginated_path = _inc_homepage_path | append: "/all/pages" %}
+    {% else %}
+      {% if _inc_moment_type == "anime" %}
+        {% assign _inc_moment_type_path = "animation" %}
+      {% else %}
+        {% assign _inc_moment_type_path = _inc_moment_type %}
+      {% endif %}
+      {% assign _inc_homepage_path = "/moments/" | append: _inc_moment_type_path %}
+      {% assign _inc_paginated_path = _inc_homepage_path | append: "/pages" %}
+    {% endif %}
+
+    {% assign _inc_total_count = _inc_moments.size %}
+  {% else %}
+    {% assign _inc_classified_by = include.classified | default: "all" %}
+
+    {% if _inc_moment_classify == "tag" %}
+      {% assign _inc_classified_key = "tags" %}
+    {% else %}
+      {% assign _inc_classified_key = "categories" %}
+    {% endif %}
+
+    {% assign _inc_url_prefix = _inc_classified_key | prepend: "/" | append: "/" %}
+
+    {% if _inc_moment_type == "all" %}
+      {% assign _inc_homepage_path = _inc_url_prefix %}
+      {% assign _inc_paginated_path = _inc_homepage_path | append: "all/pages" %}
+    {% else %}
+      {% for t in site.data.social.moments.types %}
+        {% if t.type == _inc_moment_type %}
+          {% assign _inc_collection_name = t.collectionName %}
+          {% break %}
+        {% endif %}
+      {% endfor %}
+      {% assign _inc_homepage_path = _inc_url_prefix | append: _inc_classified_by | append: "/" | append: _inc_collection_name %}
+      {% assign _inc_paginated_path = _inc_homepage_path %}
+    {% endif %}
+
+    {% assign _inc_total_count = 0 %}
+
+    {% for moment in _inc_moments reversed %}
+      {% if moment[_inc_classified_key] and moment[_inc_classified_key].size > 0 %}
+        {% if _inc_classified_by == "all" or moment[_inc_classified_key] contains _inc_classified_by %}
+          {% assign _inc_total_count = _inc_total_count | plus: 1 %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endif %}
+
+{% if _inc_limit_count and _inc_total_count > _inc_limit_count %}
+  <nav>
+    <ul class="{{ _inc_mode }}">
+      {% if _inc_page_number > 2 %}
+        {% assign _inc_prev_page = _inc_page_number | minus: 1 %}
+        {% assign _inc_prev_path = _inc_paginated_path | append: "/" | append: _inc_prev_page | append: "/" %}
+      {% elsif _inc_page_number == 1 %}
+        {% assign _inc_prev_path = "javascript:void(0);" %}
+      {% else %}
+        {% assign _inc_prev_path = _inc_homepage_path %}
+      {% endif %}
+
+      <li{% if _inc_page_number == 1 %} class="disabled"{% endif %}>
+        <a href="{{ _inc_prev_path }}" aria-label="Previous">{% if _inc_mode == "pager" %}上一页{% else %}<span aria-hidden="true">&laquo;</span>{% endif %}</a>
+      </li>
+
+      {% assign _inc_page_count = _inc_total_count | divided_by: _inc_limit_count | ceil %}
+      {% assign _inc_moment_count = _inc_page_count | times: _inc_limit_count %}
+
+      {% if _inc_moment_count < _inc_total_count %}
+        {% assign _inc_page_count = _inc_page_count | plus: 1 %}
+      {% endif %}
+
+      {% if _inc_mode == "pagination" %}
+        <li{% if _inc_page_number == 1 %} class="active"{% endif %}><a href="/moments/">1</a></li>
+        {% for _inc_current_number in (2.._inc_page_count) %}
+          <li{% if _inc_page_number == _inc_current_number %} class="active"{% endif %}><a href="{{ _inc_paginated_path }}/{{ _inc_current_number }}/">{{ _inc_current_number }}</a></li>
+        {% endfor %}
+      {% endif %}
+
+      {% if _inc_page_number == _inc_page_count %}
+        {% assign _inc_next_path = "javascript:void(0);" %}
+      {% else %}
+        {% assign _inc_next_page = _inc_page_number | plus: 1 %}
+        {% assign _inc_next_path = _inc_paginated_path | append: "/" | append: _inc_next_page | append: "/" %}
+      {% endif %}
+
+      <li{% if _inc_page_number == _inc_page_count %} class="disabled"{% endif %}>
+        <a href="{{ _inc_next_path }}" aria-label="Next">{% if _inc_mode == "pager" %}下一页{% else %}<span aria-hidden="true">&raquo;</span>{% endif %}</a>
+      </li>
+    </ul>
+  </nav>
+{% endif %}

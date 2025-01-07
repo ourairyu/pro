@@ -1,0 +1,30 @@
+{% assign _inc_murmur = site.data.murmurs.murmur.items[include.murmur] %}
+{% assign _inc_limit = include.limit | default: 9 %}
+{% if _inc_limit > 9 %}
+  {% assign _inc_limit = 9 %}
+{% endif %}
+{% if _inc_murmur.images %}
+  <div class="MurmurImages">
+    {% assign _inc_size = _inc_murmur.images.size %}
+    {% if _inc_size > _inc_limit %}
+      {% assign _inc_size = _inc_limit %}
+    {% endif %}
+    {% for _inc_image in _inc_murmur.images limit: _inc_limit %}
+      {% if _inc_size > 4 %}
+        {% assign _inc_cols = 4 %}
+      {% elsif _inc_size == 4 %}
+        {% assign _inc_cols = 6 %}
+      {% else %}
+        {% assign _inc_cols = 12 | divided_by: _inc_size %}
+      {% endif %}
+      {% if _inc_image contains "http" %}
+        {% assign _inc_image_url = _inc_image %}
+      {% else %}
+        {% assign _inc_image_url = "murmurs/" | append: include.murmur | append: "/" | append: _inc_image | asset_path %}
+      {% endif %}
+      <div class="MurmurImages-item col-xs-{{ _inc_cols }}">
+        <div class="MurmurImages-image" style="background-image: url('{{ _inc_image_url }}');"></div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}

@@ -1,0 +1,47 @@
+---
+layout: default
+css:
+  - share
+js:
+  - share.min
+  - components
+---
+
+{% include header.html %}
+<main class="Page-content">
+  <!-- 内容主体 -->
+  <div class="container">
+    <article class="Page-main Article">
+      {% assign url_parts = page.url | split: "/" %}
+      {% assign murmur_id = url_parts[2] %}
+      {% assign murmur_items = site.data.murmurs.murmur.items %}
+      {% assign murmur = murmur_items[murmur_id] %}
+      <header class="Article-header">
+        <h1 class="Article-title sr-only">{{ page.title }}</h1>
+        <div class="Murmur-meta">
+          {% assign site_master = site.ourairyu.site.master %}
+          {% assign master_persona = site.data.social.persona[site_master] %}
+          <a class="Murmur-avatar" href="https://linxoid.com/{{ site_master }}/" target="_blank" rel="external nofollow"><img src="{{ master_persona.avatar | asset_path }}" alt="{{ master_persona.name }}"></a>
+          <a class="Murmur-name" href="https://linxoid.com/{{ site_master }}/" target="_blank" rel="external nofollow">{{ master_persona.name }}</a>
+          <div class="Murmur-time">发表于 <time datetime="{{ murmur.date | date_to_xmlschema }}">{{ murmur.date | date: "%Y-%m-%d %H:%M" }}</time></div>
+        </div>
+      </header>
+      <div class="Article-content col-md-9">
+        {{ murmur.content | markdownify }}
+        {% include partials/murmur/image.html murmur=murmur_id %}
+        {% include partials/murmur/cite.html murmur=murmur_id %}
+      </div>
+      <footer class="Article-footer col-md-3">
+        <div class="Widget">
+          <div class="Widget-body">{% include partials/murmur/backup.html murmur=murmur_id %}</div>
+        </div>
+        {% include widgets/social.html %}
+      </footer>
+      {% if page.comments == true %}
+        <!-- 评论区 -->
+        <div class="Article-comments col-md-9">{% include partials/disqus.html %}</div>
+      {% endif %}
+    </article>
+  </div>
+</main>
+{% include footer.html %}

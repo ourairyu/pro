@@ -1,0 +1,77 @@
+{% assign _inc_limit_count = include.limit %}
+{% assign _inc_page_number = include.page | default: 1 | plus: 0 %}
+{% assign _inc_moments = site.data.social.moments.items %}
+{% assign _inc_moment_type = include.type | default: "all" %}
+{% assign _inc_moment_classify = include.classify | default: "none" %}
+{% assign _inc_moment_year = include.year %}
+
+{% if _inc_moment_year %}
+  {% assign _inc_numerical_year = _inc_moment_year | plus: 0 %}
+  {% assign _inc_count = 0 %}
+  {% assign _inc_render_count = 0 %}
+  {% assign _inc_gap_count = _inc_page_number | minus: 1 | times: _inc_limit_count %}
+
+  {% for moment in _inc_moments reversed %}
+    {% assign _inc_numerical_item_year = moment.date | date: "%Y" | plus: 0 %}
+
+    {% if _inc_render_count == _inc_limit_count or _inc_numerical_year > _inc_numerical_item_year %}
+      {% break %}
+    {% elsif _inc_numerical_item_year == _inc_numerical_year %}
+      {% assign _inc_count = _inc_count | plus: 1 %}
+      {% if _inc_count <= _inc_gap_count %}
+        {% continue %}
+      {% endif %}
+      {% assign _inc_render_count = _inc_render_count | plus: 1 %}
+      {% include partials/social/moment/item.html moment=moment loose=include.loose cardify=include.cardify %}
+    {% endif %}
+  {% endfor %}
+{% else %}
+  {% if _inc_moment_type == "animation" %}
+    {% assign _inc_moment_type = "anime" %}
+  {% endif %}
+
+  {% if _inc_moment_type != "all" %}
+    {% assign _inc_moments = _inc_moments | where: "type", _inc_moment_type %}
+  {% endif %}
+
+  {% if _inc_moment_classify == "none" %}
+    {% if _inc_limit_count and _inc_moments.size > _inc_limit_count %}
+      {% assign _inc_gap_count = _inc_page_number | minus: 1 | times: _inc_limit_count %}
+      {% assign _inc_offset_index = _inc_moments.size | minus: _inc_limit_count | minus: _inc_gap_count %}
+    {% else %}
+      {% assign _inc_offset_index = 0 %}
+    {% endif %}
+
+    {% for moment in _inc_moments reversed limit: _inc_limit_count offset: _inc_offset_index %}
+      {% include partials/social/moment/item.html moment=moment loose=include.loose cardify=include.cardify %}
+    {% endfor %}
+  {% else %}
+    {% assign _inc_classified_by = include.classified | default: "all" %}
+    {% assign _inc_count = 0 %}
+    {% assign _inc_render_count = 0 %}
+    {% assign _inc_gap_count = _inc_page_number | minus: 1 | times: _inc_limit_count %}
+
+    {% if _inc_moment_classify == "tag" %}
+      {% assign _inc_classified_key = "tags" %}
+    {% else %}
+      {% assign _inc_classified_key = "categories" %}
+    {% endif %}
+
+    {% for moment in _inc_moments reversed %}
+      {% assign _inc_numerical_item_year = moment.date | date: "%Y" | plus: 0 %}
+
+      {% if _inc_render_count == _inc_limit_count %}
+        {% break %}
+      {% elsif moment[_inc_classified_key] and moment[_inc_classified_key].size > 0 %}
+        {% if _inc_classified_by == "all" or moment[_inc_classified_key] contains _inc_classified_by %}
+          {% assign _inc_count = _inc_count | plus: 1 %}
+          {% if _inc_count <= _inc_gap_count %}
+            {% continue %}
+          {% endif %}
+          {% assign _inc_render_count = _inc_render_count | plus: 1 %}
+          {% include partials/social/moment/item.html moment=moment loose=include.loose cardify=include.cardify %}
+        {% endif %}
+      {% endif %}
+    {% endfor %}
+  {% endif %}
+{% endif %}

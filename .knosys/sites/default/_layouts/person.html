@@ -1,0 +1,91 @@
+---
+layout: page
+---
+
+{{ content }}
+
+{% assign url_parts = page.url | split: "/" %}
+{% assign person_id = url_parts[2] %}
+{% assign person = site.data.social.persona[person_id] %}
+{% if person and person.mentioned %}
+  <h2>被提到的文章</h2>
+  <p>在以下 {{ person.mentioned.size }} 篇文章中有被提到：</p>
+  <ul>
+    {% for post in person.mentioned %}
+      <li class="ArticleList-item"><time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%F" }}</time><i class="fa fa-pencil"></i><a href="/posts/{{ post.id }}/">{{ post.title }}</a></li>
+    {% endfor %}
+  </ul>
+{% endif %}
+
+{% contentfor header_content %}
+  <img class="Profile-avatar" src="{{ page.avatar | default: 'avatars/emoji' | asset_path }}" alt="{{ page.title }}">
+  <div class="Profile-brief">
+    <h1 class="Profile-heading">{{ page.title }}</h1>
+    {% if page.professions and page.professions.size > 0 %}
+      <ul class="Profile-professions">
+        {% for pro in page.professions %}
+          <li>{{ pro }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
+    {% if page.description %}
+      <p class="Profile-description">{{ page.description }}</p>
+    {% endif %}
+  </div>
+{% endcontentfor %}
+
+{% contentfor footer %}
+{% if person_id != site.ourairyu.site.master %}
+{% if person.location %}
+<div class="Widget">
+  <div class="Widget-body">
+    <p style="font-weight: 400;">基本信息：</p>
+    <p><i class="fa fa-map-signs"></i> {{ person.location }}</p>
+  </div>
+</div>
+{% endif %}
+{% if person.websites or person.contacts %}
+<div class="Widget">
+  <div class="Widget-body">
+    <p style="font-weight: 400;">联系方式：</p>
+    {% if person.websites %}
+      {% assign website = person.websites | first %}
+      <p><i class="fa fa-home"></i> <a href="{{ website.url }}" title="访问{{ person.name }}的个人网站" target="_blank" rel="external nofollow">{{ website.title }}</a></p>
+    {% endif %}
+    {% if person.contacts %}
+      {% assign email = person.contacts.email %}
+      {% if email %}
+        <p><i class="fa fa-envelope"></i> <a href="mailto:{{ email }}" title="发送邮件给{{ person.name }}" target="_blank" rel="external nofollow">{{ email }}</a></p>
+      {% endif %}
+      {% assign telegram = person.contacts.telegram %}
+      {% if telegram %}
+        <p><i class="fa fa-telegram"></i> <a href="https://t.me/{{ telegram }}" title="访问{{ person.name }}的 Telegram 个人主页" target="_blank" rel="external nofollow">@{{ telegram }}</a></p>
+      {% endif %}
+      {% assign twitter = person.contacts.twitter %}
+      {% if twitter %}
+        <p><i class="fa fa-twitter"></i> <a href="https://twitter.com/{{ twitter }}" title="访问{{ person.name }}的 Twitter 个人主页" target="_blank" rel="external nofollow">@{{ twitter }}</a></p>
+      {% endif %}
+      {% assign github = person.contacts.github %}
+      {% if github %}
+        <p><i class="fa fa-github"></i> <a href="https://github.com/{{ github }}" title="访问{{ person.name }}的 GitHub 个人主页" target="_blank" rel="external nofollow">@{{ github }}</a></p>
+      {% endif %}
+      {% assign bilibili = person.contacts.bilibili %}
+      {% if bilibili %}
+        <p><span style="font-weight: bold;">哔</span> <a href="https://space.bilibili.com/{{ bilibili }}" title="访问{{ person.name }}的哔哩哔哩个人主页" target="_blank" rel="external nofollow">@{{ bilibili }}</a></p>
+      {% endif %}
+      {% assign zhihu = person.contacts.zhihu %}
+      {% if zhihu %}
+        <p><span style="font-weight: bold;">知</span> <a href="https://www.zhihu.com/people/{{ zhihu }}" title="访问{{ person.name }}的知乎个人主页" target="_blank" rel="external nofollow">@{{ zhihu }}</a></p>
+      {% endif %}
+      {% assign douban = person.contacts.douban %}
+      {% if douban %}
+        <p><span style="font-weight: bold;">豆</span> <a href="https://www.douban.com/people/{{ douban }}/" title="访问{{ person.name }}的豆瓣个人主页" target="_blank" rel="external nofollow">@{{ douban }}</a></p>
+      {% endif %}
+    {% endif %}
+  </div>
+</div>
+{% endif %}
+{% endif %}
+  {% include widgets/social.html %}
+  {% include widgets/toc.html %}
+{% endcontentfor %}

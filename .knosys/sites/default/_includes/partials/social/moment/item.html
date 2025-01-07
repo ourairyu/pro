@@ -1,0 +1,309 @@
+{% assign _inc_moment = include.moment %}
+{% assign _inc_cardify = include.cardify %}
+{% assign _inc_loose = include.loose | default: false %}
+{% assign _inc_current_year = site.time | date: "%Y" %}
+{% assign _inc_program_types = "publication drama anime game" | split: " " %}
+
+{% if _inc_moment.type == "post" %}
+  {% assign _inc_detail_base = "/posts" %}
+  {% assign _inc_did_text = "发布了文章" %}
+{% elsif _inc_moment.type == "weekly" %}
+  {% assign _inc_detail_base = "https://s.ourai.ws/weeklies" %}
+  {% assign _inc_did_text = "共享了周报" %}
+{% elsif _inc_moment.type == "note" %}
+  {% assign _inc_detail_base = "https://s.ourai.ws/notes" %}
+  {% assign _inc_did_text = "共享了笔记" %}
+{% elsif _inc_moment.type == "video" %}
+  {% assign _inc_did_text = "发布了视频" %}
+{% elsif _inc_moment.type == "murmur" %}
+  {% assign _inc_detail_base = "/murmurs" %}
+  {% assign _inc_did_text = "说" %}
+{% elsif _inc_moment.type == "talk" %}
+  {% assign _inc_detail_base = "/talks" %}
+  {% assign _inc_did_text = "播出" %}
+{% elsif _inc_moment.type == "device" %}
+  {% assign _inc_detail_base = "http" %}
+
+  {% if _inc_moment.received %}
+    {% assign _inc_did_text = "收到了" %}
+  {% else %}
+    {% assign _inc_did_text = "买了" %}
+  {% endif %}
+{% elsif _inc_program_types contains _inc_moment.type %}
+  {% if _inc_moment.type == "game" %}
+    {% assign _inc_action_text = "玩" %}
+    {% assign _inc_detail_base = "https://otaku-ism.com/games" %}
+  {% elsif _inc_moment.type == "publication" %}
+    {% assign _inc_action_text = "读" %}
+  {% else %}
+    {% assign _inc_action_text = "看" %}
+    {% assign _inc_detail_base = "https://otaku-ism.com/animations" %}
+  {% endif %}
+
+  {% case _inc_moment.status %}
+    {% when "ready" %}
+      {% assign _inc_did_text = _inc_action_text | prepend: "想" %}
+    {% when "start" %}
+      {% assign _inc_did_text = _inc_action_text | prepend: "在" %}
+    {% when "update" %}
+      {% assign _inc_did_text = _inc_action_text | append: "到" %}
+    {% when "end" %}
+      {% assign _inc_did_text = _inc_action_text | append: "过" %}
+    {% when "own" %}
+      {% if _inc_moment.received %}
+        {% assign _inc_did_text = "收到了" %}
+      {% else %}
+        {% assign _inc_did_text = "买了" %}
+      {% endif %}
+  {% endcase %}
+{% endif %}
+
+{% assign _inc_zoom_font = false %}
+
+{% if _inc_moment.type == "murmur" %}
+  {% assign _inc_content_size = _inc_moment.content | markdownify | strip_html | strip_newlines | escape_once | size | plus: 0 %}
+  {% if _inc_moment.images or _inc_moment.cite or _inc_content_size > 50 %}
+    {% assign _inc_zoom_font = false %}
+  {% else %}
+    {% assign _inc_zoom_font = true %}
+  {% endif %}
+{% elsif _inc_moment.type == "device" or _inc_moment.status == "own" %}
+  {% case _inc_moment.type %}
+    {% when "device" %}
+      {% assign _inc_object_name = site.data.mine.devices.items[_inc_moment.id].name %}
+    {% when "game" %}
+      {% assign _inc_object_name = site.data.otaku.games[_inc_moment.id].title | prepend: "《" | append: "》" %}
+    {% when "publication" %}
+      {% assign _inc_object_name = site.data.real-life.publications[_inc_moment.id].title | prepend: "《" | append: "》" %}
+  {% endcase %}
+
+  {% assign _inc_received = _inc_moment.received %}
+
+  {% if _inc_received %}
+    {% assign _inc_received_slug = _inc_received.from.slug | default: _inc_received.from %}
+    {% assign _inc_received_title = _inc_received.from.title | default: "" %}
+    {% if _inc_received_title == "" and _inc_received_slug == "julia" %}
+      {% assign _inc_received_title = "🐷" %}
+    {% endif %}
+    {% capture _inc_moment_content %}<p><a href="/people/{{ _inc_received_slug }}/">{{ _inc_received_title | default: "神秘人" }}</a>送的{{ _inc_received.for | default: "" }}礼物——{{ _inc_object_name }}</p>{% endcapture %}
+  {% else %}
+    {% capture _inc_moment_content %}<p>{{ _inc_object_name }}</p>{% endcapture %}
+  {% endif %}
+
+  {% assign _inc_content_size = _inc_moment_content | strip_html | strip_newlines | escape_once | size | plus: 0 %}
+  {% if _inc_moment.images or _inc_content_size > 50 %}
+    {% assign _inc_zoom_font = false %}
+  {% else %}
+    {% assign _inc_zoom_font = true %}
+  {% endif %}
+{% endif %}
+
+{% assign _inc_published_year = _inc_moment.date | date: "%Y" %}
+
+{% capture _inc_time_link %}<a class="Moment-time" {% if _inc_detail_base contains 'http' %}href="javascript:void(0);"{% else %}href="{{ _inc_detail_base }}/{{ _inc_moment.id }}/"{% endif %}><time datetime="{{ _inc_moment.date | date_to_xmlschema }}">{% if _inc_published_year == _inc_current_year %}{{ _inc_moment.date | date: "%m-%d %H:%M" }}{% else %}{{ _inc_moment.date | date: "%Y-%m-%d %H:%M" }}{% endif %}</time></a>{% endcapture %}
+
+{% if _inc_moment.tags and _inc_moment.tags.size > 0 %}
+  {% capture _inc_tag_links %}{% for _inc_tag_name in _inc_moment.tags %}<a class="Moment-tag" href="/tags/{{ _inc_tag_name }}/">{{ site.data.taxonomy.tags[_inc_tag_name].name }}</a>{% endfor %}{% endcapture %}
+{% else %}
+  {% capture _inc_tag_links %}{% endcapture %}
+{% endif %}
+
+<section class="Moment Moment--{{ _inc_moment.type }}{% if _inc_loose %} Moment--loose{% endif %}{% if _inc_zoom_font %} u-zoomFontSize{% endif %}{% if _inc_cardify %} Card{% endif %}">
+  <header class="Moment-header">
+    {% if _inc_loose %}{{ _inc_time_link }}{% endif %}
+    {% if _inc_moment.type == "post" and site.data.blog.posts.items[_inc_moment.id].translation %}
+      {% assign _inc_person_slug = site.data.blog.posts.items[_inc_moment.id].translation.translator %}
+      {% assign _inc_person = site.data.social.persona[_inc_person_slug] %}
+      <a class="Moment-avatar" href="/people/{{ _inc_person_slug }}/"><img src="{{ _inc_person.avatar | asset_path }}" alt="{{ _inc_person.name }}"></a><a class="Moment-name" href="/people/{{ _inc_person_slug }}/">{{ _inc_person.name }}</a>{% if _inc_loose == false %}<br>{{ _inc_time_link }}{% endif %}<span class="Moment-did">翻译了文章</span>
+    {% else %}
+      {% assign _inc_person = site.data.social.persona[site.ourairyu.site.master] %}
+      <a class="Moment-avatar" href="https://linxoid.com/{{ site.ourairyu.site.master }}/?utm_source={{ site.ourairyu.site.domain }}&utm_medium=moment" target="_blank" rel="external nofollow"><img src="{{ _inc_person.avatar | asset_path }}" alt="{{ _inc_person.name }}"></a><a class="Moment-name" href="https://linxoid.com/{{ site.ourairyu.site.master }}/?utm_source={{ site.ourairyu.site.domain }}&utm_medium=moment" target="_blank" rel="external nofollow">{{ _inc_person.name }}</a>{% if _inc_loose == false %}<br>{{ _inc_time_link }}{% endif %}<span class="Moment-did">{{ _inc_did_text }}</span>
+    {% endif %}
+  </header>
+  <div class="Moment-body">
+    {% if _inc_moment.type == "post" %}
+      <div class="Moment-content">
+        {% assign _inc_post = site.data.blog.posts.items[_inc_moment.id] %}
+        {% assign _inc_desc = _inc_post.description | default: '' %}
+        {% assign _inc_translation = _inc_post.translation %}
+        {% if _inc_desc == '' and _inc_translation %}
+          {% assign _inc_desc = '原文是由 ' | append: _inc_translation.author.name | append: ' 写的文章。本文由' | append: site.data.social.persona[_inc_translation.translator].name | append: '翻译，我来校对与润色。' %}
+        {% endif %}
+        {% if _inc_desc or _inc_tag_links %}{{ _inc_desc | append: _inc_tag_links | markdownify }}{% endif %}
+        <div class="Moment-cite MomentCite{% if _inc_desc == '' %} MomentCite--noArrow{% endif %}">
+          <div class="MomentCite-body">
+            <h3 class="MomentCite-title" data-toc-skip="true"><a href="{{ _inc_detail_base }}/{{ _inc_moment.id }}/" title="阅读文章《{{ _inc_post.title }}》">{{ _inc_post.title }}</a></h3>
+            {% if _inc_post.image %}<img class="MomentCite-image" src="{{ _inc_post.image | asset_path }}">{% endif %}
+            <div class="MomentCite-content">{{ _inc_post.content | markdownify | strip_html | strip_newlines | escape_once | truncate: 150, "..." }}</div>
+          </div>
+        </div>
+      </div>
+    {% elsif _inc_moment.type == "weekly" or _inc_moment.type == "note" %}
+      <div class="Moment-content">
+        {% if _inc_moment.type == "weekly" %}
+          {% assign _inc_weekly = site.data.shared.weeklies.items[_inc_moment.id] %}
+          {% assign _inc_moment_slug = _inc_moment.id %}
+          {% assign _inc_moment_text = "周报" %}
+        {% else %}
+          {% assign _inc_weekly = site.data.shared.notes.items[_inc_moment.id] %}
+          {% assign _inc_moment_slug = _inc_moment.slug | default: _inc_moment.id %}
+          {% assign _inc_moment_text = "笔记" %}
+        {% endif %}
+        {% assign _inc_desc = _inc_weekly.description | default: '' %}
+        {% if _inc_desc or _inc_tag_links %}{{ _inc_desc | append: _inc_tag_links | markdownify }}{% endif %}
+        <div class="Moment-cite MomentCite{% if _inc_desc == '' %} MomentCite--noArrow{% endif %}">
+          <div class="MomentCite-body">
+            <h3 class="MomentCite-title" data-toc-skip="true"><a href="{{ _inc_detail_base }}/{{ _inc_moment_slug }}/?utm_source={{ site.ourairyu.site.domain }}&utm_medium=moment" title="查看{{ _inc_moment_text }}《{{ _inc_weekly.title }}》" target="_blank" rel="external nofollow">{{ _inc_weekly.title }}</a></h3>
+            {% if _inc_weekly.image %}<img class="MomentCite-image" src="{{ _inc_weekly.image | asset_path }}">{% endif %}
+            <div class="MomentCite-content">{{ _inc_weekly.content | markdownify | strip_html | strip_newlines | escape_once | truncate: 150, "..." }}</div>
+          </div>
+        </div>
+      </div>
+    {% elsif _inc_moment.type == "video" %}
+      <div class="Moment-content">
+        {% assign _inc_desc = _inc_moment.description | default: '' %}
+        {% if _inc_desc or _inc_tag_links %}
+          {% assign _inc_has_arrow = true %}
+          {{ _inc_desc | append: _inc_tag_links | markdownify }}
+        {% else %}
+          {% assign _inc_has_arrow = false %}
+        {% endif %}
+        <div class="Moment-cite MomentCite MomentCite--video{% if _inc_has_arrow == false %} MomentCite--noArrow{% endif %}">
+          {% include partials/social/moment/video.html video=_inc_moment.id %}
+        </div>
+      </div>
+    {% elsif _inc_moment.type == "murmur" %}
+      <div class="Moment-content">{{ _inc_moment.content | append: _inc_tag_links | markdownify }}</div>
+      {% include partials/murmur/image.html murmur=_inc_moment.id limit=4 %}
+      {% include partials/murmur/cite.html murmur=_inc_moment.id %}
+    {% elsif _inc_moment.type == "talk" %}
+      {% assign _inc_talk = site.data.local.works.talks.items[_inc_moment.id] %}
+      {% assign _inc_talk_title = _inc_talk.title | prepend: "欧雷说：「" | append: "」" %}
+      <div class="Moment-content">
+        {{ _inc_talk.description | markdownify }}
+        <div class="Moment-cite MomentCite">
+          <div class="MomentCite-body">
+            <div class="MomentCite-image">
+              <a href="{{ _inc_detail_base }}/{{ _inc_moment.id }}/" title="观看《{{ _inc_talk_title }}》">
+                <img src="{{ 'social/moments/talk/cover' | asset_path }}">
+              </a>
+            </div>
+            <h3 class="MomentCite-title" data-toc-skip="true"><a href="{{ _inc_detail_base }}/{{ _inc_moment.id }}/" title="观看《{{ _inc_talk_title }}》">{{ _inc_talk_title }}</a></h3>
+            <div class="MomentCite-content">{{ _inc_talk.content | default: "暂无文字" | markdownify | strip_html | strip_newlines | escape_once | truncate: 150, "..." }}</div>
+          </div>
+        </div>
+      </div>
+    {% elsif _inc_moment.type == "device" %}
+      <div class="Moment-content">{{ _inc_moment_content }}</div>
+      {% include partials/social/moment/images.html images=_inc_moment.images limit=4 %}
+    {% elsif _inc_program_types contains _inc_moment.type %}
+      {% if _inc_moment.status == "own" %}
+        <div class="Moment-content">{{ _inc_moment_content }}</div>
+        {% include partials/social/moment/images.html images=_inc_moment.images limit=4 %}
+      {% else %}
+        <div class="Moment-content">
+          {% if _inc_moment.type == "anime" or _inc_moment.type == "game" %}
+            {% case _inc_moment.type %}
+              {% when "anime" %}
+                {% assign _inc_program = site.data.otaku.animations[_inc_moment.id] %}
+                {% assign _inc_program_image_dir = "otaku/animations/" %}
+              {% when "game" %}
+                {% assign _inc_program = site.data.otaku.games[_inc_moment.id] %}
+                {% assign _inc_program_image_dir = "otaku/games/" %}
+            {% endcase %}
+
+            {% if _inc_moment.type == "game" %}
+              {% assign _inc_program_url = _inc_detail_base | append: "/" | append: _inc_program.main | append: "/releases/" | append: _inc_program.uuid %}
+            {% else %}
+              {% assign _inc_program_url = _inc_detail_base | append: "/" | append: _inc_moment.id %}
+            {% endif %}
+
+            {% capture _inc_program_detail %}<a href="{{ _inc_program_url }}/?utm_source={{ site.ourairyu.site.domain }}&utm_medium=moment" title="到「宅主义」查看《{{ _inc_program.title }}》" target="_blank" rel="external nofollow">{{ _inc_program.title }}</a>{% endcapture %}
+          {% elsif _inc_moment.type == "drama" or _inc_moment.type == "publication" %}
+            {% assign _inc_program_url = "" %}
+
+            {% case _inc_moment.type %}
+              {% when "drama" %}
+                {% assign _inc_program_slug = "dramas" %}
+              {% when "publication" %}
+                {% assign _inc_program_slug = "publications" %}
+            {% endcase %}
+
+            {% assign _inc_program = site.data.real-life[_inc_program_slug][_inc_moment.id] %}
+            {% assign _inc_program_image_dir = "real-life/" | append: _inc_program_slug | append: "/" %}
+
+            {% capture _inc_program_detail %}{{ _inc_program.title }}{% endcapture %}
+          {% endif %}
+
+          {% assign _inc_has_arrow = false %}
+
+          {% if _inc_moment.status == "ready" and _inc_moment.comment != "" %}
+            {% assign _inc_has_arrow = true %}
+            {{ _inc_moment.comment | markdownify }}
+          {% elsif _inc_moment.status == "update" %}
+            {% assign _inc_has_arrow = true %}
+            {% assign _inc_ep = _inc_moment.episode %}
+            {% assign _inc_ep_index = _inc_ep | minus: 1 %}
+            {% assign _inc_ep_text= _inc_ep | prepend: "第 " | append: " 集" %}
+
+            {% if _inc_program.episodes and _inc_program.episodes[_inc_ep_index] %}
+              {% assign _inc_ep_data = _inc_program.episodes[_inc_ep_index] %}
+
+              {% if _inc_ep_data %}
+                {% if _inc_ep_data.title %}
+                  {% assign _inc_ep_title = _inc_ep_data.title %}
+                {% else %}
+                  {% assign _inc_ep_title = _inc_ep_data %}
+                {% endif %}
+
+                {% if _inc_program_url and _inc_program_url != "" %}
+                  {% capture _inc_ep_content %}<a href="{{ _inc_program_url }}/episodes/{{ _inc_ep }}/?utm_source={{ site.ourairyu.site.domain }}&utm_medium=moment" title="到「宅主义」查看《{{ _inc_program.title }}》的{{ _inc_ep_text }}" target="_blank" rel="external nofollow">{{ _inc_ep_title }}</a>{% endcapture %}
+                {% else %}
+                  {% capture _inc_ep_content %}{{ _inc_ep_title }}{% endcapture %}
+                {% endif %}
+              {% else %}
+                {% assign _inc_ep_content = "" %}
+              {% endif %}
+            {% else %}
+              {% assign _inc_ep_content = "" %}
+            {% endif %}
+            <p>{{ _inc_ep_text }}{% if _inc_ep_content and _inc_ep_content != "" %}——{{ _inc_ep_content }}{% endif %}</p>
+          {% elsif _inc_moment.status == "end" and _inc_moment.score != blank and _inc_moment.score != null %}
+            {% assign _inc_has_arrow = true %}
+            {% assign _inc_desc = "评分 " | append: _inc_moment.score %}
+            {% if _inc_moment.comment != "" %}{% assign _inc_desc = _inc_desc | append: "：" | append: _inc_moment.comment %}{% endif %}
+            {{ _inc_desc | markdownify }}
+          {% endif %}
+
+          {% if _inc_moment.type == "game" %}
+            {% assign _inc_program_image_id = _inc_program.main | append: "-" | append: _inc_program.uuid %}
+          {% else %}
+            {% assign _inc_program_image_id = _inc_moment.id %}
+          {% endif %}
+          <div class="Moment-cite MomentCite{% if _inc_has_arrow == false %} MomentCite--noArrow{% endif %}">
+            <div class="MomentCite-body">
+              <img class="MomentCite-image" src="{{ _inc_program_image_dir | append: _inc_program_image_id | append: '/cover' | asset_path }}">
+              <h3 class="MomentCite-title" data-toc-skip="true">{{ _inc_program_detail }}</h3>
+              <div class="MomentCite-content">{{ _inc_program.description | default: "暂无介绍" | markdownify | strip_html | strip_newlines | escape_once | truncate: 180, "..." }}</div>
+            </div>
+          </div>
+        </div>
+      {% endif %}
+    {% endif %}
+  </div>
+  {% if _inc_moment.type == "post" or _inc_moment.type == "murmur" %}
+    <footer class="Moment-footer">
+      {% if _inc_moment.type == "murmur" %}
+        <div class="Moment-meta">
+          {% include partials/murmur/backup.html murmur=_inc_moment.id %}
+        </div>
+      {% endif %}
+      <div class="Moment-actions">
+        <a href="{{ _inc_detail_base }}/{{ _inc_moment.id }}/#disqus_thread" title="评论"><i class="fa fa-comment"></i> 评论</a>
+        {% if _inc_moment.type == "murmur" and _inc_moment.citedBy %}
+          <span><i class="fa fa-retweet"></i> 被引用 {{ _inc_moment.citedBy.size }} 次</span>
+        {% endif %}
+      </div>
+    </footer>
+  {% endif %}
+</section>

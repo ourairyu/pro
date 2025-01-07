@@ -1,0 +1,84 @@
+@import "../helper";
+@import "./murmur/image";
+@import "./murmur/cite";
+@import "./murmur/backup";
+
+
+
+.Murmur {
+  padding: {
+    left: 60px;
+    bottom: 16px;
+  }
+  font-size: 14px;
+
+  &-header,
+  &-footer {
+    @include pie-clearfix;
+
+    a {
+      &,
+      &:hover,
+      &:focus {
+        color: inherit;
+      }
+    }
+  }
+
+  &-header {
+    position: relative;
+  }
+
+  &-time {
+    float: right;
+    margin-top: 1px;
+  }
+
+  &-avatar {
+    position: absolute;
+    right: 100%;
+    margin-right: 12px;
+    @include circle(48px);
+  }
+
+  &-name {
+    font: {
+      size: 16px;
+      weight: 500;
+    }
+  }
+
+  &-body {
+    margin: 8px 0 16px;
+  }
+
+  &-footer {
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+
+  &-meta {
+    float: right;
+  }
+
+  &-actions {
+    @include pie-clearfix;
+
+    > a,
+    > span {
+      float: left;
+
+      + a,
+      + span {
+        margin-left: 2em;
+      }
+    }
+  }
+
+  & + & {
+    padding-top: 16px;
+    border-top: 1px solid #eee;
+  }
+}

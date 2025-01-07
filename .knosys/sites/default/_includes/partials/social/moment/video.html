@@ -1,0 +1,21 @@
+{% assign _inc_video = site.data.videos.items[include.video] %}
+{% assign _inc_cited = include.cited | default: false %}
+{% if _inc_video %}
+  {% assign _inc_video_desc = _inc_video.content | default: '' %}
+  {% assign _inc_video_platforms = _inc_video.platforms %}
+  {% if _inc_video_platforms.bilibili %}
+    {% assign _inc_video_link = "https://www.bilibili.com/video/" | append: _inc_video_platforms.bilibili | append: "/" %}
+  {% elsif _inc_video_platforms.youku %}
+    {% assign _inc_video_link = "https://v.youku.com/v_show/id_" | append: _inc_video_platforms.youku | append: ".html" %}
+  {% endif %}
+  {% capture _inc_link_attrs %}href="{{ _inc_video_link | default: 'javascript:void(0);' }}" title="观看《{{ _inc_video.title }}》" target="_blank" rel="external nofollow"{% endcapture %}
+  <div class="{% if _inc_cited %}MurmurCite{% else %}MomentCite-body{% endif %}">
+    {% if _inc_video.cover %}
+    <div class="{% if _inc_cited %}MurmurCite{% else %}MomentCite{% endif %}-image">
+      <a {{ _inc_link_attrs }}><img src="{{ 'videos/' | append: _inc_video.id | append: '/cover' | asset_path }}"></a>
+    </div>
+    {% endif %}
+    <h3 class="{% if _inc_cited %}MurmurCite{% else %}MomentCite{% endif %}-title" data-toc-skip="true"><a {{ _inc_link_attrs }}>{{ _inc_video.title }}</a></h3>
+    {% if _inc_video_desc != '' %}<div class="{% if _inc_cited %}MurmurCite{% else %}MomentCite{% endif %}-content">{{ _inc_video_desc | markdownify | strip_html | strip_newlines | escape_once | truncate: 150, "..." }}</div>{% endif %}
+  </div>
+{% endif %}

@@ -1,0 +1,25 @@
+{% assign _inc_images = include.images %}
+{% assign _inc_limit = include.limit | default: 9 %}
+{% if _inc_limit > 9 %}
+  {% assign _inc_limit = 9 %}
+{% endif %}
+{% if _inc_images %}
+  <div class="MomentImages">
+    {% assign _inc_size = _inc_images.size %}
+    {% if _inc_size > _inc_limit %}
+      {% assign _inc_size = _inc_limit %}
+    {% endif %}
+    {% for _inc_image in _inc_images limit: _inc_limit %}
+      {% if _inc_size > 4 %}
+        {% assign _inc_cols = 4 %}
+      {% elsif _inc_size == 4 %}
+        {% assign _inc_cols = 6 %}
+      {% else %}
+        {% assign _inc_cols = 12 | divided_by: _inc_size %}
+      {% endif %}
+      <div class="MomentImages-item col-xs-{{ _inc_cols }}">
+        <div class="MomentImages-image" style="background-image: url('{{ _inc_image | asset_path }}');"></div>
+      </div>
+    {% endfor %}
+  </div>
+{% endif %}
