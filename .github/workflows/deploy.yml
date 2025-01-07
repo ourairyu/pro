@@ -1,4 +1,4 @@
-name: Publish shared docs
+name: Deploy website
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  publish-shared:
+  build-and-deploy:
     runs-on: ubuntu-latest
     env:
       SITE_REPO: ourairyu/pro

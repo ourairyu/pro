@@ -3,6 +3,7 @@
   "site": {
     "default": {
       "alias": "ourairyu-pro",
+      "source": "./.knosys/sites/default",
       "cname": "ourai.pro",
       "generator": "jekyll",
       "git": {
