@@ -111,6 +111,10 @@ theme_config:
     navs:
       - text: Works
         children:
+          - text: Posts
+            url: https://dev.to/ourai
+          - text: Tweets
+            url: https://x.com/ntksol
           - text: Products
             url: https://producthunt.com/@ourai
           - text: Open-source software
@@ -130,8 +134,8 @@ theme_config:
   footer:
     partial: _local/partials/footer
     links:
-      - text: Twitter
-        url: https://twitter.com/ntksol
+      - text: X
+        url: https://x.com/ntksol
       - text: GitHub
         url: https://github.com/ourai
       - text: LinkedIn
