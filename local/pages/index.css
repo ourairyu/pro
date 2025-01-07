@@ -1,0 +1,70 @@
+body {
+  background-color: #fff; }
+
+.Homepage-header {
+  margin-bottom: 30px; }
+
+.Homepage-body h2 {
+  margin-bottom: .67em;
+  font-size: 2.6em;
+  font-weight: 700; }
+
+.Homepage-body p {
+  max-width: 26em;
+  font-size: 1.5em;
+  line-height: 1.4; }
+
+.Profile {
+  position: relative;
+  color: #fff;
+  text-shadow: 3px 3px 8px #000;
+  background: #333 none no-repeat 50% 50%;
+  background-size: cover; }
+  .Profile:before {
+    content: " ";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: #000;
+    opacity: .25; }
+  .Profile-name, .Profile-description {
+    position: relative; }
+  .Profile-name:before, .Profile-name:after {
+    font-weight: 300; }
+  .Profile-description {
+    margin-bottom: 0;
+    clear: none; }
+    .Profile-description span {
+      font-weight: 400; }
+  @media (max-width: 767px) {
+    .Profile {
+      height: 200px; }
+      .Profile-content {
+        padding-top: 46px;
+        text-align: right; }
+      .Profile-name {
+        font-size: 36px; }
+      .Profile-description {
+        font-size: 14px; } }
+  @media (min-width: 768px) {
+    .Profile {
+      height: 600px;
+      padding-top: 200px; }
+      .Profile-content {
+        padding-left: 400px; }
+      .Profile-name:before {
+        content: "Hi, I'm "; }
+      .Profile-name:after {
+        content: "."; }
+      .Profile-description {
+        margin-top: 30px; }
+        .Profile-description span {
+          font-size: 24px; } }
+  @media (min-width: 992px) {
+    .Profile-content {
+      padding-left: 600px; } }
+  @media (min-width: 1200px) {
+    .Profile-content {
+      padding-left: 700px; } }
