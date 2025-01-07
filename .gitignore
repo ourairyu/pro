@@ -11,7 +11,11 @@
 .sass-cache/
 _site/
 dist/
-node_modules/
+
+# npm
+node_modules
+package-lock.json
+pnpm-lock.yaml
 
 .knosys/sites/*/_data/local/*
 !.knosys/sites/*/_data/local/open-source.yml

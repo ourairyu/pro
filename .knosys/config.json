@@ -1,3 +1,14 @@
 {
-  "command": "./.knosys/scripts/command"
+  "command": "./.knosys/scripts",
+  "site": {
+    "default": {
+      "alias": "ourairyu-pro",
+      "cname": "ourai.pro",
+      "generator": "jekyll",
+      "git": {
+        "url": "https://github.com/ourairyu/pro.git",
+        "branch": "gh-pages"
+      }
+    }
+  }
 }

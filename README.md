@@ -1,3 +1,3 @@
-# Pro
+# Ourai's Professional Insights
 
-Ourai's English personal website.
+English personal website about software engineering, especially front-end engineering.
