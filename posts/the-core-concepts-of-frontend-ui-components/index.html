@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <title>The Core Concepts of Front-end UI Components - Ourai L.</title>
+
+
+  <meta property="og:title" content="The Core Concepts of Front-end UI Components">
+
+
+
+
+  
+    
+  
+
+
+  <meta name="keywords" content="Ourai Lin,Ourai L.,Ourai,Ourairyu,欧雷,欧雷流">
+
+
+<!-- 页面渲染兼容性 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<!-- 订阅 -->
+
+<meta name="theme-color" content="#0871ab">
+<link rel="shortcut icon" href="/images/ksio/favicon.ico">
+
+
+    
+<link rel="stylesheet" href="/stylesheets/global.css">
+
+    
+<link rel="stylesheet" href="/stylesheets/ksio/vendors/share.css">
+
+<link rel="stylesheet" href="/stylesheets/pages/post.css">
+
+    
+<script src="/javascripts/ksio/vendors/jquery-1.11.3.min.js"></script>
+
+    
+<script src="/javascripts/ksio/vendors/bootstrap.min.js"></script>
+
+  </head>
+  
+  
+  <body class="Page" itemscope itemtype="http://schema.org/WebPage">
+    
+
+  <header class="Page-header">
+  <div class="navbar navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        
+          <button class="navbar-toggle collapsed" type="button" data-target=".Page-navs" data-toggle="collapse">
+            <span class="sr-only">Toggle navs</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+        
+          
+
+
+  <a class="navbar-brand" href="/">Ourai L.</a>
+
+
+        
+      </div>
+      <!-- Nav menus -->
+      <nav class="Page-navs navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Works <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://dev.to/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Posts</a>
+</li>
+  
+
+  
+    <li><a href="https://x.com/ntksol?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Tweets</a>
+</li>
+  
+
+  
+    <li><a href="https://producthunt.com/@ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Products</a>
+</li>
+  
+
+  
+    <li><a href="https://github.com/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Open-source software</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Cooperation <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.upwork.com/freelancers/~016baa7fae7cfff661?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Services</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">About <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Resume</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li><a href="https://yaol.in/?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">中文</a>
+</li>
+  
+
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="Page-content">
+  
+
+  <!-- 内容主体 -->
+  <div class="container">
+    <article class="Page-main Article">
+      <header class="Article-header">
+        
+  
+    <h1 class="Article-title">The Core Concepts of Front-end UI Components</h1>
+  
+  
+
+
+      </header>
+      <div class="Article-content col-md-9"><p>This article is the first in a series, primarily explaining several basic concepts and the subjects we aim to explore. The purpose is to establish a unified “context” of understanding to minimize comprehension barriers caused by information asymmetry.</p>
+<p>This series of articles focuses on front-end UI components, and I hope to take the time to delve into the related content through this series.</p>
+<p>Each term is a concept, like a “data packet”, and depending on the amount of information it “compresses”, truly understanding a word may require a substantial knowledge base.</p>
+<h2 id="Basic-Concepts"><a href="#Basic-Concepts" class="headerlink" title="Basic Concepts"></a>Basic Concepts</h2><p>What we are discussing is “front-end UI components”, which can be further broken down into the three words “front-end”, “UI”, and “components”. To understand what “front-end UI components” are, we must first grasp the meanings of these three words.</p>
+<h3 id="UI-GUI"><a href="#UI-GUI" class="headerlink" title="UI? GUI?"></a>UI? GUI?</h3><p>When discussing the visual aspects of software, we often use the abbreviation “UI”, and sometimes “GUI”. Although they have different meanings, in most cases, we equate these two terms. Here, I attempt to help differentiate between them, even if the usage remains the same, at least to be aware of their differences.</p>
+<p>The way humans interact with machines, or more precisely, with artificial systems, and how to better facilitate this interaction, is something people have always been exploring—this is what the term “human-computer interaction” represents. “Artificial systems” can be a variety of physical machines, as well as computer systems and software.</p>
+<p>The essence of “interaction” is the exchange of information between people&#x2F;objects, that is, information is output from one person&#x2F;object and input into another. Therefore, the two people&#x2F;objects, the output method, and the input method are the basic elements of interaction.</p>
+<p>In the context of human-computer interaction, the objects of interaction are humans and artificial systems. Humans output information through actions like typing, touching, and speaking, and input information through senses like sight, hearing, and touch; artificial systems output information through text, graphics, sound, etc., and input information by converting the information generated by humans in various ways into electrical signals.</p>
+<p><a target="_blank" rel="noopener" href="https://en.wikipedia.org/wiki/Graphical_user_interface"><img src="/graphical-user-interface.png" alt="Human-Computer Interaction Interface"></a></p>
+<p>The space that facilitates the exchange of information in human-computer interaction is called the “human-computer interaction interface”, also known as the “user interface”, which “UI” is the abbreviation for.</p>
+<p>Different interaction methods and levels produce different “user interfaces”, such as the text-based “Command-line Interface”, the graphics-based “Graphical User Interface”, the voice-based “Natural-language User Interface”, and so on.</p>
+<p>Among them, the “Graphical User Interface” is currently widely used, and its English abbreviation is “GUI”.</p>
+<h3 id="Front-end-Development"><a href="#Front-end-Development" class="headerlink" title="Front-end Development"></a>Front-end Development</h3><p>So-called “front-end development” involves using web front-end technologies for GUI-related development work, and those who specialize in this type of work are called “front-end developers”.</p>
+<p>In the past, “front-end developers” referred to “page reconstruction engineers” and “front-end development engineers”; as businesses and technologies have evolved, “page reconstruction engineers” have gradually faded into history, and “front-end developers” have essentially become synonymous with “front-end development engineers”, with the title becoming more concise—“front-end engineers”.</p>
+<p>As the profession has changed, the expectations from enterprises and the industry for a “front-end developer”, a “front-end engineer”, have increased, and the responsibilities have become heavier—this is a career upgrade, as well as an industry cleansing—those who adapt become stronger, while those who do not are eliminated.</p>
+<p>To this day, the meaning of “front-end development” is not just about writing pages and building websites; it also includes front-end engineering-related CLI tools, mobile and desktop client applications, and parts of the server side that are closer to the front end, and so on—this is essentially the work of a “client-side engineer”—yes! “Front-end development” is essentially a branch of “client-side development”, only this point is increasingly being emphasized, and “client-side development” is increasingly trending towards unification, which can be called “pan-client development”.</p>
+<p>Regardless of how the work content and professional responsibilities change, the core problem that needs to be solved in this field remains the same—how to better facilitate interaction between humans and artificial systems.</p>
+<h3 id="Components-Controls"><a href="#Components-Controls" class="headerlink" title="Components? Controls?"></a>Components? Controls?</h3><p>In software engineering, a “component” generally refers to a reusable block of software, akin to the “parts” used in manufacturing. This is a broad concept; it can be a software package, a web service, or a module, etc.</p>
+<p>However, in the front-end perspective, a “component” usually refers to a view unit on a page, that is, a “UI component”. It can be said that a “UI component” is a subset of a “component”. You might also often hear the term “control”. Don’t worry, don’t scratch your head; it’s just another name for a “UI component”.</p>
+<p>Ordinary components have poor universality, meaning they can basically only be used in a specific system and cannot be replaced. There is a type of component that is developed based on standardized interface specifications and can be used in any system that connects to that interface, and can also be replaced by any component that meets the interface specifications—it is a “replaceable component”, just like the “standard parts” used in manufacturing.</p>
+<p>Replaceable UI components are the key to the transition of front-end GUI development from a cottage industry to automated assembly.</p>
+<h2 id="Related-Concepts"><a href="#Related-Concepts" class="headerlink" title="Related Concepts"></a>Related Concepts</h2><p>The above has explained what “front-end UI components” are through three basic concepts; now let’s discuss a few concepts that have a significant impact on them—</p>
+<h3 id="Design-System"><a href="#Design-System" class="headerlink" title="Design System"></a>Design System</h3><p>The so-called “design system”, or “Design System”, is a concept closely related to UI components. It can be considered the theoretical basis for the appearance and interaction of UI components, while UI components are the concrete realization of the design system.</p>
+<p>The existence of a design system is to assist in the design and development of digital products such as websites and applications. It serves as the sole reference, allowing different teams (such as product managers, designers, and developers) to participate together in the construction of digital products.</p>
+<p>Products designed and developed based on a design system can maintain a certain consistency in both appearance and experience, establishing a product image and disseminating brand value.</p>
+<p>The content covered by a design system includes, but is not limited to, design language, style guides, pattern libraries, UI components, brand language, and related usage documentation—while the design system itself is not a deliverable, it is composed of some deliverables and will continue to evolve with the updates of products, tools, and technologies.</p>
+<p>From the list of content covered by the design system, it can be seen that the elements that make it up include tangible ones, such as patterns, UI components, guidelines, and tools used by designers and developers; there are also intangible ones, such as brand values, collaboration methods, ways of thinking, and common beliefs.</p>
+<p><a target="_blank" rel="noopener" href="https://uxdesign.cc/everything-you-need-to-know-about-design-systems-54b109851969"><img src="/design-system.jpeg" alt="Design System Composition"></a></p>
+<p>Style guides and pattern libraries are two relatively important deliverables: style guides focus on the use of graphic styles, such as colors, fonts, images, etc.; pattern libraries integrate functional UI components and their usage.</p>
+<h3 id="Data-and-Its-Forms"><a href="#Data-and-Its-Forms" class="headerlink" title="Data and Its Forms"></a>Data and Its Forms</h3><p>The information exchanged in human-computer interaction is “data”, which is the carrier of information and the core of human-computer interaction. Here, the term “data” tends to refer to the basic data types provided by programming languages that are friendly to humans, as well as data structures constructed based on them, rather than binary encoding that is friendly to machines.</p>
+<p>“Data” is a description of objective things in the real world, and every type of data in computer programs should have its correct semantics, such as using the boolean type for binary logic like “yes” and “no”; using numerical types for counting; using string types for explanations; using object types for entities; and using list types for entity collections.</p>
+<p>The above mentioned “entity” is a concept that can represent something concrete or abstract, natural or artificial, actually existing or virtually created… “Human” is an entity, “dog” is an entity, “wind” is an entity, “language” is an entity, “matter” is an entity, and “spirit” is also an entity. Even so, when we talk about “entities”, we mostly refer to those that are visible and tangible. In addition, an “entity” is a collection of attributes that describe its characteristics.</p>
+<p>In an application, the data types involved in user operations are roughly: boolean, integer, floating-point number, date, amount, string, long text, enumeration, object, list, etc. Except for objects and lists, which are considered complex data types, the rest are simple data types. In the digital world constructed by computer programs, each entity is represented by an object, lists are entity collections, and entity attributes can be either simple or complex data types—entities and entity collections are collectively referred to as “views”, and entity attributes are called “fields”.</p>
+<p>When the value of a field is a simple data type, it is a “regular field”, also known as a “simple field”; when the value is a complex data type, it is a “relationship field”, also known as a “complex field”. Based on the relationship with the associated entity, relationship fields can be further divided into “one-to-one”, “one-to-many”, “many-to-one”, and “many-to-many”. Among them, “one-to-many” and “many-to-one” are mirror relationships.</p>
+<p>By further generalizing “entities” based on their characteristics, they can be abstracted into “models”, meaning that a “model” is a category of “entities”. In discussions and communications, the terms “entity” and “model” can be used interchangeably to a certain extent, but attention should be paid to their semantic differences. If a model is mapped to a database table, each record in the table is an entity.</p>
+<p>Take the “human” model as an example:</p>
+<table>
+<thead>
+<tr>
+<th>Model Field</th>
+<th>Data Type</th>
+<th>Associated Model</th>
+<th>Relationship</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Name</td>
+<td>String</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Date of Birth</td>
+<td>Date</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Age</td>
+<td>Integer</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Gender</td>
+<td>Enumeration</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Monthly Income</td>
+<td>Amount</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Married</td>
+<td>Boolean</td>
+<td>-</td>
+<td>-</td>
+</tr>
+<tr>
+<td>Spouse</td>
+<td>Object</td>
+<td>Human</td>
+<td>One-to-One</td>
+</tr>
+<tr>
+<td>Children</td>
+<td>List</td>
+<td>Human</td>
+<td>Many-to-Many</td>
+</tr>
+<tr>
+<td>Parents</td>
+<td>List</td>
+<td>Human</td>
+<td>Many-to-Many</td>
+</tr>
+<tr>
+<td>Dogs</td>
+<td>List</td>
+<td>Dog</td>
+<td>One-to-Many</td>
+</tr>
+</tbody></table>
+<p>As described above, the data form in an application is a recursion from list-type data to simple-type data. If a field is a relationship field, then it embeds a view:</p>
+<p><img src="/data-diagram.jpg" alt="Data Form"></p>
+<p>Although some UI components are unrelated to data, many are closely related to data, such as lists, tables, forms, input boxes, etc.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>This article explains the concepts contained in the three words that “front-end UI components” are broken down into—“front-end”, “UI”, and “components”—to popularize some knowledge, trying to clarify what “front-end UI components” are, and to set the scope for the subsequent articles in this series—discussing some matters related to UI components developed using web front-end technologies.</p>
+<p>Why is there this series of articles? On the one hand, it is because the methodology and abstraction related to front-end engineering are not yet sufficient and lack a systematic approach; on the other hand, the domestic front-end environment and atmosphere are too restless, and those who understand will naturally understand.</p>
+
+</div>
+      <footer class="Article-footer col-md-3">
+  
+  <div class="Widget Widget--share">
+    <div class="Widget-body">
+      <p>分享到<i class="fa fa-share-alt"></i></p>
+      <div class="social-share" data-sites="wechat,weibo,twitter"></div>
+    </div>
+  </div>
+
+
+  <section class="Widget Widget--toc">
+  <div class="Widget-header">
+    <h2 class="Widget-title">目录</h2>
+  </div>
+  <div class="Widget-body"></div>
+</section>
+
+
+</footer>
+      
+      
+    </article>
+    
+
+  </div>
+</main>
+<footer class="Page-footer Footer">
+  <div class="container">
+    
+    <div class="Footer-description">
+      
+        <!-- Important links -->
+        <nav class="Footer-navs">
+          <ul><li><a href="https://x.com/ntksol?utm_source=https://ourai.github.io&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>X</span></a>
+</li><li><a href="https://github.com/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>GitHub</span></a>
+</li><li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>LinkedIn</span></a>
+</li></ul>
+        </nav>
+      
+      
+        <!-- Copyright -->
+        <div class="Footer-copyright">
+          <p>
+
+&copy; 2023-2025 <a href="https://ourai.github.io?utm_source=https://ourai.github.io&amp;utm_medium=common-footer" target="_blank" rel="external nofollow">Ourai L.</a>
+
+</p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+    <script>$('.Article-content > table').addClass('table table-bordered')</script>
+    
+<script src="/javascripts/ksio/vendors/share.min.js"></script>
+
+<script src="/javascripts/ksio/components/page.js"></script>
+
+<script src="/javascripts/ksio/components/toc.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.zh-CN.js"></script>
+
+<script src="/javascripts/ksio/initializers/time.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.lazyload.js"></script>
+
+<script src="/javascripts/ksio/initializers/lazyload.js"></script>
+
+  </body>
+</html>
+

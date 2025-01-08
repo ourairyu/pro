@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <title>Let Me Talk About Abstraction of Front-end Application Presentation Layer - Ourai L.</title>
+
+
+  <meta property="og:title" content="Let Me Talk About Abstraction of Front-end Application Presentation Layer">
+
+
+
+
+  
+    
+  
+
+
+  <meta name="keywords" content="Ourai Lin,Ourai L.,Ourai,Ourairyu,欧雷,欧雷流">
+
+
+<!-- 页面渲染兼容性 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<!-- 订阅 -->
+
+<meta name="theme-color" content="#0871ab">
+<link rel="shortcut icon" href="/images/ksio/favicon.ico">
+
+
+    
+<link rel="stylesheet" href="/stylesheets/global.css">
+
+    
+<link rel="stylesheet" href="/stylesheets/ksio/vendors/share.css">
+
+<link rel="stylesheet" href="/stylesheets/pages/post.css">
+
+    
+<script src="/javascripts/ksio/vendors/jquery-1.11.3.min.js"></script>
+
+    
+<script src="/javascripts/ksio/vendors/bootstrap.min.js"></script>
+
+  </head>
+  
+  
+  <body class="Page" itemscope itemtype="http://schema.org/WebPage">
+    
+
+  <header class="Page-header">
+  <div class="navbar navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        
+          <button class="navbar-toggle collapsed" type="button" data-target=".Page-navs" data-toggle="collapse">
+            <span class="sr-only">Toggle navs</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+        
+          
+
+
+  <a class="navbar-brand" href="/">Ourai L.</a>
+
+
+        
+      </div>
+      <!-- Nav menus -->
+      <nav class="Page-navs navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Works <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://dev.to/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Posts</a>
+</li>
+  
+
+  
+    <li><a href="https://x.com/ntksol?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Tweets</a>
+</li>
+  
+
+  
+    <li><a href="https://producthunt.com/@ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Products</a>
+</li>
+  
+
+  
+    <li><a href="https://github.com/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Open-source software</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Cooperation <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.upwork.com/freelancers/~016baa7fae7cfff661?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Services</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">About <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Resume</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li><a href="https://yaol.in/?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">中文</a>
+</li>
+  
+
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="Page-content">
+  
+
+  <!-- 内容主体 -->
+  <div class="container">
+    <article class="Page-main Article">
+      <header class="Article-header">
+        
+  
+    <h1 class="Article-title">Let Me Talk About Abstraction of Front-end Application Presentation Layer</h1>
+  
+  
+
+
+      </header>
+      <div class="Article-content col-md-9"><p>We live in an era of rapid change, whether in business or technology. A company that appears to be commercially successful may go public one day and then delist or even go bankrupt the next due to various reasons; a seemingly advanced technology may emerge, with various media racing to write about it and hype it up, but it might soon face competitors or alternatives.</p>
+<p>In this fast-paced environment, traditional “web front-end development” has evolved into “universal client development”, and front-end developers have been “forced” from being “configuration engineers” to becoming “software engineers”. Development has become more complex, with more issues to handle, and the difficulty of entering the field has increased exponentially—front-end development is no longer simple.</p>
+<p>One of the many issues that must be addressed is the compatibility of the presentation layer’s runtime environment, such as cross-browser and cross-end, cross-platform, and cross-technology stack compatibility. Note that we are talking about the “presentation layer” rather than the “view layer”.</p>
+<h3 id="Presentation-Layer-vs-View-Layer"><a href="#Presentation-Layer-vs-View-Layer" class="headerlink" title="Presentation Layer vs. View Layer"></a>Presentation Layer vs. View Layer</h3><p>The term “presentation layer” is translated as “presentation tier” or “presentation layer”, depending on whether it is divided physically or logically; while “view layer” is translated as “view”. The “presentation layer” is a superset of the “view layer”, and depending on the architecture design of the front-end application, they can be unequal or equal.</p>
+<h3 id="Presentation-Layer"><a href="#Presentation-Layer" class="headerlink" title="Presentation Layer"></a>Presentation Layer</h3><p>The term “presentation layer” comes from the classic three-tier architecture (or multi-tier architecture), which is one of the layers. The three-tier architecture includes the data layer, logic layer, and presentation layer, generally used in C&#x2F;S architecture.</p>
+<p><img src="/three-tier-application.png" alt="Three-tier Architecture"></p>
+<p>Why is this mentioned in an article about front-end development? This is because, although it is not needed in some front-end applications, especially fast-food style applications, a front-end “three-tier architecture” is very necessary in complex enterprise-level front-end applications.</p>
+<h3 id="View-Layer"><a href="#View-Layer" class="headerlink" title="View Layer"></a>View Layer</h3><p>The “view layer” comes from the “view” in the commonly used “model-view-whatever” pattern in the presentation layer. Whether it is appropriate to add the word “layer” after “view” is not discussed here, and the term “view layer” is used throughout the article.</p>
+<h2 id="Runtime-Environment-Compatibility"><a href="#Runtime-Environment-Compatibility" class="headerlink" title="Runtime Environment Compatibility"></a>Runtime Environment Compatibility</h2><h3 id="Cross-browser"><a href="#Cross-browser" class="headerlink" title="Cross-browser"></a>Cross-browser</h3><p>Due to inconsistencies in the implementation of standards by various browser vendors and the versions of browsers, issues such as different feature support and interface display bugs may arise. Fortunately, they are generally based on standards, so the syntax of the source code is almost the same during development.</p>
+<p>The so-called “cross-browser” is actually about using the browser’s additional proprietary features and technologies or supplementing with JS to “correct” browser bugs and support features.</p>
+<h3 id="Cross-end-Cross-platform-and-Cross-technology-stack"><a href="#Cross-end-Cross-platform-and-Cross-technology-stack" class="headerlink" title="Cross-end, Cross-platform, and Cross-technology stack"></a>Cross-end, Cross-platform, and Cross-technology stack</h3><p>Nowadays, the vast majority of front-end developers are engaged in universal client development—developing web applications, client applications, and various mini-programs.</p>
+<p>When developing web applications, it is necessary to consider whether PC and mobile ends are separate or adapted? The technology selection is whether to use React, Vue? Or use Web Components? Or something else? When developing client applications and various mini-programs, these issues also face technology selection.</p>
+<p>If a company’s business functions cover all the above scenarios, how to support them? Unlike cross-browser, the source code syntax of different ends, platforms, and technology stacks is different, and to meet business needs, each must be developed separately. However, this is obviously too costly and somewhat risky.</p>
+<p>So, how to solve this problem? Start from the source. The fundamental source is the business scenario, and then the product design, but these are not controllable by developers and are almost impossible to change. What can be completely controlled by developers is basically only the matters during the development phase, so start from the source of this stage—the source code writing.</p>
+<p>If the code related to the business only needs to be written once to run on different ends, platforms, and technology stacks, that would be great! This will greatly reduce costs and risks!</p>
+<h2 id="Abstraction-of-the-Presentation-Layer"><a href="#Abstraction-of-the-Presentation-Layer" class="headerlink" title="Abstraction of the Presentation Layer"></a>Abstraction of the Presentation Layer</h2><p>To achieve the purpose of cross-end, cross-platform, and cross-technology stack, the presentation layer needs to be further divided into abstract layer, runtime layer, and adaptation layer. The abstract layer is to unify the way of source code writing, which can be DSL, configuration, etc., and it is a protocol or agreement; the runtime layer is the end, platform, and technology stack that need to be “crossed”; the adaptation layer is to convert the product of the abstract layer into the form needed for normal operation in the runtime layer.</p>
+<p>What can be abstracted in the presentation layer includes view structure, component appearance, component behavior, etc.</p>
+<h3 id="View-Structure"><a href="#View-Structure" class="headerlink" title="View Structure"></a>View Structure</h3><p>In web front-end development, HTML is an abstraction of view structure, describing what is in the interface and their hierarchical relationships. The final display requires the browser to parse HTML and then call the operating system’s GUI toolkit.</p>
+<p>For business support, whether it is HTML or other ways of piecing together interfaces, it is relatively low-level (it is “low level” rather than “low”), and the granularity of view unit division is relatively fine, which will take more time when developing interfaces.</p>
+<p>We need a view structure abstraction that can shield some unnecessary details. In this abstraction, each view unit has its significance in business, rather than being a role that can be there or not. For specific practices, please see the following text.</p>
+<h3 id="Component-Appearance"><a href="#Component-Appearance" class="headerlink" title="Component Appearance"></a>Component Appearance</h3><p>Most existing components have fixed visual presentations, that is, the size, shape, color, font, etc. of a component cannot be customized. If the same interaction is only because of visual differences, it is too painful to rewrite components or write styles externally to cover…</p>
+<p>We can abstract those visual presentations that we hope to be customized into a part of the “theme”, which can be called “skin”. When customizing, it is divided into offline and online methods.</p>
+<p>“Offline” refers to processing during the development stage before application deployment. In the current rich front-end build tools, when writing page styles, CSS is no longer written directly, but rather a programmable preprocessor like Sass. In this way, some Sass variables that control visual presentations can be extracted. When customizing, external variable assignment can be used for coverage, without the need to rewrite components or styles.</p>
+<p>“Online” is to change dynamically according to runtime data after deployment. In scenarios such as skin customization preview and low-code platforms, there is basically no opportunity to modify Sass variables and go through the build process, even if it is technically feasible. With the help of CSS custom properties (CSS variables), it is relatively easy to achieve runtime changes in visual presentations.</p>
+<h3 id="Component-Behavior"><a href="#Component-Behavior" class="headerlink" title="Component Behavior"></a>Component Behavior</h3><p>In addition to appearance, the behavior of components should also be customizable. The first reaction to the word “behavior” is something related to user operations, but it also includes things related to the internal structure of the component.</p>
+<p>For the outside of the component, the inside of the component is a black box. Some parts of its internal structure can be controlled by the aforementioned view structure, and some cannot:</p>
+<p><img src="/search-component.jpg" alt="Search Component"></p>
+<p>The above figure is a relatively complex search component. Although the appearance and layout look different, “they” are indeed the same component. The solution for different appearances has been roughly explained above. For layout issues that cannot be controlled by view structure, it is necessary to enumerate scenarios and support them within the component, and then exist as a part of the “theme”.</p>
+<p>Behavior related to user operations includes two categories: the component’s own interaction rules and the combination with business logic.</p>
+<p>There are two types of interaction rules: one is like whether the form is validated when the field value changes or when the button is clicked; the other is like whether the field value is updated when the input box value changes (<code>input</code> event) or when it loses focus (<code>change</code> event), or whether the drop-down menu’s pop-up layer appears when hovering (<code>hover</code> event) or when clicking (<code>click</code> event).</p>
+<p>The solution to the former is similar to the aforementioned layout issues that cannot be controlled by view structure, and the latter requires the component to support event mapping, that is, the external can specify the triggering event for some interactions of the component. Of course, both can also be part of the “theme”.</p>
+<p>One thing we need to avoid when writing components is often difficult to avoid—coupling business logic in components. What components should decide is only appearance and interaction form, and there should be no business-related logic involved. As long as it looks the same and operates the same, it should be the same component, and specific business-related logic is injected into it.</p>
+<p>This very “personalized” business logic, in short, is to respond to changes in user operations and business data to change the internal state of the component:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">&#123;<br>  <span class="hljs-comment">// Component events</span><br>  <span class="hljs-attr">events</span>: &#123;<br>    <span class="hljs-comment">// A click event of the component</span><br>    <span class="hljs-string">&#x27;click-a&#x27;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;&#125;,<br>    <span class="hljs-comment">// Another click event of the component</span><br>    <span class="hljs-string">&#x27;click-b&#x27;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;&#125;,<br>    <span class="hljs-comment">// A change event of the component</span><br>    <span class="hljs-string">&#x27;change-c&#x27;</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) &#123;&#125;,<br>  &#125;,<br>  <span class="hljs-comment">// Callback for business data changes</span><br>  <span class="hljs-attr">watch</span>: <span class="hljs-keyword">function</span>(<span class="hljs-params"> contextValue </span>) &#123;&#125;,<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>At runtime, a context will be injected into the <code>this</code> of the above object methods, and the component can also add utility methods to the context. The built-in properties and methods of the context are:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">interface <span class="hljs-title class_">IDomainSpecificComponentContext</span> &#123;<br>  <span class="hljs-title function_">getState</span>(<span class="hljs-attr">key</span>: string): any;<br>  <span class="hljs-title function_">setState</span>(<span class="hljs-attr">key</span>: string, <span class="hljs-attr">value</span>: any): <span class="hljs-keyword">void</span>;<br>  <span class="hljs-title function_">setState</span>(<span class="hljs-attr">stateMap</span>: &#123; [<span class="hljs-attr">key</span>: string]: any &#125;): <span class="hljs-keyword">void</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h2 id="View-Structure-Description"><a href="#View-Structure-Description" class="headerlink" title="View Structure Description"></a>View Structure Description</h2><p>The above mentioned that we need a more advanced view structure abstraction than HTML, so let’s talk about the general idea of this part.</p>
+<h3 id="Technology-Selection"><a href="#Technology-Selection" class="headerlink" title="Technology Selection"></a>Technology Selection</h3><p>The most commonly used technologies in view structure abstraction are XML-based or XML-like and JSON-based technologies. XML-based and XML-like technologies both conform to XML syntax, the only difference is that the former must fully conform to XML’s standard specifications, like Angular and Vue’s templates are the latter; similarly, JSON-based technology is a technology that fully conforms to JSON’s standard specifications, like JSON Schema.</p>
+<p>Since the advent of React, its XML-like JSX has also been used for view structure abstraction, but it is basically limited to edit time. A piece of JSX code is not purely declarative, and as a view structure description, its readability is low, the parsing difficulty is high, and its universality is low.</p>
+<p>JSON-based technology is the most friendly to the front-end runtime, with almost zero parsing cost; on the contrary, its readability is very low, JSON structure grows vertically, and the expressiveness within a specified area is very limited, and it is not intuitive to see the hierarchical relationship and view unit attributes:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">&#123;<br>  <span class="hljs-string">&quot;tag&quot;</span>: <span class="hljs-string">&quot;view&quot;</span>,<br>  <span class="hljs-string">&quot;attrs&quot;</span>: &#123;<br>    <span class="hljs-string">&quot;widget&quot;</span>: <span class="hljs-string">&quot;form&quot;</span><br>  &#125;,<br>  <span class="hljs-string">&quot;children&quot;</span>: [&#123;<br>    <span class="hljs-string">&quot;tag&quot;</span>: <span class="hljs-string">&quot;group&quot;</span>,<br>    <span class="hljs-string">&quot;attrs&quot;</span>: &#123;<br>      <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;Basic Information&quot;</span>,<br>      <span class="hljs-string">&quot;widget&quot;</span>: <span class="hljs-string">&quot;fieldset&quot;</span><br>    &#125;,<br>    <span class="hljs-string">&quot;children&quot;</span>: [&#123;<br>      <span class="hljs-string">&quot;tag&quot;</span>: <span class="hljs-string">&quot;field&quot;</span>,<br>      <span class="hljs-string">&quot;attrs&quot;</span>: &#123;<br>        <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;name&quot;</span>,<br>        <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;Name&quot;</span>,<br>        <span class="hljs-string">&quot;widget&quot;</span>: <span class="hljs-string">&quot;input&quot;</span><br>      &#125;<br>    &#125;, &#123;<br>      <span class="hljs-string">&quot;tag&quot;</span>: <span class="hljs-string">&quot;field&quot;</span>,<br>      <span class="hljs-string">&quot;attrs&quot;</span>: &#123;<br>        <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;gender&quot;</span>,<br>        <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;Gender&quot;</span>,<br>        <span class="hljs-string">&quot;widget&quot;</span>: <span class="hljs-string">&quot;radio&quot;</span><br>      &#125;<br>    &#125;, &#123;<br>      <span class="hljs-string">&quot;tag&quot;</span>: <span class="hljs-string">&quot;field&quot;</span>,<br>      <span class="hljs-string">&quot;attrs&quot;</span>: &#123;<br>        <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;age&quot;</span>,<br>        <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;Age&quot;</span>,<br>        <span class="hljs-string">&quot;widget&quot;</span>: <span class="hljs-string">&quot;number&quot;</span><br>      &#125;<br>    &#125;, &#123;<br>      <span class="hljs-string">&quot;tag&quot;</span>: <span class="hljs-string">&quot;field&quot;</span>,<br>      <span class="hljs-string">&quot;attrs&quot;</span>: &#123;<br>        <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;birthday&quot;</span>,<br>        <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;Birthday&quot;</span>,<br>        <span class="hljs-string">&quot;widget&quot;</span>: <span class="hljs-string">&quot;date-picker&quot;</span><br>      &#125;<br>    &#125;]<br>  &#125;, &#123;<br>    <span class="hljs-string">&quot;tag&quot;</span>: <span class="hljs-string">&quot;group&quot;</span>,<br>    <span class="hljs-string">&quot;attrs&quot;</span>: &#123;<br>      <span class="hljs-string">&quot;title&quot;</span>: <span class="hljs-string">&quot;Pets&quot;</span>,<br>      <span class="hljs-string">&quot;widget&quot;</span>: <span class="hljs-string">&quot;fieldset&quot;</span><br>    &#125;,<br>    <span class="hljs-string">&quot;children&quot;</span>: [&#123;<br>      <span class="hljs-string">&quot;tag&quot;</span>: <span class="hljs-string">&quot;field&quot;</span>,<br>      <span class="hljs-string">&quot;attrs&quot;</span>: &#123;<br>        <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;dogs&quot;</span>,<br>        <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;🐶&quot;</span>,<br>        <span class="hljs-string">&quot;widget&quot;</span>: <span class="hljs-string">&quot;select&quot;</span><br>      &#125;<br>    &#125;, &#123;<br>      <span class="hljs-string">&quot;tag&quot;</span>: <span class="hljs-string">&quot;field&quot;</span>,<br>      <span class="hljs-string">&quot;attrs&quot;</span>: &#123;<br>        <span class="hljs-string">&quot;name&quot;</span>: <span class="hljs-string">&quot;cats&quot;</span>,<br>        <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-string">&quot;🐱&quot;</span>,<br>        <span class="hljs-string">&quot;widget&quot;</span>: <span class="hljs-string">&quot;select&quot;</span><br>      &#125;<br>    &#125;]<br>  &#125;]<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>If the design of an application does not require manual writing of view structure descriptions, JSON-based technology can be considered.</p>
+<p>XML-like technology like Angular and Vue’s templates is relatively the most suitable for view structure descriptions—purely declarative, the structure grows in both horizontal and vertical directions, and both readability and expressiveness are stronger, the parsing difficulty is moderate, and it has universality.</p>
+<p>The template code below describes the same content as the above JSON code. Take a deep breath and feel the difference between the two:</p>
+<figure class="highlight xml"><table><tr><td class="code"><pre><code class="hljs xml"><span class="hljs-tag">&lt;<span class="hljs-name">view</span> <span class="hljs-attr">widget</span>=<span class="hljs-string">&quot;form&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">group</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Basic Information&quot;</span> <span class="hljs-attr">widget</span>=<span class="hljs-string">&quot;fieldset&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;name&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Name&quot;</span> <span class="hljs-attr">widget</span>=<span class="hljs-string">&quot;input&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;gender&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Gender&quot;</span> <span class="hljs-attr">widget</span>=<span class="hljs-string">&quot;radio&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;age&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Age&quot;</span> <span class="hljs-attr">widget</span>=<span class="hljs-string">&quot;number&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;birthday&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;Birthday&quot;</span> <span class="hljs-attr">widget</span>=<span class="hljs-string">&quot;date-picker&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">group</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">group</span> <span class="hljs-attr">title</span>=<span class="hljs-string">&quot;Pets&quot;</span> <span class="hljs-attr">widget</span>=<span class="hljs-string">&quot;fieldset&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;dogs&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;🐶&quot;</span> <span class="hljs-attr">widget</span>=<span class="hljs-string">&quot;select&quot;</span> /&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">field</span> <span class="hljs-attr">name</span>=<span class="hljs-string">&quot;cats&quot;</span> <span class="hljs-attr">label</span>=<span class="hljs-string">&quot;🐱&quot;</span> <span class="hljs-attr">widget</span>=<span class="hljs-string">&quot;select&quot;</span> /&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">group</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">view</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>At this point, there is no need to say more about which technology should be chosen for view structure descriptions.</p>
+<h3 id="Design-Ideas"><a href="#Design-Ideas" class="headerlink" title="Design Ideas"></a>Design Ideas</h3><p>Undoubtedly, the premise is that the template syntax must conform to XML syntax, and then customize and extend it based on needs. First, define the tag set. The so-called “tag set” is an element library, and each element in it must have a certain semantics, so that it has a meaningful existence in business. Then, formulate the schema for describing elements and implement the corresponding parsing, validation, and other logic.</p>
+<p>The element schema is roughly like this:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// Property value type</span><br>type <span class="hljs-title class_">PropType</span> = <span class="hljs-string">&#x27;boolean&#x27;</span> | <span class="hljs-string">&#x27;number&#x27;</span> | <span class="hljs-string">&#x27;string&#x27;</span> | <span class="hljs-string">&#x27;regexp&#x27;</span> | <span class="hljs-string">&#x27;json&#x27;</span>;<br><br><span class="hljs-comment">// Property descriptor</span><br>type <span class="hljs-title class_">PropDescriptor</span> = &#123;<br>  <span class="hljs-attr">type</span>: <span class="hljs-title class_">PropType</span> | <span class="hljs-title class_">PropType</span>[];<br>  <span class="hljs-attr">required</span>: boolean; <span class="hljs-comment">// Whether it is required</span><br>&#125;;<br><br><span class="hljs-comment">// Element schema</span><br>type <span class="hljs-title class_">ElementSchema</span> = &#123;<br>  <span class="hljs-attr">name</span>: string; <span class="hljs-comment">// Element name</span><br>  tag?: string; <span class="hljs-comment">// Tag name, not specified when taking the element name</span><br>  props?: &#123;<br>    [<span class="hljs-attr">key</span>: string]: <span class="hljs-title class_">PropDescriptor</span>;<br>  &#125;;<br>  attrs?: &#123;<br>    <span class="hljs-attr">resolve</span>: <span class="hljs-function">(<span class="hljs-params">key: string, val: any</span>) =&gt;</span> any;<br>  &#125;;<br>  <span class="hljs-comment">// Node behavior, whether it exists as a child node of a parent node or as an attribute</span><br>  behavior?: &#123;<br>    <span class="hljs-attr">type</span>: <span class="hljs-string">&#x27;append&#x27;</span> | <span class="hljs-string">&#x27;attach&#x27;</span>;<br>    <span class="hljs-comment">// The following are used when `type` is `&#x27;attach&#x27;`</span><br>    host?: string; <span class="hljs-comment">// Host (attribute name)</span><br>    keyed?: boolean; <span class="hljs-comment">// Whether it is a key-value pair collection, when `true` and `merge` is `false`, the node ID is used as the key</span><br>    merge?: boolean; <span class="hljs-comment">// When `true`, the return value of `reduce` is merged with the value of the attribute specified by `host` and then reassigned to `host`</span><br>    reduce?: <span class="hljs-function">(<span class="hljs-params">node: ITemplateNode</span>) =&gt;</span> any; <span class="hljs-comment">// Convert node information</span><br>    restore?: <span class="hljs-function">(<span class="hljs-params">reduced: any, node?: ITemplateNode</span>) =&gt;</span> <span class="hljs-title class_">ITemplateNode</span> | <span class="hljs-title class_">Partial</span>&lt;<span class="hljs-title class_">ITemplateNode</span>&gt;;<br>  &#125;;<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>It can be seen that there are <code>props</code> and <code>attrs</code> in the schema, which together form the attributes (XML attributes) of the template element. The difference is: if the attributes after template parsing are defined in <code>props</code> and meet the restrictions specified by the <code>type</code> and <code>required</code> of the property descriptor, they will become the <code>props</code> attribute of the template node; the remaining attributes not defined in <code>props</code> will become the <code>attrs</code> attribute of the template node, and the <code>resolve</code> method can be used to convert the value of the attribute according to its own rules.</p>
+<p>Although elements in the template always display hierarchical relationships in a nested form, an element is not necessarily the structure of its parent, but may also be a configuration. Therefore, the <code>behavior</code> in the element schema is used to set whether the current element exists as a child node of a node or as an attribute after template parsing.</p>
+<p>The above template design is purely for view structure description, and only processes elements as “blocks”. I think this is enough. Depending on the situation, it can be extended to support text, interpolation, and directives like Angular and Vue’s templates.</p>
+<p>If you are lazy and have no special requirements, the template parsing work can be handed over to a modified Vue 2.6 compiler, and then adapted to a template node tree.</p>
+<p>The structure of each template node is roughly as follows:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">interface <span class="hljs-title class_">ITemplateNode</span> &#123;<br>  <span class="hljs-attr">id</span>: string;<br>  <span class="hljs-attr">name</span>: string;<br>  <span class="hljs-attr">tag</span>: string;<br>  <span class="hljs-attr">props</span>: &#123;<br>    [<span class="hljs-attr">key</span>: string]: any;<br>  &#125;;<br>  <span class="hljs-attr">attrs</span>: &#123;<br>    [<span class="hljs-attr">key</span>: string]: any;<br>  &#125;;<br>  <span class="hljs-attr">parent</span>: <span class="hljs-title class_">ITemplateNode</span> | <span class="hljs-literal">null</span>;<br>  <span class="hljs-attr">children</span>: <span class="hljs-title class_">ITemplateNode</span>[];<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>Finally, through the adaptation layer, the template node tree is converted into the component tree of the runtime layer, and the control of rendering is also handed over to the final runtime environment.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>In a complex front-end application, if it is not layered, its extensibility and maintainability will be really unbearable… It is usually the classic three-tier architecture, from bottom to top, respectively, the data layer, logic layer, and presentation layer. This article takes the presentation layer as an example and divides it into abstract layer, runtime layer, and adaptation layer, which can also be applied to the data layer and logic layer—like cutting four knives on a birthday cake—I call it the “nine-grid” model.</p>
+<p><img src="/architecture-model.jpg" alt="Nine-grid Model"></p>
+<p>In the various abstractions of the presentation layer, this article focuses on the technology selection and design ideas of view structure description. It can be seen that the XML-like template from writing to parsing to rendering is roughly consistent with the templates of Angular and Vue and HTML; other abstractions are only briefly mentioned, and will be expanded in the future.</p>
+<p>I have also written several articles related to templates before: from the perspective of improving efficiency and comparing with “component-oriented” in “Let’s Talk About Template-Based Front-End Development”; from the perspective of customizability in “Let’s Talk About Configuration-Driven View Development”; from the core concept of “model-driven” in low-code platforms in “Let’s Talk About Model-Driven Front-End Development”. It can be said that the content of this article is the “foundation” of the description of the presentation layer in them.</p>
+<p>Whether a company is doing a low-code platform or not, or whether there is a low-code platform inside, it should abstract the view structure description from the presentation layer, at least have such awareness.</p>
+
+</div>
+      <footer class="Article-footer col-md-3">
+  
+  <div class="Widget Widget--share">
+    <div class="Widget-body">
+      <p>分享到<i class="fa fa-share-alt"></i></p>
+      <div class="social-share" data-sites="wechat,weibo,twitter"></div>
+    </div>
+  </div>
+
+
+  <section class="Widget Widget--toc">
+  <div class="Widget-header">
+    <h2 class="Widget-title">目录</h2>
+  </div>
+  <div class="Widget-body"></div>
+</section>
+
+
+</footer>
+      
+      
+    </article>
+    
+
+  </div>
+</main>
+<footer class="Page-footer Footer">
+  <div class="container">
+    
+    <div class="Footer-description">
+      
+        <!-- Important links -->
+        <nav class="Footer-navs">
+          <ul><li><a href="https://x.com/ntksol?utm_source=https://ourai.github.io&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>X</span></a>
+</li><li><a href="https://github.com/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>GitHub</span></a>
+</li><li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>LinkedIn</span></a>
+</li></ul>
+        </nav>
+      
+      
+        <!-- Copyright -->
+        <div class="Footer-copyright">
+          <p>
+
+&copy; 2023-2025 <a href="https://ourai.github.io?utm_source=https://ourai.github.io&amp;utm_medium=common-footer" target="_blank" rel="external nofollow">Ourai L.</a>
+
+</p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+    <script>$('.Article-content > table').addClass('table table-bordered')</script>
+    
+<script src="/javascripts/ksio/vendors/share.min.js"></script>
+
+<script src="/javascripts/ksio/components/page.js"></script>
+
+<script src="/javascripts/ksio/components/toc.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.zh-CN.js"></script>
+
+<script src="/javascripts/ksio/initializers/time.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.lazyload.js"></script>
+
+<script src="/javascripts/ksio/initializers/lazyload.js"></script>
+
+  </body>
+</html>
+

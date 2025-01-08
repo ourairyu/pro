@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+
+
+
+
+
+
+
+
+  
+  
+  
+    
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <title>Let Me Talk About Component-based Front-end Development - Ourai L.</title>
+
+
+  <meta property="og:title" content="Let Me Talk About Component-based Front-end Development">
+
+
+
+
+  
+    
+  
+
+
+  <meta name="keywords" content="Ourai Lin,Ourai L.,Ourai,Ourairyu,欧雷,欧雷流">
+
+
+<!-- 页面渲染兼容性 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<!-- 订阅 -->
+
+<meta name="theme-color" content="#0871ab">
+<link rel="shortcut icon" href="/images/ksio/favicon.ico">
+
+
+    
+<link rel="stylesheet" href="/stylesheets/global.css">
+
+    
+<link rel="stylesheet" href="/stylesheets/ksio/vendors/share.css">
+
+<link rel="stylesheet" href="/stylesheets/pages/post.css">
+
+    
+<script src="/javascripts/ksio/vendors/jquery-1.11.3.min.js"></script>
+
+    
+<script src="/javascripts/ksio/vendors/bootstrap.min.js"></script>
+
+  </head>
+  
+  
+  <body class="Page" itemscope itemtype="http://schema.org/WebPage">
+    
+
+  <header class="Page-header">
+  <div class="navbar navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        
+          <button class="navbar-toggle collapsed" type="button" data-target=".Page-navs" data-toggle="collapse">
+            <span class="sr-only">Toggle navs</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+        
+          
+
+
+  <a class="navbar-brand" href="/">Ourai L.</a>
+
+
+        
+      </div>
+      <!-- Nav menus -->
+      <nav class="Page-navs navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Works <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://dev.to/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Posts</a>
+</li>
+  
+
+  
+    <li><a href="https://x.com/ntksol?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Tweets</a>
+</li>
+  
+
+  
+    <li><a href="https://producthunt.com/@ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Products</a>
+</li>
+  
+
+  
+    <li><a href="https://github.com/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Open-source software</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Cooperation <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.upwork.com/freelancers/~016baa7fae7cfff661?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Services</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">About <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Resume</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li><a href="https://yaol.in/?utm_source=https://ourai.github.io&amp;utm_medium=common-header" target="_blank" rel="external nofollow">中文</a>
+</li>
+  
+
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="Page-content">
+  
+
+  <!-- 内容主体 -->
+  <div class="container">
+    <article class="Page-main Article">
+      <header class="Article-header">
+        
+  
+    <h1 class="Article-title">Let Me Talk About Component-based Front-end Development</h1>
+  
+  
+
+
+      </header>
+      <div class="Article-content col-md-9"><p>Upon seeing the title, there are generally two reactions:</p>
+<blockquote>
+<p>“Wow～How sophisticated!”</p>
+<p>“Hmm, this topic is quite broad…”</p>
+</blockquote>
+<p>—Indeed.</p>
+<h2 id="Foreplay-with-Feeling"><a href="#Foreplay-with-Feeling" class="headerlink" title="Foreplay with Feeling"></a>Foreplay with Feeling</h2><p>I won’t rigidly copy from some encyclopedia to explain what ‘component-oriented’ is and why we do it, but rather, I’ll discuss it from the perspective of work status and personal thoughts, and try to outline a solution.</p>
+<h3 id="Components-in-the-Eyes-of-Front-end-Developers"><a href="#Components-in-the-Eyes-of-Front-end-Developers" class="headerlink" title="Components in the Eyes of Front-end Developers"></a>Components in the Eyes of Front-end Developers</h3><p>For front-end developers, ‘components’ usually refer to UI components on the page, which mainly include appearance and interaction. A qualified component should be reusable, customizable, and loosely coupled; it should represent an entity and be able to perform an action.</p>
+<p>Components can be simple or complex. Arranged from least to most complex, they can be categorized as follows:</p>
+<ol>
+<li>Basic components;</li>
+<li>Composite components;</li>
+<li>Pages;</li>
+<li>Applications.</li>
+</ol>
+<p>Yes, you’re reading this correctly!</p>
+<p>From a higher perspective, ‘pages’ and ‘applications’ are also ‘components,’ only they are more complex. What I want to discuss here are not them, but ‘basic components’ and ‘composite components.’</p>
+<p>Basic components have a simple appearance and basic functionality, while composite components are combinations and encapsulations of basic components based on specific scenarios.</p>
+<h3 id="Why-‘Component-based’"><a href="#Why-‘Component-based’" class="headerlink" title="Why ‘Component-based’"></a>Why ‘Component-based’</h3><p>After a period of front-end development, you’ll find:</p>
+<blockquote>
+<p>“Why are the functions of the pages in a system so similar?”</p>
+<p>“Every website seems to be cast from the same mold!”</p>
+</blockquote>
+<p>—You’re right!</p>
+<p>You copy with <kbd>CTRL</kbd> + <kbd>C</kbd> and paste with <kbd>CTRL</kbd> + <kbd>V</kbd>, change the differences in the similarities, save the file and refresh the page, click around to see the effect— “Damn! These two pages have the same interaction, why does it work fine on that page but not here?!”</p>
+<p>1…2…3… hours pass, and there’s no clue where the hell this little cockroach slipped in… You’re so frustrated that you accidentally blurt out— “Damn it!!!”</p>
+<p>Bro, take it easy!</p>
+<p>This kind of problem occurs because there’s no component-oriented development. Those parts you think are ‘similar’ can be extracted to form components for use when similar scenarios arise again. Your reliance on the ‘copy and paste’ method is, to be frank, the worst of the worst strategies.</p>
+<p>When you accumulate enough components, pages are no longer squeezed out line by line through painstaking thought, but assembled from ready-made libraries. In this way, not only are page functions more stable, but front-end development also becomes more interesting, bidding farewell to the days when most of the day was spent squashing bugs—</p>
+<blockquote>
+<p>Backend: “When can we start integration testing?”</p>
+<p>Frontend: “The page is already done, where’s the API?”</p>
+<p>Backend: “…”</p>
+</blockquote>
+<h3 id="What-is-‘Component-based’"><a href="#What-is-‘Component-based’" class="headerlink" title="What is ‘Component-based’"></a>What is ‘Component-based’</h3><p>Switching to another term, ‘componentization,’ might be more familiar. But, so, what does it mean?</p>
+<p>Everyone will have their own understanding of abstract concepts, as the saying goes, “A thousand readers have a thousand Hamlets.” Some might say:</p>
+<blockquote>
+<p>“It’s just putting related HTML, CSS, JS, and image files in the same folder, right?”</p>
+</blockquote>
+<p>—There’s nothing wrong with that.</p>
+<p>When developing component-oriented, indeed, the related files of the same component are placed in one folder, but this is not the core. The important thing is to be able to appropriately break down a complex thing into smaller and independent parts, with high cohesion and low coupling, so that others can use it without understanding its internal workings—this is the philosophy and the ability.</p>
+<h2 id="Getting-to-the-Point"><a href="#Getting-to-the-Point" class="headerlink" title="Getting to the Point"></a>Getting to the Point</h2><p>‘Component-oriented’ development, or ‘componentization,’ has been around for a long time and is not new. This topic has been hyped in the front-end circle for many years, with frameworks and libraries emerging one after another. Why do I still want to chew on it again?</p>
+<p>The reason is simple:</p>
+<ol>
+<li>What’s not a problem for others might be a problem for me;</li>
+<li>Tools that work well for others might not be suitable for me.</li>
+</ol>
+<h3 id="The-Positions-That-Others-Enjoy-I-Don’t"><a href="#The-Positions-That-Others-Enjoy-I-Don’t" class="headerlink" title="The Positions That Others Enjoy, I Don’t"></a>The Positions That Others Enjoy, I Don’t</h3><p>To carry out component-oriented development, the premise is to have a viable technical solution. In my opinion, a few points are necessary:</p>
+<ul>
+<li>The style and interaction of a component should not be unexpectedly interfered with by the outside world—external isolation;</li>
+<li>The resources related to a component should be given to me when I use it—on-demand loading;</li>
+<li>Let backend developers who are not very skilled in front-end technology also use it—low threshold.</li>
+</ul>
+<p>The once popular <a target="_blank" rel="noopener" href="http://jquery.com/">jQuery</a>, with its strengths fully utilized in <a target="_blank" rel="noopener" href="http://jqueryui.com/">jQuery UI</a> and <a target="_blank" rel="noopener" href="https://getbootstrap.com/docs/3.3/">Bootstrap</a>, provides many UI components and is also friendly to backend developers, seemingly meeting the requirements. However, looking at their component implementation and resource loading forms—</p>
+<ul>
+<li><del>jQuery UI</del></li>
+<li><del>Bootstrap</del></li>
+</ul>
+<p>Nowadays, when the front-end circle mentions ‘components,’ most people’s excitement is on MV* frameworks like <a target="_blank" rel="noopener" href="https://reactjs.org/">React</a>, <a target="_blank" rel="noopener" href="https://vuejs.org/">Vue</a>, and <a target="_blank" rel="noopener" href="https://angular.io/">Angular</a>. They are indeed good, not only meeting ‘external isolation’ and ‘on-demand loading’ but also greatly improving front-end development efficiency. Their popularity has its reasons.</p>
+<p>Our company’s business is B2B, so the front-end development scenarios are very ‘clear,’ which can be simply and crudely understood as: ‘front stage’ is mobile, and ‘back stage’ is desktop.</p>
+<p>The front stage development uses a framework based on React and <a target="_blank" rel="noopener" href="https://mobile.ant.design/">Ant Design Mobile</a> for secondary development. It works well and can handle the current demands. However, back stage development is different.</p>
+<p>We have many back stage requirements, more than the front stage, and they are growing rapidly; our backend personnel are many, more than the front-end, and they are continuing to increase disproportionately. This leads to some problems:</p>
+<ul>
+<li>The average ratio of front-end to back-end developers per business line is 1:4;</li>
+<li>A front-end person may support multiple projects in a business line;</li>
+<li>A front-end person may support multiple business lines.</li>
+</ul>
+<p>—Not enough people!</p>
+<p>How to solve this? From the company’s perspective, it is definitely to reduce costs—not by recruiting more people, but by improving methods to maximize the use of existing resources—let front-end personnel write more pages, and let back-end personnel also write pages.</p>
+<p>In order to achieve the above goals, I encapsulated a framework for the back stage based on jQuery and Bootstrap.</p>
+<p>Although writing JS has already saved a lot of time, and there are also several back-end systems independently developed by back-end personnel, there is still a lot of HTML code to write. Even front-end personnel will find it a bit annoying, let alone back-end personnel who are daunted.</p>
+<p>When using React components, you can write fewer HTML tags, but, can it be, back-end developers will write them?! They will want to write?!</p>
+<p>In summary, MV* frameworks cannot solve the current problems of our company’s back stage—</p>
+<ul>
+<li><del>React</del></li>
+<li><del>Vue</del></li>
+<li><del>Angular</del></li>
+</ul>
+<p>Someone is dissatisfied:</p>
+<blockquote>
+<p>You say this won’t work, that won’t work, then what will?!</p>
+</blockquote>
+<p>—There’s plenty!</p>
+<h3 id="The-Correct-Position-for-Everyone-to-Enjoy"><a href="#The-Correct-Position-for-Everyone-to-Enjoy" class="headerlink" title="The Correct Position for Everyone to Enjoy"></a>The Correct Position for Everyone to Enjoy</h3><p>There is a technology that is overshadowed by various MV* frameworks. Although it has some flaws, it is very powerful and has great potential—yes, it’s <a target="_blank" rel="noopener" href="https://developers.google.com/web/fundamentals/web-components/">Web Components</a>! Just from the name, it’s not hard to imagine that it emerged to solve front-end component issues.</p>
+<p>Web Components consist of four parts that can be used separately or work together:</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Custom_Elements">Custom Elements</a>—Define new HTML elements;</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/Shadow_DOM">Shadow DOM</a>—Isolate DOM and styles;</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/template">HTML Imports</a>—Declare HTML documents to be imported;</li>
+<li><a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Web/Web_Components/HTML_Imports">HTML Templates</a>—Define reusable HTML fragments.</li>
+</ul>
+<p>As the W3C’s own child, users can treat components encapsulated by Web Components like other elements such as <code>&lt;div&gt;</code>, <code>&lt;p&gt;</code>—fully taking care of backend developers who are not proficient in front-end technology.</p>
+<blockquote>
+<p>You make it sound so divine, why haven’t I heard of it??</p>
+</blockquote>
+<p>—A great question.</p>
+<p>Since it’s the W3C’s own child, from birth to being recognized by the world, especially by those ‘powerful and influential,’ it takes time—it has been out for years but has not yet become a recommended standard, and compatibility is not ideal.</p>
+<p><a target="_blank" rel="noopener" href="https://caniuse.com/#search=web%20components"><img src="/compatibility.png" alt="Web Components Browser Compatibility"></a></p>
+<p>It can be said that compatibility and instability have become the fatal injuries in promoting Web Components.</p>
+<p>However, there’s no need to be too disappointed.</p>
+<p>There are already <a target="_blank" rel="noopener" href="https://www.webcomponents.org/polyfills">polyfills</a> that have filled some of the pits, and there are several libraries that simplify development, such as: <a target="_blank" rel="noopener" href="https://www.polymer-project.org/">Polymer</a>, <a target="_blank" rel="noopener" href="http://x-tag.github.io/">X-Tag</a>, and <a target="_blank" rel="noopener" href="http://skatejs.netlify.com/">Skate</a>. Moreover, our company’s back stage is internal, and it only needs to consider Chrome-like browsers, so the compatibility defect can be basically ignored.</p>
+<p>In this way, developing a set of components based on Web Components, isn’t it pleasing for both front-end personnel and back-end personnel who write pages?</p>
+<p>Feeling great inside〜( *´艸｀)</p>
+<h2 id="Climax-is-Coming"><a href="#Climax-is-Coming" class="headerlink" title="Climax is Coming"></a>Climax is Coming</h2><p>Now it seems that the front-end team’s technical solution for component-oriented development has been determined:</p>
+<ul>
+<li>Mobile uses React and Ant Design Mobile;</li>
+<li>Desktop uses jQuery, Bootstrap, and Web Components.</li>
+</ul>
+<p>If you think it’s all good now, you’re thinking too much!</p>
+<h3 id="Besides-Sex-Everything-Else-Should-Be-Fast"><a href="#Besides-Sex-Everything-Else-Should-Be-Fast" class="headerlink" title="Besides Sex, Everything Else Should Be Fast!"></a>Besides Sex, Everything Else Should Be Fast!</h3><p>With the development of the company’s business, it has reached out to the WeChat mini-program that is continuously gaining momentum. Although there is currently very little business in this area, I believe the demand will come one after another.</p>
+<p>As we all know, the development of WeChat mini-programs has its own system, and for us front-end developers, it’s another thing to learn… However, as a front-end engineer, I’m used to this front-end technology that’s more changeable than a woman’s mood.</p>
+<p>Looking a bit further, if the company’s business requires it, it may also have to do the Alipay mini-program that has just come out. Maybe in the future, there will be other mini-programs, or other new wheels with component characteristics.</p>
+<p>In order to support the company’s business, every time a new thing comes out, front-end personnel have to learn how to use it and use it well. From team management, team collaboration, and development efficiency, there will be some serious problems:</p>
+<ul>
+<li>Everyone has to master the libraries&#x2F;frameworks used to assign tasks at will;</li>
+<li>The technology stack is messy and not conducive to training and code quality management;</li>
+<li>Extracting and precipitating component libraries will become extremely difficult.</li>
+</ul>
+<p>These problems, catalyzed by the rapid development of the business, will lead to:</p>
+<ul>
+<li>Not enough development time—overtime! Overtime! Overtime!!!</li>
+<li>Not enough front-end personnel—not enough—overtime! Overtime! Overtime!!!</li>
+</ul>
+<p>What if overtime still can’t solve the problem? Then the project is delayed.</p>
+<p>But project delays will delay the company’s business! Then…</p>
+<h3 id="Think-of-a-New-Position"><a href="#Think-of-a-New-Position" class="headerlink" title="Think of a New Position"></a>Think of a New Position</h3><p>In order to avoid the above problems, to remain unchanged in the face of change, to let front-end developers who support the business ignore the running environment and have a consistent convenient development experience, I tried to think of a solution—Universal Component Writing Specification.</p>
+<p><img src="/universal-component-definition.jpg" alt="Universal Component Writing Specification"></p>
+<p>The so-called ‘Universal Component Writing Specification’ mainly includes two parts: component definition and directory structure.</p>
+<p>Component definition uses ES6+ syntax, adopts a class approach, and takes into account component attributes mapping, data binding, event handling, lifecycle, etc. The design of each member of the class refers to existing popular libraries&#x2F;frameworks, but is different from them.</p>
+<p>Directory structure follows the front-end development principle of ‘separation of concerns’, one directory represents one component, one JS file is a component definition. Component styles are written in Sass.</p>
+<p>The Universal Component Writing Specification solves the problems in the development stage, which is what front-end personnel who support the business need to focus on, and the next things are handed over to the build tools to complete.</p>
+<h2 id="The-Sages’-Time"><a href="#The-Sages’-Time" class="headerlink" title="The Sages’ Time"></a>The Sages’ Time</h2><p>As I said at the beginning, ‘component-oriented’ development is a very sophisticated and big topic, and trying to come up with a ‘Write once, Run anywhere’ component development plan sounds like a fantasy.</p>
+<p>I am already prepared for all kinds of cold water, maybe there will be many difficulties and pitfalls on the road to realization, and in the end, it will be proven that this is indeed a wild idea; but in order to let the company’s business development not be hindered by front-end development, to let the team’s friends reduce overtime, to leave more beautiful memories in the team, I will not give up the front-end development road, I am willing to try!!!</p>
+<p>The train is leaving, no time for more explanations!</p>
+
+</div>
+      <footer class="Article-footer col-md-3">
+  
+  <div class="Widget Widget--share">
+    <div class="Widget-body">
+      <p>分享到<i class="fa fa-share-alt"></i></p>
+      <div class="social-share" data-sites="wechat,weibo,twitter"></div>
+    </div>
+  </div>
+
+
+  <section class="Widget Widget--toc">
+  <div class="Widget-header">
+    <h2 class="Widget-title">目录</h2>
+  </div>
+  <div class="Widget-body"></div>
+</section>
+
+
+</footer>
+      
+      
+    </article>
+    
+
+  </div>
+</main>
+<footer class="Page-footer Footer">
+  <div class="container">
+    
+    <div class="Footer-description">
+      
+        <!-- Important links -->
+        <nav class="Footer-navs">
+          <ul><li><a href="https://x.com/ntksol?utm_source=https://ourai.github.io&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>X</span></a>
+</li><li><a href="https://github.com/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>GitHub</span></a>
+</li><li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.github.io&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>LinkedIn</span></a>
+</li></ul>
+        </nav>
+      
+      
+        <!-- Copyright -->
+        <div class="Footer-copyright">
+          <p>
+
+&copy; 2023-2025 <a href="https://ourai.github.io?utm_source=https://ourai.github.io&amp;utm_medium=common-footer" target="_blank" rel="external nofollow">Ourai L.</a>
+
+</p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+    <script>$('.Article-content > table').addClass('table table-bordered')</script>
+    
+<script src="/javascripts/ksio/vendors/share.min.js"></script>
+
+<script src="/javascripts/ksio/components/page.js"></script>
+
+<script src="/javascripts/ksio/components/toc.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.zh-CN.js"></script>
+
+<script src="/javascripts/ksio/initializers/time.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.lazyload.js"></script>
+
+<script src="/javascripts/ksio/initializers/lazyload.js"></script>
+
+  </body>
+</html>
+
