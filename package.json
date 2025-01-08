@@ -28,6 +28,7 @@
   },
   "scripts": {
     "copy": "node .knosys/scripts copy",
+    "build": "node .knosys/scripts gen",
     "start": "node .knosys/scripts serve",
     "deploy": "node .knosys/scripts deploy"
   }
