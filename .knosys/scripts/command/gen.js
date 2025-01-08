@@ -1,5 +1,6 @@
 const { resolve: resolvePath } = require('path');
 const { existsSync } = require('fs');
+const { pick } = require('@ntks/toolbox');
 
 const {
   resolveRootPath,
@@ -8,7 +9,7 @@ const {
   readDirDeeply,
   resolveSiteSrcPath,
   sortByDate,
-  scanAndSortByAsc, ensureDirExists, getLocalDataRoot, getLocalDocRoot,
+  ensureDirExists,
 } = require('../helper');
 
 function resolvePosts(srcPath) {
@@ -25,7 +26,12 @@ function resolvePosts(srcPath) {
     if (existsSync(postPath) && entity.published !== false) {
       const { data, content } = normalizeFrontMatter(readData(postPath));
 
-      posts.push({ ...entity, ...data, content: content.trim(), slug, source: postDirAbsolutePath });
+      posts.push({
+        ...pick(entity, ['date', 'categories', 'tags', 'series']),
+        ...data,
+        content: content.trim(),
+        slug,
+      });
     }
   });
 
@@ -38,16 +44,12 @@ function generateSiteData(posts) {
   }
 
   const siteSrcPath = resolveSiteSrcPath('default');
-  const dataSrcPath = resolvePath(siteSrcPath, 'source/_data/knosys');
   const postDistPath = resolvePath(siteSrcPath, 'source/_posts');
 
   const resolvedData = {
     items: posts.reduce((p, c) => ({ ...p, [c.slug]: c }), {}),
     sequence: sortByDate(posts).map(({ slug }) => slug),
   };
-
-  ensureDirExists(dataSrcPath, true);
-  saveData(resolvePath(dataSrcPath, 'posts.yml'), resolvedData);
 
   ensureDirExists(postDistPath, true);
 
@@ -59,7 +61,11 @@ function generateSiteData(posts) {
 }
 
 module.exports = {
-  execute: dataSource => {
+  execute: (dataSource = process.env.DATA_SOURCE_ROOT) => {
+    if (!dataSource) {
+      return;
+    }
+
     const srcPath = resolvePath(resolveRootPath(), dataSource);
 
     if (!existsSync(srcPath)) {

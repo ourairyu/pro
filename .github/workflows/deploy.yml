@@ -17,12 +17,7 @@ jobs:
       SITE_BRANCH: gh-pages
     steps:
       - name: Create temp dirs
-        run: mkdir data-src site-src site-dist
-      - uses: actions/checkout@v3
-        with:
-          repository: ${{ vars.DS_REPO }}
-          ref: master
-          path: data-src
+        run: mkdir site-src site-dist
       - uses: actions/checkout@v3
         with:
           path: site-src
@@ -36,7 +31,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 14.15.3
-      - run: cd site-src && npm i && npm run build ../data-src/data/blog/posts && npm run deploy ../site-dist && cd ..
+      - run: cd site-src && npm i && npm run deploy ../site-dist && cd ..
       - name: Commit changes
         run: |
           cd site-dist

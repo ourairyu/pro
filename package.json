@@ -23,6 +23,7 @@
   "devDependencies": {
     "@knosys/sdk": "^0.0.3",
     "@ntks/toolbox": "^0.0.6",
+    "dotenv": "^16.4.7",
     "hexo-theme-lime": "0.0.0-alpha.3",
     "ksio": "0.0.3"
   },
