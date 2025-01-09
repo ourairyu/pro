@@ -111,12 +111,14 @@ theme_config:
       start: 2023
   header:
     navs:
-      - text: Works
+      - text: Blog
         children:
           - text: Posts
-            url: https://dev.to/ourai
+            url: /posts/
           - text: Tweets
             url: https://x.com/ntksol
+      - text: Works
+        children:
           - text: Products
             url: https://producthunt.com/@ourai
           - text: Open-source software
