@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <title>The Features of Front-end UI Components</title>
+
+
+  <meta property="og:title" content="The Features of Front-end UI Components">
+
+
+  <meta name="description" content="Modeling front-end UI components according to their features allows us to understand all aspects of them as fully as possible and lays the foundation for how to design and establish a component system.">
+  <meta property="og:description" content="Modeling front-end UI components according to their features allows us to understand all aspects of them as fully as possible and lays the foundation for how to design and establish a component system.">
+
+
+
+  
+    
+  
+
+
+  <meta name="keywords" content="Ourai.PRO,ourai.pro,Ourai Lin,Ourai L.,Ourai,Ourairyu,欧雷,欧雷流,anti-chaos,ntks,反混沌,反混沌工程师,DnA ENGR,dna engr,frontend,front-end,indie developer">
+
+
+<!-- 页面渲染兼容性 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<!-- 订阅 -->
+
+<meta name="theme-color" content="#0871ab">
+<link rel="shortcut icon" href="/images/ksio/favicon.ico">
+
+
+    
+<link rel="stylesheet" href="/stylesheets/global.css">
+
+    
+<link rel="stylesheet" href="/stylesheets/ksio/vendors/share.css">
+
+<link rel="stylesheet" href="/stylesheets/pages/post.css">
+
+    
+<script src="/javascripts/ksio/vendors/jquery-1.11.3.min.js"></script>
+
+    
+<script src="/javascripts/ksio/vendors/bootstrap.min.js"></script>
+
+  </head>
+  
+  
+  <body class="Page" itemscope itemtype="http://schema.org/WebPage">
+    
+
+  <header class="Page-header">
+  <div class="navbar navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        
+          <button class="navbar-toggle collapsed" type="button" data-target=".Page-navs" data-toggle="collapse">
+            <span class="sr-only">Toggle navs</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+        
+          
+
+
+  <a class="navbar-brand" href="/">Ourai.PRO</a>
+
+
+        
+      </div>
+      <!-- Nav menus -->
+      <nav class="Page-navs navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Works <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://dev.to/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Posts</a>
+</li>
+  
+
+  
+    <li><a href="https://x.com/ntksol?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Tweets</a>
+</li>
+  
+
+  
+    <li><a href="https://producthunt.com/@ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Products</a>
+</li>
+  
+
+  
+    <li><a href="https://github.com/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Open-source software</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Cooperation <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.upwork.com/freelancers/~016baa7fae7cfff661?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Services</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">About <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Resume</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li><a href="https://yaol.in/?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">中文</a>
+</li>
+  
+
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="Page-content">
+  
+
+  <!-- 内容主体 -->
+  <div class="container">
+    <article class="Page-main Article">
+      <header class="Article-header">
+        
+  
+    <h1 class="Article-title">The Features of Front-end UI Components</h1>
+  
+  
+
+
+      </header>
+      <div class="Article-content col-md-9"><p>This article is the second in the series “<a href="/series/talking-about-frontend-ui-components/">Talking About Front-end UI Components</a>“, and it is related to the previous article in this series, “<a href="/posts/the-core-concepts-of-frontend-ui-components/">The Core Concepts of Front-end UI Components</a>“. If you haven’t read it yet, it is recommended to do so.</p>
+<p>The main content of this article is to model frontend UI components based on their characteristics, allowing us to fully understand their various aspects and lay the foundation for designing and establishing a component system.</p>
+<h2 id="Component-Composition"><a href="#Component-Composition" class="headerlink" title="Component Composition"></a>Component Composition</h2><p>Decompose UI components from the perspective of separation of concerns and analyze the variability of each part.</p>
+<h3 id="Constituent-Elements"><a href="#Constituent-Elements" class="headerlink" title="Constituent Elements"></a>Constituent Elements</h3><p>The composition of a complete and functional UI component consists of three aspects: structure, presentation, and behavior. Why emphasize “complete and functional UI component”? It is because it represents the most comprehensive set of features, while other “UI components” may lack some features, making the analysis less complete.</p>
+<p>When we see the words “structure”, “presentation”, and “behavior”, as experienced frontend developers, we naturally think of the long-standing advocacy of separation of concerns in frontend development—HTML is responsible for organizing the page structure, CSS is responsible for the presentation style of web content, and JS is responsible for the interaction between users and web pages. They each play different but complementary roles.</p>
+<p><img src="/separation-of-concerns.png" alt="Separation of Concerns"></p>
+<p>However, here their meanings will be different—</p>
+<p>The web content organized by HTML is indeed the “structure”, but it is merely the structural level at the code level, unaffected by CSS. The final visual presentation, that is, the visual level of “structure”, should also include CSS layout styles, such as positioning, floating, etc.</p>
+<p>CSS styles that are not layout-related, such as color, font, text, border, size, whitespace, etc., as well as icons and images, are all “presentation”. These are generally also referred to as “theme style” or “skin”.</p>
+<p>The event system that can run in JS, as well as functions and object methods for logical processing, are considered “behavior”—this is the interaction logic of UI components. Of course, the business logic integrated with the interaction logic is also a part of “behavior”.</p>
+<h3 id="Variability"><a href="#Variability" class="headerlink" title="Variability"></a>Variability</h3><p>The nature of each part that constitutes a UI component affects the variability of the corresponding part of the UI component—whether it is relatively stable or relatively unstable for component reuse.</p>
+<blockquote>
+  <p>GUI has developed for decades, and the graphical elements and layout methods of human-computer interaction have become relatively fixed. As long as there is no revolutionary interactive device like Google Glass, there will be no major changes.</p>
+  <footer>by Ourai in <cite><a href="/posts/template-based-frontend-web-development/">Let Me Talk About Template-based Front-end Development</a></cite></footer>
+</blockquote>
+
+<p>As mentioned above, it is impossible to predict what kind of revolutionary interaction methods will appear in the future, but I believe that as long as it is something that needs to be seen with the eyes and operated with the hands, the interaction method will not escape the form that has not changed much in the past few decades. Therefore, the visual structure and interaction logic of UI components are the least variable, and both interaction modes and trigger events are enumerable.</p>
+<p>If we simply look at the final HTML structure, it is also not very variable, but in modern frontend development, the HTML structure is basically dynamically generated and strongly depends on JS libraries&#x2F;frameworks without a unified standard, such as React, Vue. In addition, there are platform-specific view structure description languages like <a target="_blank" rel="noopener" href="https://developers.weixin.qq.com/miniprogram/dev/reference/wxml/">WXML</a> and <a target="_blank" rel="noopener" href="https://opendocs.alipay.com/mini/framework/axml">AXML</a>. Due to inconsistent syntax, this makes the page content structure less stable.</p>
+<p>Generally speaking, the closer something is to the user, the more likely it is to change. The closest thing to the user in websites and applications is the GUI, and the closest thing to the user in the GUI is the theme style, which is the most intuitive thing for the user. The theme style will change with the aesthetic and ideas of GUI designers (usually designers), so it is the most variable.</p>
+<p>Because business logic is the core of business-related processing, if the business rules change, the corresponding code implementation must also change, so business logic is also very variable. Business logic is very necessary and important for a website or application, but it is not so necessary for UI components, let alone important. In the frontend GUI layer, business logic should be an extension of interaction logic.</p>
+<p>For convenience, the variability of each part of the UI component and its influencing factors are organized as follows:</p>
+<table>
+<thead>
+<tr>
+<th>Constituent</th>
+<th></th>
+<th>Variability</th>
+<th>Influencing Factors</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Structure</td>
+<td>Visual Structure</td>
+<td>Not Variable</td>
+<td>Content structure, layout styles</td>
+</tr>
+<tr>
+<td></td>
+<td>Content Structure</td>
+<td>Moderately Variable</td>
+<td>Source code of JS libraries&#x2F;frameworks, platform-specific view structure description languages</td>
+</tr>
+<tr>
+<td>Presentation</td>
+<td>Theme Style</td>
+<td>Highly Variable</td>
+<td>Aesthetic and ideas of GUI designers, non-layout styles, icons and images</td>
+</tr>
+<tr>
+<td>Behavior</td>
+<td>Interaction Logic</td>
+<td>Not Variable</td>
+<td>Ideas of interaction designers</td>
+</tr>
+<tr>
+<td></td>
+<td>Business Logic</td>
+<td>Highly Variable</td>
+<td>Business rules</td>
+</tr>
+</tbody></table>
+<p>From the table, it can be seen that “variability” is divided into three levels, which are explained in order from small to large:</p>
+<ul>
+<li>“Not Variable” — affected by interaction methods, it will not change as long as there are no revolutionary changes;</li>
+<li>“Moderately Variable” — affected by source code syntax, it will not change as long as the way the source code is written is determined;</li>
+<li>“Highly Variable” — affected by business and people, it will not change as long as the business field, business rules, and people’s ideas do not change.</li>
+</ul>
+<h2 id="Component-Classification"><a href="#Component-Classification" class="headerlink" title="Component Classification"></a>Component Classification</h2><p>Classify UI components from a more abstract perspective —</p>
+<h3 id="Atomicity"><a href="#Atomicity" class="headerlink" title="Atomicity"></a>Atomicity</h3><p>From the perspective of whether a UI component contains other UI components internally, they are divided into “atomic components” and “composite components”. “Atomic components” are indivisible UI components, that is, they do not contain other UI components internally, such as button components, icon components, divider components, etc.; “composite components” are composed of one or more atomic components, such as navigation menu components, tab components, dialog box components, etc.</p>
+<h3 id="Generality"><a href="#Generality" class="headerlink" title="Generality"></a>Generality</h3><p>According to the generality of UI components, they can be divided into “general components” and “special components”. “General components” are UI components that can meet most conventional scenarios, and their collection is usually packaged and released as a software package as a “component library”; “special components” are designed to meet the needs of certain special scenarios, such as data grids, various editors, etc., and these are generally packaged and released separately.</p>
+<h3 id="Functionality"><a href="#Functionality" class="headerlink" title="Functionality"></a>Functionality</h3><p>According to the role played by UI components, they can be roughly divided into the following categories:</p>
+<table>
+<thead>
+<tr>
+<th>Component Category</th>
+<th>Example Components</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Command Input</td>
+<td>Button component, dropdown menu component</td>
+</tr>
+<tr>
+<td>Data Input</td>
+<td>Input box component, radio button component, checkbox component, dropdown list component, date picker component</td>
+</tr>
+<tr>
+<td>Data Output</td>
+<td>List component, table component, data grid component</td>
+</tr>
+<tr>
+<td>Information Display</td>
+<td>Icon component, loading status component, tooltip component</td>
+</tr>
+<tr>
+<td>Container</td>
+<td>Accordion component, panel component, tab component, fieldset component</td>
+</tr>
+<tr>
+<td>Navigation</td>
+<td>Navigation menu component, breadcrumb component, hyperlink component</td>
+</tr>
+<tr>
+<td>Special Window</td>
+<td>Dialog box component, alert component</td>
+</tr>
+</tbody></table>
+<p>This classification method does not have a strict definition, so it depends on individual opinions.</p>
+<h2 id="Component-Inheritance"><a href="#Component-Inheritance" class="headerlink" title="Component Inheritance"></a>Component Inheritance</h2><p>Unlike inheritance in object-oriented programming, which is the reuse of behavior, the “inheritance” mentioned here refers to the reuse of presentation, and it can also be “multiple inheritance”.</p>
+<p>Before continuing, let’s introduce the concept of a “virtual component”. As its name suggests, it is a virtual, non-existent, conceptual component. It is a collection of several theme style attributes.</p>
+<p>Input box components, dropdown list components, etc., all belong to <a target="_blank" rel="noopener" href="https://html.spec.whatwg.org/#forms">form controls</a>, and they all inherit from the “form control” virtual component. If they do not specify color, font, border, and other theme style attributes, they will be displayed according to the settings in the virtual component. Similarly, dropdown list components, dropdown menu components, etc., all have pop-ups, and they all inherit from the “pop-up” virtual component.</p>
+<p>You must have noticed that the dropdown list component inherits from both the “form control” and “pop-up” virtual components at the same time, which is the “multiple inheritance” mentioned above.</p>
+<p>Those so-called “virtual components” also follow the same inheritance rules—if they do not specify specific theme style attributes, they will be displayed according to the settings of the parent. So, what is the “parent” of the virtual component? — It is the basic style.</p>
+<p>Although the inheritance relationship described here looks a bit like CSS’s <a target="_blank" rel="noopener" href="https://developer.mozilla.org/en-US/docs/Learn/CSS/Building_blocks/Cascade_and_inheritance">inheritance</a>, they are not the same.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>This article starts from the composition, classification, and inheritance relationships between components of frontend UI components, and discusses some points that need to be paid attention to in establishing a component system by analyzing the characteristics of components. Among them, the variability of each constituent element of UI components is the most important to pay attention to, as it will have a great impact on the reusability and extensibility of the component system.</p>
+<p>In fact, HTML and WXML and AXML are at the same level, all are platform-specific view structure description languages—WXML is for WeChat Mini Program, AXML is for Alipay Mini Program, and HTML is for the “web browser” platform.</p>
+<p>In dynamic web pages, especially when using template engines such as <a target="_blank" rel="noopener" href="https://mustache.github.io/">Mustache</a> and <a target="_blank" rel="noopener" href="https://handlebarsjs.com/">Handlebars</a> or libraries&#x2F;frameworks such as React and Vue, the final content structure is basically generated by JS, which strengthens JS and weakens the control of HTML over the content structure.</p>
+<p>The different HTML code generation methods of various JS libraries&#x2F;frameworks and the different view structure description syntaxes, without a unified standard, have caused confusion—this is also the biggest challenge to the reusability of frontend UI components!</p>
+
+</div>
+      <footer class="Article-footer col-md-3">
+  
+  <div class="Widget Widget--share">
+    <div class="Widget-body">
+      <p>分享到<i class="fa fa-share-alt"></i></p>
+      <div class="social-share" data-sites="wechat,weibo,twitter"></div>
+    </div>
+  </div>
+
+
+  <section class="Widget Widget--toc">
+  <div class="Widget-header">
+    <h2 class="Widget-title">目录</h2>
+  </div>
+  <div class="Widget-body"></div>
+</section>
+
+
+</footer>
+      
+      
+    </article>
+    
+
+  </div>
+</main>
+<footer class="Page-footer Footer">
+  <div class="container">
+    
+    <div class="Footer-description">
+      
+        <!-- Important links -->
+        <nav class="Footer-navs">
+          <ul><li><a href="https://x.com/ntksol?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>X</span></a>
+</li><li><a href="https://github.com/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>GitHub</span></a>
+</li><li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>LinkedIn</span></a>
+</li></ul>
+        </nav>
+      
+      
+        <!-- Copyright -->
+        <div class="Footer-copyright">
+          <p>
+
+&copy; 2023-2025 <a href="https://ourai.pro?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow">Ourai L.</a>
+
+</p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+    <script>$('.Article-content > table').addClass('table table-bordered')</script>
+    
+<script src="/javascripts/ksio/vendors/share.min.js"></script>
+
+<script src="/javascripts/ksio/components/page.js"></script>
+
+<script src="/javascripts/ksio/components/toc.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.zh-CN.js"></script>
+
+<script src="/javascripts/ksio/initializers/time.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.lazyload.js"></script>
+
+<script src="/javascripts/ksio/initializers/lazyload.js"></script>
+
+  </body>
+</html>
+
