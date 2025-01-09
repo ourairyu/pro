@@ -1,5 +1,15 @@
 ---
 title: Let Me Talk About Model-driven Front-end Development
+date: '2020-05-28 12:30:49 +0800'
+categories:
+  - web-development
+tags:
+  - software-engineering
+  - software-architecture
+  - frontend-web-development
+  - frontend-engineering
+  - frontend-architecture
+series: let-me-talk-about-x
 ---
 
 If we think of the "client" as a building and "data" as water—then the "Model" is the building's reservoir, providing ample water supply; the "ViewModel" is the place where the water from the reservoir is purified and processed before being delivered to each household; the "View" part, with each UI component, is like "each household," where the water is consumed.

@@ -1,5 +1,15 @@
 ---
 title: Let Me Talk About Abstraction of Front-end Application Presentation Layer
+date: '2020-09-01 23:42:35 +0800'
+categories:
+  - web-development
+tags:
+  - software-engineering
+  - software-architecture
+  - frontend-web-development
+  - frontend-engineering
+  - frontend-architecture
+series: let-me-talk-about-x
 ---
 
 We live in an era of rapid change, whether in business or technology. A company that appears to be commercially successful may go public one day and then delist or even go bankrupt the next due to various reasons; a seemingly advanced technology may emerge, with various media racing to write about it and hype it up, but it might soon face competitors or alternatives.

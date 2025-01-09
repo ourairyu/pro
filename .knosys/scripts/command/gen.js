@@ -1,6 +1,6 @@
 const { resolve: resolvePath } = require('path');
 const { existsSync } = require('fs');
-const { pick } = require('@ntks/toolbox');
+const { pick, omit } = require('@ntks/toolbox');
 
 const {
   resolveRootPath,
@@ -54,9 +54,9 @@ function generateSiteData(posts) {
   ensureDirExists(postDistPath, true);
 
   resolvedData.sequence.forEach(slug => {
-    const post = resolvedData.items[slug];
+    const { title, content, ...others } = resolvedData.items[slug];
 
-    saveData(resolvePath(postDistPath, `${slug}.md`), `---\ntitle: ${post.title}\n---\n\n${post.content}`);
+    saveData(resolvePath(postDistPath, `${slug}.md`), content, { title, ...omit(others, ['slug']) });
   });
 }
 

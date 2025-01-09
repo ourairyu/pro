@@ -3,10 +3,10 @@
 ## Source: https://github.com/hexojs/hexo/
 
 # Site
-title: Ourai L.
+title: Ourai.PRO
 subtitle: Anti-chaos Engineer
 description:
-keywords: Ourai Lin,Ourai L.,Ourai,Ourairyu,欧雷,欧雷流
+keywords: Ourai.PRO,ourai.pro,Ourai Lin,Ourai L.,Ourai,Ourairyu,欧雷,欧雷流,anti-chaos,ntks,反混沌,反混沌工程师,DnA ENGR,dna engr,frontend,front-end,indie developer
 author: Ourai L.
 language: en
 timezone: Asia/Shanghai
@@ -97,14 +97,16 @@ ignore:
 theme: lime-local
 theme_config:
   meta:
-    url: https://ourai.github.io
+    url: https://ourai.pro
   brand:
-    text: Ourai L.
+    text: Ourai.PRO
     color: "#0871ab"
+  seo:
+    suffix: false
   copyright:
     owner:
       text: Ourai L.
-      url: https://ourai.github.io
+      url: https://ourai.pro
     period:
       start: 2023
   header:

@@ -1,0 +1,22 @@
+<% const posts = (site.posts.data || site.posts).slice().sort((a, b) => new Date(a.date).getTime() > new Date(b.date).getTime() ? -1 : 1) %>
+<% if (posts.length > 0) { %>
+  <!-- 文章列表 -->
+  <div class="ArticleList">
+    <% const current_year = date(Date.now(), 'YYYY') %>
+    <% const year_duration = 99 %>
+    <% let prev_post = null %>
+    <% posts.forEach(post => { %>
+      <% const prev_year = prev_post ? date(prev_post.date, 'YYYY') : '' %>
+      <% const year = date(post.date, 'YYYY') %>
+      <% if (current_year - year < year_duration) { %>
+        <% if (prev_post === null || year !== prev_year) { %>
+          <h2 class="ArticleList-heading"><%= year %></h2>
+        <% } %>
+        <div class="ArticleList-item"><time datetime="<%= date_xml(post.date) %>"><%= date(post.date, 'YYYY-MM-DD') %></time><i class="fa fa-pencil"></i><a href="<%= config.root || '/' %><%= post.path %>"><%= post.title %></a></div>
+      <% } %>
+      <% prev_post = post %>
+    <% }) %>
+  </div>
+<% } else {%>
+  <p>暂无文章</p>
+<% } %>

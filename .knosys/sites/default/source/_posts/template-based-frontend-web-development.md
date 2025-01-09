@@ -1,5 +1,13 @@
 ---
 title: Let Me Talk About Template-based Front-end Development
+date: '2019-09-15 19:31:45 +0800'
+categories:
+  - web-development
+tags:
+  - software-engineering
+  - frontend-web-development
+  - frontend-engineering
+series: let-me-talk-about-x
 ---
 
 In software development, the efficiency of R&D is always one of the themes that developers continuously pursue. For companies, in the fiercely competitive internet industry, the speed of output may determine the life and death of the company; for individuals, higher efficiency means less overtime, more time to improve oneself, develop hobbies, and spend time with family, achieving a balance between work and life.

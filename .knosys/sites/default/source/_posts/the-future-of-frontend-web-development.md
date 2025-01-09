@@ -1,5 +1,12 @@
 ---
 title: Does Front-end Development Have A Future?
+date: '2020-05-11 00:11:22 +0800'
+categories:
+  - web-development
+tags:
+  - frontend-web-development
+  - frontend-engineer
+series: x-in-frontend-web-development
 ---
 
 Recently, I have been discussing the current state and future direction of "front-end technology" and "front-end engineers" with peers through various means. There is a certain consensus among us.

@@ -1,5 +1,15 @@
 ---
 title: Does Front-end Architecture Exist?
+date: '2020-04-26 12:35:22 +0800'
+categories:
+  - web-development
+tags:
+  - software-engineering
+  - software-architecture
+  - frontend-web-development
+  - frontend-engineering
+  - frontend-architecture
+series: x-in-frontend-web-development
 ---
 
 Have you ever been asked as a front-end developer: "Does front-end development have an architecture?"

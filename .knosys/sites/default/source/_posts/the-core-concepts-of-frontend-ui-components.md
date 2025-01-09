@@ -1,5 +1,13 @@
 ---
 title: The Core Concepts of Front-end UI Components
+date: '2020-09-25 16:30:15 +0800'
+categories:
+  - web-development
+tags:
+  - software-engineering
+  - frontend-web-development
+  - frontend-engineering
+series: talking-about-frontend-ui-components
 ---
 
 This article is the first in a series, primarily explaining several basic concepts and the subjects we aim to explore. The purpose is to establish a unified "context" of understanding to minimize comprehension barriers caused by information asymmetry.

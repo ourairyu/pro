@@ -1,5 +1,13 @@
 ---
 title: Let Me Talk About Component-based Front-end Development
+date: '2018-01-19 17:08:34 +0800'
+categories:
+  - web-development
+tags:
+  - software-engineering
+  - frontend-web-development
+  - frontend-engineering
+series: let-me-talk-about-x
 ---
 
 Upon seeing the title, there are generally two reactions:

@@ -1,5 +1,13 @@
 ---
 title: Let Me Talk About Configuration-driven Front-end Development
+date: '2020-04-01 23:45:12 +0800'
+categories:
+  - web-development
+tags:
+  - software-engineering
+  - frontend-web-development
+  - frontend-engineering
+series: let-me-talk-about-x
 ---
 
 During my daily commute, I drive almost entirely on muscle memory and conditioned reflexes, barely using my brain, which leaves my mind free to wander and think about various things.
