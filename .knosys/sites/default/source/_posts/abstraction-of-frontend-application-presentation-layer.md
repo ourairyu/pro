@@ -1,5 +1,8 @@
 ---
 title: Let Me Talk About Abstraction of Front-end Application Presentation Layer
+description: >-
+  In a complex front-end application, if it is not layered, its scalability and
+  maintainability will be unbearable...
 date: '2020-09-01 23:42:35 +0800'
 categories:
   - web-development

@@ -1,5 +1,9 @@
 ---
 title: Does Front-end Development Have A Future?
+description: >-
+  Recently, I have communicated with my peers through various means on the
+  current status and future development direction of front-end technology and
+  front-end engineers, and we have reached a consensus on some aspects.
 date: '2020-05-11 00:11:22 +0800'
 categories:
   - web-development

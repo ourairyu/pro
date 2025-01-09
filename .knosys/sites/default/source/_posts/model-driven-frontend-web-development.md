@@ -1,5 +1,9 @@
 ---
 title: Let Me Talk About Model-driven Front-end Development
+description: >-
+  The design and implementation of a reasonable and complete model-driven
+  architecture can well support changes in corporate business and quickly build
+  new applications.
 date: '2020-05-28 12:30:49 +0800'
 categories:
   - web-development

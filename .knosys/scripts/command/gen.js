@@ -54,9 +54,14 @@ function generateSiteData(posts) {
   ensureDirExists(postDistPath, true);
 
   resolvedData.sequence.forEach(slug => {
-    const { title, content, ...others } = resolvedData.items[slug];
+    const { title, description, content, ...others } = resolvedData.items[slug];
+    const frontMatter = { title };
 
-    saveData(resolvePath(postDistPath, `${slug}.md`), content, { title, ...omit(others, ['slug']) });
+    if (description) {
+      frontMatter.description = description;
+    }
+
+    saveData(resolvePath(postDistPath, `${slug}.md`), content, { ...frontMatter, ...omit(others, ['slug']) });
   });
 }
 
