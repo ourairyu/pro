@@ -1,0 +1,443 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <title>The System of Front-end UI Components</title>
+
+
+  <meta property="og:title" content="The System of Front-end UI Components">
+
+
+  <meta name="description" content="Based on the feature model obtained in the previous article of this series, let’s discuss how to design and build a front-end UI component system.">
+  <meta property="og:description" content="Based on the feature model obtained in the previous article of this series, let’s discuss how to design and build a front-end UI component system.">
+
+
+
+  
+    
+  
+
+
+  <meta name="keywords" content="Ourai.PRO,ourai.pro,Ourai Lin,Ourai L.,Ourai,Ourairyu,欧雷,欧雷流,anti-chaos,ntks,反混沌,反混沌工程师,DnA ENGR,dna engr,frontend,front-end,indie developer">
+
+
+<!-- 页面渲染兼容性 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<!-- 订阅 -->
+
+<meta name="theme-color" content="#0871ab">
+<link rel="shortcut icon" href="/images/ksio/favicon.ico">
+
+
+    
+<link rel="stylesheet" href="/stylesheets/global.css">
+
+    
+<link rel="stylesheet" href="/stylesheets/ksio/vendors/share.css">
+
+<link rel="stylesheet" href="/stylesheets/pages/post.css">
+
+    
+<script src="/javascripts/ksio/vendors/jquery-1.11.3.min.js"></script>
+
+    
+<script src="/javascripts/ksio/vendors/bootstrap.min.js"></script>
+
+  </head>
+  
+  
+  <body class="Page" itemscope itemtype="http://schema.org/WebPage">
+    
+
+  <header class="Page-header">
+  <div class="navbar navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        
+          <button class="navbar-toggle collapsed" type="button" data-target=".Page-navs" data-toggle="collapse">
+            <span class="sr-only">Toggle navs</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+        
+          
+
+
+  <a class="navbar-brand" href="/">Ourai.PRO</a>
+
+
+        
+      </div>
+      <!-- Nav menus -->
+      <nav class="Page-navs navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Blog <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="/posts/">Posts</a>
+</li>
+  
+
+  
+    <li><a href="https://x.com/ntksol?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Tweets</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Works <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://producthunt.com/@ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Products</a>
+</li>
+  
+
+  
+    <li><a href="https://github.com/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Open-source software</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Cooperation <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.upwork.com/freelancers/~016baa7fae7cfff661?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Services</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">About <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Resume</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li><a href="https://yaol.in/?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">中文</a>
+</li>
+  
+
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="Page-content">
+  
+
+  <!-- 内容主体 -->
+  <div class="container">
+    <article class="Page-main Article">
+      <header class="Article-header">
+        
+  
+    <h1 class="Article-title">The System of Front-end UI Components</h1>
+  
+  
+
+
+      </header>
+      <div class="Article-content col-md-9"><p>This article is the third in the series “<a href="/series/talking-about-frontend-ui-components/">Talking About Front-end UI Components</a>“.</p>
+<p>In the previous article of this series, “<a href="/posts/the-features-of-frontend-ui-components/">The Features of Front-end UI Components</a>“, we analyzed the composition of frontend UI components from the perspective of separation of concerns and categorized UI components in a rather abstract way. We also described the inheritance relationships that allow components to exhibit reusability, thereby establishing a feature model for frontend UI components.</p>
+<p>Building on the feature model derived in the previous article, this article will explore how to design and establish a frontend UI component system.</p>
+<p>The most crucial aspect of component system design is to genuinely aim to make UI components reusable, much like the materials used in manufacturing—creating interchangeable UI components.</p>
+<p>The variability of UI component constituents has a significant impact on the design of the component system. For ease of reference, the table from the previous article, which lists the variability and influencing factors of the constituents, is reproduced here:</p>
+<table>
+<thead>
+<tr>
+<th>Constituent</th>
+<th></th>
+<th>Variability</th>
+<th>Influencing Factors</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Structure</td>
+<td>Visual Structure</td>
+<td>Not Easily Variable</td>
+<td>Content structure, layout-related styles</td>
+</tr>
+<tr>
+<td></td>
+<td>Content Structure</td>
+<td>More Easily Variable</td>
+<td>Source code of JS libraries&#x2F;frameworks for generating HTML, platform-specific view structure description languages</td>
+</tr>
+<tr>
+<td>Presentation</td>
+<td>Theme Style</td>
+<td>Very Easily Variable</td>
+<td>GUI designer’s aesthetics and ideas, non-layout styles, icons, and images</td>
+</tr>
+<tr>
+<td>Behavior</td>
+<td>Interaction Logic</td>
+<td>Not Easily Variable</td>
+<td>Interaction designer’s ideas</td>
+</tr>
+<tr>
+<td></td>
+<td>Business Logic</td>
+<td>Very Easily Variable</td>
+<td>Business rules</td>
+</tr>
+</tbody></table>
+<h2 id="Component-Architecture"><a href="#Component-Architecture" class="headerlink" title="Component Architecture"></a>Component Architecture</h2><p>All the UI component constituents listed in the table can exist as separate components. If we consider the UI component as the “end product”, then the components corresponding to the UI component constituents are the “intermediate products”.</p>
+<blockquote>
+  <p>In software engineering, a "component" generally refers to a reusable block of software, akin to the "parts" used in manufacturing. This is a broad concept that can encompass software packages, web services, or modules, etc.</p>
+  <p>However, in the frontend context, a "component" usually refers to a view unit on a webpage, i.e., a "UI component". It can be said that "UI components" are a subset of "components".</p>
+  <footer>Ourai <cite><a href="/posts/the-core-concepts-of-frontend-ui-components/">The Core Concepts of Front-end UI Components</a></cite></footer>
+</blockquote>
+
+<p>Given the above, it is necessary to clarify that the term “component” mentioned as “existing separately” refers to a “reusable block of software”, not a “UI component”.</p>
+<h3 id="Style-Components"><a href="#Style-Components" class="headerlink" title="Style Components"></a>Style Components</h3><p>In the previous article, the concept of a “virtual component” was introduced—</p>
+<blockquote>
+  <p>Before proceeding, let's introduce the concept of a "virtual component". As the name suggests, it is a virtual entity that does not actually exist but is a conceptual component. It is a collection of several theme style attributes.</p>
+  <footer>Ourai <cite><a href="/posts/the-features-of-frontend-ui-components/">The Features of Front-end UI Components</a></cite></footer>
+</blockquote>
+
+<p>Similarly, a “style component” is also a collection of theme style attributes, which roughly includes:</p>
+<p><img src="/style-component.png" alt="Style Component Composition"></p>
+<p>If we were to represent this in code, we could use variables in CSS preprocessors. Here is an example using Sass:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// Primary colors<br>$sc<span class="hljs-attr">--primary</span>: <span class="hljs-number">#cce5ff</span> !default;<br>$sc<span class="hljs-attr">--secondary</span>: <span class="hljs-number">#e2e3e5</span> !default;<br>$sc<span class="hljs-attr">--info</span>: <span class="hljs-number">#d1ecf1</span> !default;<br>$sc<span class="hljs-attr">--success</span>: <span class="hljs-number">#d4edda</span> !default;<br>$sc<span class="hljs-attr">--warning</span>: <span class="hljs-number">#fff3cd</span> !default;<br>$sc<span class="hljs-attr">--danger</span>: <span class="hljs-number">#f8d7da</span> !default;<br><br>// <span class="hljs-selector-tag">Text</span> colors<br>$sc<span class="hljs-attr">--text-primary</span>: <span class="hljs-number">#303133</span> !default;<br>$sc<span class="hljs-attr">--text-secondary</span>: <span class="hljs-number">#696c71</span> !default;<br>$sc<span class="hljs-attr">--text-heading</span>: <span class="hljs-number">#2c405a</span> !default;<br>$sc<span class="hljs-attr">--text-regular</span>: <span class="hljs-number">#333</span> !default;<br>$sc<span class="hljs-attr">--text-placeholder</span>: <span class="hljs-number">#c0c4cc</span> !default;<br><br>// <span class="hljs-attribute">Font</span> sizes<br>$sc<span class="hljs-attr">--font-size</span>: <span class="hljs-number">14px</span> !default;<br>$sc<span class="hljs-attr">--font-size-lg</span>: <span class="hljs-number">16px</span> !default;<br>$sc<span class="hljs-attr">--font-size-sm</span>: <span class="hljs-number">12px</span> !default;<br><br>// <span class="hljs-attribute">Font</span> weights<br>$sc<span class="hljs-attr">--font-weight-light</span>: <span class="hljs-number">300</span> !default;<br>$sc<span class="hljs-attr">--font-weight-normal</span>: <span class="hljs-number">400</span> !default;<br>$sc<span class="hljs-attr">--font-weight-bold</span>: <span class="hljs-number">700</span> !default;<br><br>// <span class="hljs-attribute">Border</span> widths<br>$sc<span class="hljs-attr">--border-width</span>: <span class="hljs-number">1px</span> !default;<br><br>// <span class="hljs-attribute">Border</span> colors<br>$sc<span class="hljs-attr">--border-color</span>: <span class="hljs-number">#dcdfe6</span> !default;<br><br>// <span class="hljs-attribute">Border</span> radii<br>$sc<span class="hljs-attr">--border-radius</span>: <span class="hljs-number">4px</span> !default;<br>$sc<span class="hljs-attr">--border-radius-lg</span>: <span class="hljs-number">6px</span> !default;<br>$sc<span class="hljs-attr">--border-radius-sm</span>: <span class="hljs-number">2px</span> !default;<br></code></pre></td></tr></table></figure>
+
+<p>Style components are closely related to the inheritance of presentation reuse—</p>
+<blockquote>
+  <p>Input components, dropdown list components, and others that belong to form controls all inherit from the "form control" virtual component. If they do not specify their own color, font, border, and other theme style attributes, they will display according to the settings in the virtual component. Similarly, dropdown list components and dropdown menu components, which have pop-ups, inherit from the "pop-up" virtual component.</p>
+  <p>You may have noticed that the dropdown list component inherits from both the "form control" and "pop-up" virtual components, which is the "multiple inheritance" mentioned earlier.</p>
+  <p>These so-called "virtual components" also follow the same inheritance rules—if they do not specify particular theme style attributes, they will display according to the settings of their parent. So, what is the "parent" of a virtual component?—It is the base style.</p>
+  <footer>Ourai <cite><a href="/posts/the-features-of-frontend-ui-components/">The Features of Front-end UI Components</a></cite></footer>
+</blockquote>
+
+<p>The Sass variables defined in the example above constitute the “base style”.</p>
+<p>Taking “form control” as an example, a virtual component that inherits the base style can be represented in code as follows:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">$sc<span class="hljs-attr">--form-control-font-size</span>: $sc--font-size !default;<br>$sc<span class="hljs-attr">--form-control-font-size-lg</span>: $sc--font-size-lg !default;<br>$sc<span class="hljs-attr">--form-control-font-size-sm</span>: $sc--font-size-sm !default;<br><br>$sc<span class="hljs-attr">--form-control-height</span>: <span class="hljs-number">36px</span> !default;<br>$sc<span class="hljs-attr">--form-control-height-lg</span>: <span class="hljs-number">40px</span> !default;<br>$sc<span class="hljs-attr">--form-control-height-sm</span>: <span class="hljs-number">32px</span> !default;<br><br>$sc<span class="hljs-attr">--form-control-color</span>: $sc--text-regular !default;<br>$sc<span class="hljs-attr">--form-control-placeholder-color</span>: $sc--text-placeholder !default;<br>$sc<span class="hljs-attr">--form-control-bg</span>: <span class="hljs-number">#fff</span> !default;<br>$sc<span class="hljs-attr">--form-control-box-shadow</span>: none !default;<br><br>$sc<span class="hljs-attr">--form-control-border-width</span>: $sc--border-width !default;<br>$sc<span class="hljs-attr">--form-control-border-color</span>: $sc--border-color !default;<br>$sc<span class="hljs-attr">--form-control-border-radius</span>: $sc--border-radius !default;<br>$sc<span class="hljs-attr">--form-control-border-radius-lg</span>: $sc--border-radius-lg !default;<br>$sc<span class="hljs-attr">--form-control-border-radius-sm</span>: $sc--border-radius-sm !default;<br></code></pre></td></tr></table></figure>
+
+<p>Correspondingly, the style component part of an input component would be roughly as follows:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">$sc<span class="hljs-attr">--input-font-size</span>: $sc--form-control-font-size !default;<br>$sc<span class="hljs-attr">--input-font-size-lg</span>: $sc--form-control-font-size-lg !default;<br>$sc<span class="hljs-attr">--input-font-size-sm</span>: $sc--form-control-font-size-sm !default;<br><br>$sc<span class="hljs-attr">--input-height</span>: $sc--form-control-height !default;<br>$sc<span class="hljs-attr">--input-height-lg</span>: $sc--form-control-height-lg !default;<br>$sc<span class="hljs-attr">--input-height-sm</span>: $sc--form-control-height-sm !default;<br><br>$sc<span class="hljs-attr">--input-color</span>: $sc--form-control-color !default;<br>$sc<span class="hljs-attr">--input-placeholder-color</span>: $sc--form-control-placeholder-color !default;<br>$sc<span class="hljs-attr">--input-bg</span>: $sc--form-control-bg !default;<br>$sc<span class="hljs-attr">--input-box-shadow</span>: $sc--form-control-box-shadow !default;<br><br>$sc<span class="hljs-attr">--input-border-width</span>: $sc--form-control-border-width !default;<br>$sc<span class="hljs-attr">--input-border-color</span>: $sc--form-control-border-color !default;<br>$sc<span class="hljs-attr">--input-border-radius</span>: $sc--form-control-border-radius !default;<br>$sc<span class="hljs-attr">--input-border-radius-lg</span>: $sc--form-control-border-radius-lg !default;<br>$sc<span class="hljs-attr">--input-border-radius-sm</span>: $sc--form-control-border-radius-sm !default;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Visual-Components"><a href="#Visual-Components" class="headerlink" title="Visual Components"></a>Visual Components</h3><p>Although the final presentation of a UI component requires a content structure to support it as a framework, if the goal is merely to outline the contour of the UI component’s visual structure, CSS alone can suffice. A series of modular, reusable, and combinable CSS rules constitute a “visual component”, also known as a “CSS component”.</p>
+<p>In visual components, it is advisable to use naming conventions such as BEM for CSS class selectors. A derivative of BEM is recommended:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css"><span class="hljs-comment">/* Component */</span><br><span class="hljs-selector-class">.ComponentName</span> &#123;&#125;<br><br><span class="hljs-comment">/* Component descendant */</span><br><span class="hljs-selector-class">.ComponentName-descendentName</span> &#123;&#125;<br><br><span class="hljs-comment">/* Component modifier */</span><br><span class="hljs-selector-class">.ComponentName--modifierName</span> &#123;&#125;<br><br><span class="hljs-comment">/* Component state */</span><br><span class="hljs-selector-class">.ComponentName</span><span class="hljs-selector-class">.is-stateOfComponent</span> &#123;&#125;<br></code></pre></td></tr></table></figure>
+
+<p>A complete visual component already includes a style component. Taking a button component as an example, its visual component would be roughly as follows:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">$sc<span class="hljs-attr">--button-font-size</span>: $sc--form-control-font-size !default;<br>$sc<span class="hljs-attr">--button-font-size-lg</span>: $sc--form-control-font-size-lg !default;<br>$sc<span class="hljs-attr">--button-font-size-sm</span>: $sc--form-control-font-size-sm !default;<br><br>$sc<span class="hljs-attr">--button-padding-y</span>: <span class="hljs-number">10px</span> !default;<br>$sc<span class="hljs-attr">--button-padding-y-lg</span>: <span class="hljs-number">12px</span> !default;<br>$sc<span class="hljs-attr">--button-padding-y-sm</span>: <span class="hljs-number">9px</span> !default;<br><br>$sc<span class="hljs-attr">--button-padding-x</span>: <span class="hljs-number">20px</span> !default;<br>$sc<span class="hljs-attr">--button-padding-x-lg</span>: <span class="hljs-number">20px</span> !default;<br>$sc<span class="hljs-attr">--button-padding-x-sm</span>: <span class="hljs-number">15px</span> !default;<br><br>$sc<span class="hljs-attr">--button-color</span>: $sc--form-control-color !default;<br>$sc<span class="hljs-attr">--button-bg</span>: $sc--form-control-bg !default;<br>$sc<span class="hljs-attr">--button-box-shadow</span>: $sc--form-control-box-shadow !default;<br><br>$sc<span class="hljs-attr">--button-border-width</span>: $sc--form-control-border-width !default;<br>$sc<span class="hljs-attr">--button-border-color</span>: $sc--form-control-border-color !default;<br>$sc<span class="hljs-attr">--button-border-radius</span>: $sc--form-control-border-radius !default;<br>$sc<span class="hljs-attr">--button-border-radius-lg</span>: $sc--form-control-border-radius-lg !default;<br>$sc<span class="hljs-attr">--button-border-radius-sm</span>: $sc--form-control-border-radius-sm !default;<br><br>$sc<span class="hljs-attr">--button-disabled-color</span>: $sc--text-placeholder !default;<br>$sc<span class="hljs-attr">--button-disabled-bg</span>: <span class="hljs-number">#eee</span> !default;<br><br><span class="hljs-comment">/* ----- Above is the style component part ----- */</span><br><br><span class="hljs-selector-class">.Button</span> &#123;<br>  <span class="hljs-attribute">padding</span>: $sc--button-padding-y $sc--button-padding-x;<br>  <span class="hljs-attribute">font-size</span>: $sc--button-font-size;<br>  <span class="hljs-attribute">color</span>: $sc--button-color;<br>  <span class="hljs-attribute">background-color</span>: $sc--button-bg;<br>  <span class="hljs-attribute">border</span>: $sc--button-border-width solid $sc--button-border-color;<br>  <span class="hljs-attribute">border-radius</span>: $sc--button-border-radius;<br>  <span class="hljs-attribute">box-shadow</span>: $sc--button-box-shadow;<br><br>  &amp;-<span class="hljs-attribute">icon</span>,<br>  &amp;-<span class="hljs-selector-tag">text</span> &#123;<br>    <span class="hljs-attribute">display</span>: inline-block;<br>    <span class="hljs-attribute">vertical-align</span>: middle;<br>  &#125;<br><br>  &amp;-<span class="hljs-attribute">icon</span> + &amp;-<span class="hljs-selector-tag">text</span> &#123;<br>    <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">5px</span>;<br>  &#125;<br><br>  // Large <span class="hljs-selector-tag">button</span><br>  &amp;<span class="hljs-attr">--large</span> &#123;<br>    <span class="hljs-attribute">padding</span>: $sc--button-padding-y-lg $sc--button-padding-x-lg;<br>    <span class="hljs-attribute">font-size</span>: $sc--button-font-size-lg;<br>    <span class="hljs-attribute">border-radius</span>: $sc--button-border-radius-lg;<br>  &#125;<br><br>  // Small <span class="hljs-selector-tag">button</span><br>  &amp;<span class="hljs-attr">--small</span> &#123;<br>    <span class="hljs-attribute">padding</span>: $sc--button-padding-y-sm $sc--button-padding-x-sm;<br>    <span class="hljs-attribute">font-size</span>: $sc--button-font-size-sm;<br>    <span class="hljs-attribute">border-radius</span>: $sc--button-border-radius-sm;<br>  &#125;<br><br>  // <span class="hljs-selector-tag">Button</span> disabled state<br>  &amp;<span class="hljs-selector-class">.is-disabled</span> &#123;<br>    <span class="hljs-attribute">color</span>: $sc--button-disabled-color;<br>    <span class="hljs-attribute">background-color</span>: $sc--button-disabled-bg;<br>  &#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>From the code example above, it can be seen that the button component includes “icon” and “text” as descendants that are horizontally arranged and vertically centered, and it has three specifications: “regular”, “large”, and “small”, as well as two states: “normal” and “disabled” – the visual structure and characteristics of the UI component are depicted through CSS.</p>
+<h3 id="Headless-Components"><a href="#Headless-Components" class="headerlink" title="Headless Components"></a>Headless Components</h3><p>The term “headless” is translated from “headless” in the computer field, representing hardware or software that operates without relying on GUI-related devices or libraries. Here, a “headless component” refers to the interaction logic of a UI component, as well as the business logic integrated with it.</p>
+<p>The responsibility of a headless component is to listen for and receive notifications from the event system, providing functions or methods for handling the state of the UI component and data transformation logic. It should not concern itself with anything beyond interaction logic.</p>
+<p>In headless components, what is listened to and received are not the real events provided by the runtime environment, but rather custom “proxy events”, which are placeholders for real events. The main reason for this is that the same behavior, although it may be triggered by different real events, has the same semantic meaning for the UI component – proxy events are used to express the real semantic meaning for the UI component.</p>
+<p>Taking the dropdown menu component as an example, the display of its pop-up layer can be triggered by the <code>click</code> or <code>mouseover</code> real events of the button it contains, but the real semantic meaning for the UI component is “pop-up” rather than “click” or “hover”, hence the use of the proxy event <code>pop-up</code> as a substitute.</p>
+<p>The statement above that a headless component is “the interaction logic and integrated business logic of a UI component”, and yet “should not concern itself with anything beyond interaction logic”, may seem contradictory at first glance, but it is not –</p>
+<blockquote>
+  <p>Business logic is essential and important for a website or application, but for a UI component, it is not so necessary, let alone important. In the frontend GUI layer, business logic should be an extension of interaction logic.</p>
+  <footer>Ourai <cite><a href="/posts/the-features-of-frontend-ui-components/">The Features of Front-end UI Components</a></cite></footer>
+</blockquote>
+
+<p>In a UI component, business logic is closely related to events, not just UI events, such as sending an HTTP request after clicking a button; but also data events, such as updating the displayed text after business data changes. Therefore, business logic is an extension of interaction logic. This requires headless components to provide extension points when handling interaction logic, such as “event mapping”, so that business logic can exist as an extension of the headless component, rather than being integrated into it.</p>
+<p>Headless components will call event handling functions based on proxy events. In the absence of specification, proxy events will default to a real event, and the event handling function will execute a default set of logic; the role of event mapping is to change the real event that the proxy event points to, as well as the logic of the event handling function.</p>
+<p>The interface definition of a headless component might look like this:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// Proxy event</span><br>type <span class="hljs-title class_">EventBroker</span> = string;<br><span class="hljs-comment">// Real event</span><br>type <span class="hljs-title class_">EventName</span> = string;<br><span class="hljs-comment">// Event handling function</span><br>type <span class="hljs-title class_">EventHandler</span> = <span class="hljs-function">(<span class="hljs-params">params: any</span>) =&gt;</span> <span class="hljs-keyword">void</span>;<br><span class="hljs-comment">// Event object</span><br>type <span class="hljs-title class_">EventObject</span> = &#123; <span class="hljs-attr">name</span>: <span class="hljs-title class_">EventName</span>; <span class="hljs-attr">handler</span>: <span class="hljs-title class_">EventHandler</span> &#125;;<br><span class="hljs-comment">// Event mapping</span><br>type <span class="hljs-title class_">EventMap</span> = &#123; [<span class="hljs-attr">key</span>: string]: <span class="hljs-title class_">EventName</span> | <span class="hljs-title class_">EventHandler</span> | <span class="hljs-title class_">EventObject</span> &#125;;<br><br>interface <span class="hljs-title class_">IHeadlessComponent</span> &#123;<br>  <span class="hljs-comment">// Event mapping</span><br>  <span class="hljs-title function_">setEventMap</span>(<span class="hljs-attr">map</span>: <span class="hljs-title class_">EventMap</span>): <span class="hljs-keyword">void</span>;<br>  <span class="hljs-comment">// Get real event</span><br>  <span class="hljs-title function_">getEventName</span>(<span class="hljs-attr">broker</span>: <span class="hljs-title class_">EventBroker</span>): <span class="hljs-title class_">EventName</span>;<br>  <span class="hljs-comment">// Get event handling function</span><br>  <span class="hljs-title function_">getEventHandler</span>(<span class="hljs-attr">broker</span>: <span class="hljs-title class_">EventBroker</span>): <span class="hljs-title class_">EventHandler</span>;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<h3 id="Structural-Components"><a href="#Structural-Components" class="headerlink" title="Structural Components"></a>Structural Components</h3><p>As the name suggests, “structural components” are used to generate the content structure of UI components, but their role is not limited to this; they also handle the integration of visual components with headless components.</p>
+<blockquote>
+  <p>If we look solely at the final HTML structure, it may seem stable, but in modern frontend development, the structure of HTML is dynamically generated and heavily dependent on JS libraries/frameworks like React and Vue, which lack a unified standard. Additionally, there are platform-specific view structure description languages such as WXML and AXML. The inconsistency in these writing methods makes the page content structure less stable.</p>
+  <footer>Ourai <cite><a href="/posts/the-features-of-frontend-ui-components/">The Features of Front-end UI Components</a></cite></footer>
+</blockquote>
+
+<p>As mentioned above, the content structure of UI components depends on the view structure description syntax, which in turn depends on the platform or runtime environment, making structural components the most variable among the components that constitute a UI component. They are the easiest to replace.</p>
+<p>Using the class component writing method of Vue 2.x as an example, the structural component of a dropdown menu component would be roughly as follows:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">template</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;$style.Dropdown&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;$style[&#x27;Dropdown-trigger&#x27;]&quot;</span> @[<span class="hljs-attr">popUpEventName</span>]=<span class="hljs-string">&quot;handlePopUp&quot;</span>&gt;</span>Show Pop-up<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">:class</span>=<span class="hljs-string">&quot;[$style[&#x27;Dropdown-popup&#x27;], &#123; [$style[&#x27;is-shown&#x27;]]: isPopUpShown &#125;]&quot;</span>&gt;</span>I am the pop-up<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">template</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- Visual component --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">style</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;scss&quot;</span> <span class="hljs-attr">src</span>=<span class="hljs-string">&quot;./style.scss&quot;</span> <span class="hljs-attr">module</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">script</span> <span class="hljs-attr">lang</span>=<span class="hljs-string">&quot;ts&quot;</span>&gt;</span><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-keyword">import</span> &#123; <span class="hljs-title class_">Vue</span>, <span class="hljs-title class_">Component</span>, <span class="hljs-title class_">Prop</span> &#125; <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;vue-property-decorator&#x27;</span>;</span><br><span class="language-javascript"></span><br><span class="language-javascript"><span class="hljs-comment">// Headless component</span></span><br><span class="language-javascript"><span class="hljs-keyword">import</span> <span class="hljs-title class_">DropdownHeadlessComponent</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./headless&#x27;</span>;</span><br><span class="language-javascript"></span><br><span class="language-javascript">@<span class="hljs-title class_">Component</span></span><br><span class="language-javascript"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-keyword">class</span> <span class="hljs-title class_">DropdownComponent</span> <span class="hljs-keyword">extends</span> <span class="hljs-title class_ inherited__">Vue</span> &#123;</span><br><span class="language-javascript">  <span class="hljs-comment">// Event mapping configuration is externalized</span></span><br><span class="language-javascript">  @<span class="hljs-title class_">Prop</span>(&#123; <span class="hljs-attr">type</span>: <span class="hljs-title class_">Object</span>, <span class="hljs-attr">default</span>: <span class="hljs-function">() =&gt;</span> (&#123;&#125;) &#125;)</span><br><span class="language-javascript">  private readonly eventMap!: &#123; [<span class="hljs-attr">key</span>: string]: any &#125;;</span><br><span class="language-javascript"></span><br><span class="language-javascript">  private <span class="hljs-attr">popUpEventName</span>: string = <span class="hljs-string">&#x27;&#x27;</span>;</span><br><span class="language-javascript"></span><br><span class="language-javascript">  private <span class="hljs-attr">isPopUpShown</span>: boolean = <span class="hljs-literal">false</span>;</span><br><span class="language-javascript"></span><br><span class="language-javascript">  private <span class="hljs-title function_">handlePopUp</span>(): <span class="hljs-keyword">void</span> &#123;</span><br><span class="language-javascript">    <span class="hljs-variable language_">this</span>.<span class="hljs-property">isPopUpShown</span> = <span class="hljs-literal">true</span>;</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript">  <span class="hljs-comment">// Initialize the headless component instance and related aspects</span></span><br><span class="language-javascript">  private <span class="hljs-title function_">initHeadless</span>(): <span class="hljs-keyword">void</span> &#123;</span><br><span class="language-javascript">    <span class="hljs-keyword">const</span> hc = <span class="hljs-keyword">new</span> <span class="hljs-title class_">DropdownHeadlessComponent</span>();</span><br><span class="language-javascript"></span><br><span class="language-javascript">    hc.<span class="hljs-title function_">setEventMap</span>(<span class="hljs-variable language_">this</span>.<span class="hljs-property">eventMap</span>);</span><br><span class="language-javascript"></span><br><span class="language-javascript">    <span class="hljs-variable language_">this</span>.<span class="hljs-property">popUpEventName</span> = hc.<span class="hljs-title function_">getEventName</span>(<span class="hljs-string">&#x27;pop-up&#x27;</span>);</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript"></span><br><span class="language-javascript">  public <span class="hljs-title function_">created</span>(): <span class="hljs-keyword">void</span> &#123;</span><br><span class="language-javascript">    <span class="hljs-variable language_">this</span>.<span class="hljs-title function_">initHeadless</span>();</span><br><span class="language-javascript">  &#125;</span><br><span class="language-javascript">&#125;</span><br><span class="language-javascript"></span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>If you want to support multiple technology stacks and platforms, there are currently two main strategies: implementing structural components separately in each technology stack and platform; or using tools like <a target="_blank" rel="noopener" href="https://taro.jd.com/">Taro</a> and <a target="_blank" rel="noopener" href="https://uniapp.dcloud.io/">uni-app</a> for transpilation.</p>
+<h2 id="Customizability"><a href="#Customizability" class="headerlink" title="Customizability"></a>Customizability</h2><p>The component architecture described above divides a UI component, which could easily become a mishmash, into style components, visual components, headless components, and structural components according to the separation of concerns. This architecture greatly enhances the reusability of each part. Except for the structural components, which have the strongest variability, the other components will remain largely unchanged once they reach a certain level of maturity. If you need to switch technology stacks or support a new platform, you only need to implement the structural components once, and the other components can be used as is.</p>
+<p>Not only is reusability improved, but customizability is also enhanced. Based on the stage of the program lifecycle in which custom code&#x2F;configuration is combined with the program, customizability is organized into the following table:</p>
+<table>
+<thead>
+<tr>
+<th>Customizable Point</th>
+<th>Edit Time&#x2F;Compile Time</th>
+<th>Runtime</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Theme Style</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Visual Structure</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Trigger Events</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Business Logic</td>
+<td>✓</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>Content Structure</td>
+<td>✓</td>
+<td>✗</td>
+</tr>
+</tbody></table>
+<p>If the code of the style component is written as in the example, it does not support runtime customization. It needs to be slightly modified:</p>
+<figure class="highlight css"><table><tr><td class="code"><pre><code class="hljs css">// Unmodified<br>$sc<span class="hljs-attr">--font-size</span>: <span class="hljs-number">14px</span> !default;<br><br>// Modified using CSS custom properties<br>$sc<span class="hljs-attr">--font-size</span>: <span class="hljs-built_in">var</span>(--sc-font-size, <span class="hljs-number">14px</span>) !default;<br></code></pre></td></tr></table></figure>
+
+<h2 id="Component-Specifications"><a href="#Component-Specifications" class="headerlink" title="Component Specifications"></a>Component Specifications</h2><p>Each UI component should be regarded as an independent software package or module, so all aspects of it should be complete – in addition to the code that implements the UI component, there should also be detailed usage documentation, interactive online demos, comprehensive test code, and metadata for some automated processing.</p>
+<p>Still taking the dropdown menu component as an example, the directory structure of the related files would be roughly as follows:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">dropdown<br>   ├── demo<br>   │   └── ...<br>   ├── test<br>   │   └── ...<br>   ├── changelog.md<br>   ├── headless.ts<br>   ├── index.ts<br>   ├── metadata.yml<br>   ├── package.json<br>   ├── readme.md<br>   ├── structure.vue<br>   └── style.scss<br></code></pre></td></tr></table></figure>
+
+<p>For code writing, you can refer to the code style guide that I have summarized and organized: <a target="_blank" rel="noopener" href="https://ntks.ourai.ws/guides/coding-style/">https://ntks.ourai.ws/guides/coding-style/</a>.</p>
+<p>Additionally, when integrating visual components in structural components, use <a target="_blank" rel="noopener" href="https://github.com/css-modules/css-modules">CSS Modules</a> to avoid unexpected effects caused by external style code.</p>
+<h2 id="Conclusion"><a href="#Conclusion" class="headerlink" title="Conclusion"></a>Conclusion</h2><p>Based on the feature model derived in the previous article of this series, this article proposes a component architecture aimed at “constructing interchangeable UI components”, mainly consisting of style components, visual components, headless components, and structural components. Except for structural components, the reusability of the other components is very high.</p>
+<p>When a UI component is interchangeable, it becomes possible to do some interesting and valuable things around it.</p>
+<p>In the end, the example code in the text is written to help with understanding and is for reference only. ;-)</p>
+
+</div>
+      <footer class="Article-footer col-md-3">
+  
+  <div class="Widget Widget--share">
+    <div class="Widget-body">
+      <p>分享到<i class="fa fa-share-alt"></i></p>
+      <div class="social-share" data-sites="wechat,weibo,twitter"></div>
+    </div>
+  </div>
+
+
+  <section class="Widget Widget--toc">
+  <div class="Widget-header">
+    <h2 class="Widget-title">目录</h2>
+  </div>
+  <div class="Widget-body"></div>
+</section>
+
+
+</footer>
+      
+      
+    </article>
+    
+
+  </div>
+</main>
+<footer class="Page-footer Footer">
+  <div class="container">
+    
+    <div class="Footer-description">
+      
+        <!-- Important links -->
+        <nav class="Footer-navs">
+          <ul><li><a href="https://x.com/ntksol?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>X</span></a>
+</li><li><a href="https://github.com/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>GitHub</span></a>
+</li><li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>LinkedIn</span></a>
+</li></ul>
+        </nav>
+      
+      
+        <!-- Copyright -->
+        <div class="Footer-copyright">
+          <p>
+
+&copy; 2023-2025 <a href="https://ourai.pro?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow">Ourai L.</a>
+
+</p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+    <script>$('.Article-content > table').addClass('table table-bordered')</script>
+    
+<script src="/javascripts/ksio/vendors/share.min.js"></script>
+
+<script src="/javascripts/ksio/components/page.js"></script>
+
+<script src="/javascripts/ksio/components/toc.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.zh-CN.js"></script>
+
+<script src="/javascripts/ksio/initializers/time.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.lazyload.js"></script>
+
+<script src="/javascripts/ksio/initializers/lazyload.js"></script>
+
+  </body>
+</html>
+
