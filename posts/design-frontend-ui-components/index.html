@@ -1,0 +1,348 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <title>How To Design Front-end UI Components</title>
+
+
+  <meta property="og:title" content="How To Design Front-end UI Components">
+
+
+  <meta name="description" content="This article is an introduction to the flag set by WeChat Moments.">
+  <meta property="og:description" content="This article is an introduction to the flag set by WeChat Moments.">
+
+
+
+  
+    
+  
+
+
+  <meta name="keywords" content="Ourai.PRO,ourai.pro,Ourai Lin,Ourai L.,Ourai,Ourairyu,欧雷,欧雷流,anti-chaos,ntks,反混沌,反混沌工程师,DnA ENGR,dna engr,frontend,front-end,indie developer">
+
+
+<!-- 页面渲染兼容性 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<!-- 订阅 -->
+
+<meta name="theme-color" content="#0871ab">
+<link rel="shortcut icon" href="/images/ksio/favicon.ico">
+
+
+    
+<link rel="stylesheet" href="/stylesheets/global.css">
+
+    
+<link rel="stylesheet" href="/stylesheets/ksio/vendors/share.css">
+
+<link rel="stylesheet" href="/stylesheets/pages/post.css">
+
+    
+<script src="/javascripts/ksio/vendors/jquery-1.11.3.min.js"></script>
+
+    
+<script src="/javascripts/ksio/vendors/bootstrap.min.js"></script>
+
+  </head>
+  
+  
+  <body class="Page" itemscope itemtype="http://schema.org/WebPage">
+    
+
+  <header class="Page-header">
+  <div class="navbar navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        
+          <button class="navbar-toggle collapsed" type="button" data-target=".Page-navs" data-toggle="collapse">
+            <span class="sr-only">Toggle navs</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+        
+          
+
+
+  <a class="navbar-brand" href="/">Ourai.PRO</a>
+
+
+        
+      </div>
+      <!-- Nav menus -->
+      <nav class="Page-navs navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Blog <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="/posts/">Posts</a>
+</li>
+  
+
+  
+    <li><a href="https://x.com/ntksol?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Tweets</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Works <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://producthunt.com/@ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Products</a>
+</li>
+  
+
+  
+    <li><a href="https://github.com/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Open-source software</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Cooperation <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.upwork.com/freelancers/~016baa7fae7cfff661?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Services</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">About <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Resume</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li><a href="https://yaol.in/?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">中文</a>
+</li>
+  
+
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="Page-content">
+  
+
+  <!-- 内容主体 -->
+  <div class="container">
+    <article class="Page-main Article">
+      <header class="Article-header">
+        
+  
+    <h1 class="Article-title">How To Design Front-end UI Components</h1>
+  
+  
+
+
+      </header>
+      <div class="Article-content col-md-9"><p>In the series of articles on “<a href="/series/talking-about-frontend-ui-components/">Talking About Front-end UI Components</a>“, the article “<a href="/posts/the-system-of-frontend-ui-components/">The System of Front-end UI Components</a>“ initially outlined the architectural design of UI components. This article will further elaborate on the parts that were briefly mentioned in that article and discuss the points to consider when designing a UI component.</p>
+<h2 id="Directory-Structure"><a href="#Directory-Structure" class="headerlink" title="Directory Structure"></a>Directory Structure</h2><p>Based on the directory structure listed in “<a href="/posts/the-system-of-frontend-ui-components/">The System of Front-end UI Components</a>“, some adjustments have been made:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">component<br>   ├── demo                       # Files related to examples<br>   │   └── ...<br>   ├── test                       # Files related to testing<br>   │   └── ...<br>   ├── style                      # Files related to styling<br>   │   ├── _functions.scss        # Sass functions (optional)<br>   │   ├── _properties.scss       # CSS custom properties (required), part of the style component, for external runtime customization of theme styles<br>   │   ├── _variables.scss        # Sass variables (required), part of the style component, for external edit time/compile time customization of theme styles<br>   │   ├── _mixins.scss           # Sass mixins (optional)<br>   │   └── _rules.scss            # CSS rules (required), visual components, with the role of constraining structure<br>   ├── typing                     # Files related to types<br>   │   ├── custom-properties.ts   # CSS custom property configuration (required), for runtime generation of CSS custom properties<br>   │   ├── aliases.ts             # Type aliases (optional)<br>   │   ├── interfaces.ts          # Structural component interfaces (required)<br>   │   └── index.ts               # Unified export of types<br>   ├── HeadlessComponent.ts       # Headless component, UI component logic unrelated to structure<br>   ├── Component.vue              # Structural component, influenced by the source code of JS libraries/frameworks for generating HTML, platform-specific view structure description languages<br>   ├── index.ts                   # Unified export of the module<br>   ├── changelog.md               # Component change log<br>   ├── readme.md                  # Component documentation<br>   ├── metadata.yml<br>   └── package.json<br></code></pre></td></tr></table></figure>
+
+<h2 id="Naming-Conventions"><a href="#Naming-Conventions" class="headerlink" title="Naming Conventions"></a>Naming Conventions</h2><h3 id="HTML-CSS-class"><a href="#HTML-CSS-class" class="headerlink" title="HTML &amp; CSS class"></a>HTML &amp; CSS class</h3><p>Before the popularization of component-based development, also known as “componentization”, in the web frontend field, there was a magical way of naming classes that could be considered a methodology—atomic classes.</p>
+<p>Those who started their career in frontend development during the reign of React and Vue might have never heard of or seen what “atomic classes” are:</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css"><span class="hljs-selector-class">.w-100</span> &#123; <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>; &#125;</span><br><span class="language-css"><span class="hljs-selector-class">.w-150</span> &#123; <span class="hljs-attribute">width</span>: <span class="hljs-number">150px</span>; &#125;</span><br><span class="language-css"><span class="hljs-selector-class">.h-100</span> &#123; <span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>; &#125;</span><br><span class="language-css"><span class="hljs-selector-class">.h-150</span> &#123; <span class="hljs-attribute">height</span>: <span class="hljs-number">150px</span>; &#125;</span><br><span class="language-css"></span><br><span class="language-css"><span class="hljs-selector-class">.m-10</span> &#123; <span class="hljs-attribute">margin</span>: <span class="hljs-number">10px</span>; &#125;</span><br><span class="language-css"><span class="hljs-selector-class">.m-20</span> &#123; <span class="hljs-attribute">margin</span>: <span class="hljs-number">20px</span>; &#125;</span><br><span class="language-css"><span class="hljs-selector-class">.mt-10</span> &#123; <span class="hljs-attribute">margin-top</span>: <span class="hljs-number">10px</span>; &#125;</span><br><span class="language-css"><span class="hljs-selector-class">.ml-15</span> &#123; <span class="hljs-attribute">margin-left</span>: <span class="hljs-number">15px</span>; &#125;</span><br><span class="language-css"></span><br><span class="language-css"><span class="hljs-selector-class">.bgc-red</span> &#123; <span class="hljs-attribute">background-color</span>: red; &#125;</span><br><span class="language-css"><span class="hljs-selector-class">.bgc-green</span> &#123; <span class="hljs-attribute">background-color</span>: green; &#125;</span><br><span class="language-css"></span><br><span class="language-css"><span class="hljs-selector-class">.c-fff</span> &#123; <span class="hljs-attribute">color</span>: <span class="hljs-number">#fff</span>; &#125;</span><br><span class="language-css"><span class="hljs-selector-class">.c-000</span> &#123; <span class="hljs-attribute">color</span>: <span class="hljs-number">#000</span>; &#125;</span><br><span class="language-css"></span><br><span class="language-css"><span class="hljs-selector-class">.f-l</span> &#123; <span class="hljs-attribute">float</span>: left; &#125;</span><br><span class="language-css"><span class="hljs-selector-class">.f-r</span> &#123; <span class="hljs-attribute">float</span>: right; &#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w-150 h-150 f-l mt-10 ml-15 bgc-red c-000&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;w-100 h-100 f-r m-20 bgc-green c-fff&quot;</span>&gt;</span>Atomic classes<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>As you can see, this methodology emphasizes breaking down each combination of CSS properties and values into classes, with naming typically in the form of “property name + property value”. Whether the property names and values are abbreviated and whether there are separators like <code>-</code> or <code>_</code> depends on the writer’s discipline and mood.</p>
+<p>The “advantage” of atomic classes is that they break down classes to a very fine level, very “atomic”; the atomic nature brings strong combinability, so any page can be achieved through the organic combination of atomic classes. There’s only what you can’t think of, not what you can’t do! One day, if the designer says to change the button’s left margin from 15 pixels to 10 pixels—no problem! Just replace the <code>&lt;button&gt;</code>‘s <code>.ml-15</code> with <code>.ml-10</code>! A piece of cake!</p>
+<p>Why are the “advantages” mentioned above in quotes? I wonder, apart from possibly writing fewer characters, what’s the difference between atomic classes and inline styles? Are they more semantic? Is readability better? Does it reduce the mental burden? Is it easier to maintain in medium to large projects?</p>
+<p>With the popularization of component-based development in the web frontend field, the身影 of atomic classes gradually disappeared; but recently, due to the rising popularity of a certain CSS framework, atomic classes have made a comeback…</p>
+<p>So, are atomic classes or style atomization wrong? No, it’s all the fault of the times! Ah, no! It’s all the fault of the utility-first mindset!</p>
+<p>Classes should be semantic, especially in component-based development, allowing one to understand what it is at a glance in the view structure, not what it looks like.</p>
+<p>Additionally, one of the characteristics of component-based development is encapsulation, shielding internal details from the outside; the utility-first mindset, on the other hand, exposes details, which is “incompatible” with the philosophy of component-based development.</p>
+<p>In a component-based development system, classes should be component-first, that is, applying CSS components, with utility classes as auxiliary. In other words, when the styles of a CSS component do not exactly match the actual requirements, utility classes are used for “fine-tuning”, rather than rewriting the styles of the CSS component from the outside—this is also a form of combination.</p>
+<p>For example, a button CSS component itself will not stretch horizontally to fill the container, but the designer wants it to take up a full line—</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="language-css"></span><br><span class="language-css"><span class="hljs-selector-class">.Button</span> &#123;</span><br><span class="language-css">  <span class="hljs-attribute">display</span>: inline-block;</span><br><span class="language-css">  <span class="hljs-attribute">text-align</span>: center;</span><br><span class="language-css">&#125;</span><br><span class="language-css"></span><br><span class="language-css"><span class="hljs-selector-class">.u-block</span> &#123;</span><br><span class="language-css">  <span class="hljs-attribute">display</span>: block <span class="hljs-meta">!important</span>;</span><br><span class="language-css">&#125;</span><br><span class="language-css"></span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Button u-block&quot;</span>&gt;</span>CSS component<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>In the UI component system described in this series of articles, CSS components are called “visual components”, and class naming follows a variant of BEM—the <a target="_blank" rel="noopener" href="https://github.com/suitcss/suit/blob/master/doc/naming-conventions.md">SUIT CSS naming convention</a>.</p>
+<p><a target="_blank" rel="noopener" href="http://suitcss.github.io/">SUIT CSS</a> was founded around 2013 by <a target="_blank" rel="noopener" href="http://nicolasgallagher.com/">Nicolas Gallagher</a>, the author of <a target="_blank" rel="noopener" href="http://necolas.github.io/normalize.css/">Normalize.css</a>. Although it is now essentially unmaintained, its ideas based on component development still have relevance.</p>
+<p>I have been using the SUIT CSS naming convention since 2014 and will continue to use it. In the CSS-related example code of this series of articles, class naming follows this convention. In a component-based development system, it is strongly recommended to follow the SUIT CSS naming convention for class naming—</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">/* Component */</span><br><span class="hljs-selector-class">.ComponentName</span> &#123;&#125;<br><br><span class="hljs-comment">/* Component modifier */</span><br><span class="hljs-selector-class">.ComponentName--modifierName</span> &#123;&#125;<br><br><span class="hljs-comment">/* Component descendant */</span><br><span class="hljs-selector-class">.ComponentName-descendentName</span> &#123;&#125;<br><br><span class="hljs-comment">/* Component state */</span><br><span class="hljs-selector-class">.ComponentName</span><span class="hljs-selector-class">.is-stateOfComponent</span> &#123;&#125;<br><br><span class="hljs-comment">/* Utility */</span><br><span class="hljs-selector-class">.u-utilityName</span> &#123;&#125;<br></code></pre></td></tr></table></figure>
+
+<p>The component base class <code>.ComponentName</code> and its descendants <code>.ComponentName-descendentName</code> are easy to understand; they naturally have a hierarchical relationship and共同describe the structure of a UI component—</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- Using semantic HTML tags --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">article</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Article&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">header</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Article-header&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Article-title&quot;</span>&gt;</span>Article Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">header</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">section</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Article-section&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Section paragraph<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">section</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">footer</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Article-footer&quot;</span>&gt;</span>Some other information<span class="hljs-tag">&lt;/<span class="hljs-name">footer</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">article</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- Using non-semantic HTML tags, which better highlights the role of semantic class naming --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Article&quot;</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Article-header&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h1</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Article-title&quot;</span>&gt;</span>Article Title<span class="hljs-tag">&lt;/<span class="hljs-name">h1</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Article-section&quot;</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">h2</span>&gt;</span>Section Title<span class="hljs-tag">&lt;/<span class="hljs-name">h2</span>&gt;</span><br>    <span class="hljs-tag">&lt;<span class="hljs-name">p</span>&gt;</span>Section paragraph<span class="hljs-tag">&lt;/<span class="hljs-name">p</span>&gt;</span><br>  <span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br>  <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Article-footer&quot;</span>&gt;</span>Some other information<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>However, component modifiers <code>.ComponentName--modifierName</code> and component states <code>.ComponentName.is-stateOfComponent</code> can sometimes be difficult to distinguish when to use which. Take the button CSS component as an example, its color, availability, and size, which should use modifiers? Which are considered states?</p>
+<p>I provide a simple criterion: if it is a characteristic of the UI component, that is, it will not change due to any conditions, use a modifier; if it changes due to the satisfaction of a certain condition, then it is a state—</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-comment">&lt;!-- Using semantic HTML tags, large (size) primary (functional color) action button --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Button Button--primary Button--large&quot;</span>&gt;</span>Add<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- Using non-semantic HTML tags, disabled (state) danger (functional color) action button --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">span</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;Button Button--danger is-disabled&quot;</span>&gt;</span>Batch Delete<span class="hljs-tag">&lt;/<span class="hljs-name">span</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>It should be noted that component modifiers and component states are both directly added to the root node of the UI component, that is, they should follow the component base class and should not be used on component descendants. If a component descendant needs to programmatically change its own style, use utility classes instead of state classes. When the structure, function, etc., of a component descendant becomes complex, it should be encapsulated into a new component.</p>
+<h3 id="Sass-Variables-and-CSS-Custom-Properties"><a href="#Sass-Variables-and-CSS-Custom-Properties" class="headerlink" title="Sass Variables and CSS Custom Properties"></a>Sass Variables and CSS Custom Properties</h3><p>In the UI component system described in this series of articles, Sass variables and CSS custom properties are collectively referred to as “style components”, which are responsible for theme customization and serve as the integration point with the design system. Among them, Sass variables are for edit time&#x2F;compile time, while CSS custom properties are for runtime.</p>
+<p>Here, the naming conventions for Sass variables and CSS custom properties are similar, roughly in the form of <code>&lt;namespace&gt;-&lt;component-name&gt;[-descendent-name|-modifier-name][-state]-(variable-name|property-name)</code>.</p>
+<p>Since I am working on a semi-finished UI component set called “<a target="_blank" rel="noopener" href="https://petals-ui.github.io/">Petals</a>“ based on the ideas described in this series of articles, the <code>&lt;namespace&gt;</code> part in the subsequent example code will basically use <code>petals</code>.</p>
+<p>Sass variables start with <code>$__petals</code> or <code>$petals</code>, connected to the component name with <code>--</code>, the former is for internal use (private), which upper-level developers do not need to care about, and the latter is for external customization during edit time&#x2F;compile time; CSS custom properties start with <code>--petals</code>, connected to the component name with <code>-</code>—</p>
+<figure class="highlight scss"><table><tr><td class="code"><pre><code class="hljs scss"><span class="hljs-comment">/* Actual form: &lt;namespace&gt;-&lt;component-name&gt;-(variable-name|property-name) */</span><br>$__petals<span class="hljs-attr">--button-font-size</span>: --petals-button-font-size;<br>$__petals<span class="hljs-attr">--button-line-height</span>: --petals-button-line-height;<br><br><span class="hljs-comment">/* Actual form: &lt;namespace&gt;-&lt;component-name&gt;-&lt;modifier-name&gt;-&lt;state&gt;-(variable-name|property-name) */</span><br><span class="hljs-variable">$petals--button-primary-focus-color</span>: <span class="hljs-built_in">var</span>($__petals--primary-active-color, <span class="hljs-variable">$petals--primary-active-color</span>) !default;<br><span class="hljs-variable">$petals--button-primary-focus-bg</span>: <span class="hljs-built_in">var</span>($__petals--primary-active-bg, <span class="hljs-variable">$petals--primary-active-bg</span>) !default;<br></code></pre></td></tr></table></figure>
+
+<p>The CSS components mentioned above, that is, visual components, encapsulate styles and shield details from the outside; style components do the opposite, achieving style customizability by dynamically exposing the CSS property values used by visual components, which becomes like utility-first atomic classes that expose style details.</p>
+<p>However, unlike utility-first CSS frameworks, style components only bring mental burden to those who perform theme customization, and have no impact on other upper-level developers.</p>
+<h2 id="Business-Agnostic"><a href="#Business-Agnostic" class="headerlink" title="Business-Agnostic"></a>Business-Agnostic</h2><p>The main subject of this series of articles is business-agnostic UI components, and when simply saying “UI components” or “components”, it also refers to this; business-related UI components are called “widgets” in the UI component system described in this series of articles.</p>
+<blockquote>
+  <p>Based on the generality of UI components, they can be divided into "general components" and "specialized components". "General components" are UI components that can meet most conventional scenarios, and their collection is usually packaged and released as a software package as a "component library"; "specialized components" exist to solve the needs of some special scenarios, such as data grids, various editors, etc., which are generally packaged separately.</p>
+  <footer>Ourai <cite><a href="/posts/the-features-of-frontend-ui-components/">The Features of Front-end UI Components</a></cite></footer>
+</blockquote>
+
+<p>The “general components” and “specialized components” mentioned above are both business-agnostic UI components.</p>
+<p>What is a UI component? It can be considered a function that returns a view structure, and the properties (prop) and events of a UI component are the parameters of this “function”. Properties are data for active communication between the external and internal parts of the UI component, and events are callback functions for passive communication.</p>
+<p>A well-encapsulated function should have as few parameters as possible, each parameter should be clear in semantics, and there must be a real reason for its existence—the design of UI component properties and events should also be like this.</p>
+<p>When designing UI component properties, first consider whether the property to be added belongs to the characteristics of the UI component itself? If not, what is the characteristic of the UI component corresponding to the value of the property to be added? If neither of these questions is answered, then this property may not be necessary.</p>
+<p>UI component properties should only be related to their own characteristics and not to business significance—natural characteristics are inherent, while business significance is an additional characteristic.</p>
+<p>For example, a button component usually has several semantics related to business, such as “primary”, “secondary”, and “danger”. How should the component’s properties be designed to meet this demand?</p>
+<p><a target="_blank" rel="noopener" href="https://ant.design/components/button-cn/">Ant Design</a> and <a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/button">Element</a> use <code>type</code> attribute values or separate them into individual attributes—</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>Primary button in Ant Design<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">Button</span>&gt;</span>Secondary (default) button in Ant Design<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">Button</span> <span class="hljs-attr">danger</span>&gt;</span>Danger button in Ant Design<span class="hljs-tag">&lt;/<span class="hljs-name">Button</span>&gt;</span><br><br><span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>Primary button in Element<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">el-button</span>&gt;</span>Secondary (default) button in Element<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">el-button</span> <span class="hljs-attr">type</span>=<span class="hljs-string">&quot;danger&quot;</span>&gt;</span>Danger button in Element<span class="hljs-tag">&lt;/<span class="hljs-name">el-button</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>According to the UI component property design principles mentioned above, “primary”, “secondary”, and “danger” mainly manifest as color changes when applied to the button component. Therefore, the natural characteristic “color” of the button should be used to meet the same demand with the <code>color</code> attribute—</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><code class="hljs html"><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&quot;primary&quot;</span>&gt;</span>Primary button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span>&gt;</span>Secondary (default) button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&quot;danger&quot;</span>&gt;</span>Danger button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><br><span class="hljs-comment">&lt;!-- You can also extend to any number of other colored buttons --&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&quot;f00&quot;</span>&gt;</span>Red button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&quot;yellow&quot;</span>&gt;</span>Yellow button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br><span class="hljs-tag">&lt;<span class="hljs-name">button</span> <span class="hljs-attr">color</span>=<span class="hljs-string">&quot;blue&quot;</span>&gt;</span>Blue button<span class="hljs-tag">&lt;/<span class="hljs-name">button</span>&gt;</span><br></code></pre></td></tr></table></figure>
+
+<p>If a set of characteristics of a UI component is binary oppositional, such as “disabled” and “enabled”, choose the one that is not effective by default as the attribute, and the attribute value is a boolean, with a default value of <code>false</code>.</p>
+<p>Still taking the button component as an example: if the default is “disabled”, then design an <code>enabled</code> attribute representing “enabled”, with a default value of <code>false</code>. As long as the component is passed <code>enabled</code> when it is used, it becomes “enabled”; vice versa.</p>
+<p>Additionally, the values of UI component properties should be as simple data types as possible, that is, numbers, strings, etc.</p>
+<h2 id="Business-Related"><a href="#Business-Related" class="headerlink" title="Business-Related"></a>Business-Related</h2><p>Business-related UI components, that is, the “widgets” mentioned above, have different focuses from business-agnostic UI components, so the principles followed and the considerations in design are also not the same, and may even be quite different. Generally, techniques such as context and dependency injection are used.</p>
+<p>Since business-related UI components are not the main subject of this series of articles, they will not be discussed further here.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>A few days ago, I made a pledge in my social circle—</p>
+<p><img src="/flag.jpeg" alt="Pledge"></p>
+<p>This article is the “prelude” to that pledge.</p>
+
+</div>
+      <footer class="Article-footer col-md-3">
+  
+  <div class="Widget Widget--share">
+    <div class="Widget-body">
+      <p>分享到<i class="fa fa-share-alt"></i></p>
+      <div class="social-share" data-sites="wechat,weibo,twitter"></div>
+    </div>
+  </div>
+
+
+  <section class="Widget Widget--toc">
+  <div class="Widget-header">
+    <h2 class="Widget-title">目录</h2>
+  </div>
+  <div class="Widget-body"></div>
+</section>
+
+
+</footer>
+      
+      
+    </article>
+    
+
+  </div>
+</main>
+<footer class="Page-footer Footer">
+  <div class="container">
+    
+    <div class="Footer-description">
+      
+        <!-- Important links -->
+        <nav class="Footer-navs">
+          <ul><li><a href="https://x.com/ntksol?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>X</span></a>
+</li><li><a href="https://github.com/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>GitHub</span></a>
+</li><li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>LinkedIn</span></a>
+</li></ul>
+        </nav>
+      
+      
+        <!-- Copyright -->
+        <div class="Footer-copyright">
+          <p>
+
+&copy; 2023-2025 <a href="https://ourai.pro?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow">Ourai L.</a>
+
+</p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+    <script>$('.Article-content > table').addClass('table table-bordered')</script>
+    
+<script src="/javascripts/ksio/vendors/share.min.js"></script>
+
+<script src="/javascripts/ksio/components/page.js"></script>
+
+<script src="/javascripts/ksio/components/toc.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.zh-CN.js"></script>
+
+<script src="/javascripts/ksio/initializers/time.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.lazyload.js"></script>
+
+<script src="/javascripts/ksio/initializers/lazyload.js"></script>
+
+  </body>
+</html>
+
