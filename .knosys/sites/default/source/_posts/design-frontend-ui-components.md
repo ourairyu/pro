@@ -202,7 +202,7 @@ The CSS components mentioned above, that is, visual components, encapsulate styl
 
 However, unlike utility-first CSS frameworks, style components only bring mental burden to those who perform theme customization, and have no impact on other upper-level developers.
 
-## Business-Agnostic
+## Business-agnostic
 
 The main subject of this series of articles is business-agnostic UI components, and when simply saying "UI components" or "components", it also refers to this; business-related UI components are called "widgets" in the UI component system described in this series of articles.
 
@@ -254,7 +254,7 @@ Still taking the button component as an example: if the default is "disabled", t
 
 Additionally, the values of UI component properties should be as simple data types as possible, that is, numbers, strings, etc.
 
-## Business-Related
+## Business-related
 
 Business-related UI components, that is, the "widgets" mentioned above, have different focuses from business-agnostic UI components, so the principles followed and the considerations in design are also not the same, and may even be quite different. Generally, techniques such as context and dependency injection are used.
 
