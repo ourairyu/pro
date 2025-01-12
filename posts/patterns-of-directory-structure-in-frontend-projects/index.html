@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <title>Patterns of Directory Structure in Front-end Projects</title>
+
+
+  <meta property="og:title" content="Patterns of Directory Structure in Front-end Projects">
+
+
+  <meta name="description" content="Let’s talk about several patterns of dividing the directory structure of front-end projects.">
+  <meta property="og:description" content="Let’s talk about several patterns of dividing the directory structure of front-end projects.">
+
+
+
+  
+    
+  
+
+
+  <meta name="keywords" content="Ourai.PRO,ourai.pro,Ourai Lin,Ourai L.,Ourai,Ourairyu,欧雷,欧雷流,anti-chaos,ntks,反混沌,反混沌工程师,DnA ENGR,dna engr,frontend,front-end,indie developer">
+
+
+<!-- 页面渲染兼容性 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<!-- 订阅 -->
+
+<meta name="theme-color" content="#0871ab">
+<link rel="shortcut icon" href="/images/ksio/favicon.ico">
+
+
+    
+<link rel="stylesheet" href="/stylesheets/global.css">
+
+    
+<link rel="stylesheet" href="/stylesheets/ksio/vendors/share.css">
+
+<link rel="stylesheet" href="/stylesheets/pages/post.css">
+
+    
+<script src="/javascripts/ksio/vendors/jquery-1.11.3.min.js"></script>
+
+    
+<script src="/javascripts/ksio/vendors/bootstrap.min.js"></script>
+
+  </head>
+  
+  
+  <body class="Page" itemscope itemtype="http://schema.org/WebPage">
+    
+
+  <header class="Page-header">
+  <div class="navbar navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        
+          <button class="navbar-toggle collapsed" type="button" data-target=".Page-navs" data-toggle="collapse">
+            <span class="sr-only">Toggle navs</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+        
+          
+
+
+  <a class="navbar-brand" href="/">Ourai.PRO</a>
+
+
+        
+      </div>
+      <!-- Nav menus -->
+      <nav class="Page-navs navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Blog <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="/posts/">Posts</a>
+</li>
+  
+
+  
+    <li><a href="https://x.com/ntksol?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Tweets</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Works <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://producthunt.com/@ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Products</a>
+</li>
+  
+
+  
+    <li><a href="https://github.com/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Open-source software</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Cooperation <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.upwork.com/freelancers/~016baa7fae7cfff661?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Services</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">About <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Resume</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li><a href="https://yaol.in/?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">中文</a>
+</li>
+  
+
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="Page-content">
+  
+
+  <!-- 内容主体 -->
+  <div class="container">
+    <article class="Page-main Article">
+      <header class="Article-header">
+        
+  
+    <h1 class="Article-title">Patterns of Directory Structure in Front-end Projects</h1>
+  
+  
+
+
+      </header>
+      <div class="Article-content col-md-9"><p>Before you continue reading, I hope everyone can first answer a question in their hearts - what is the significance of organizing directory structures?</p>
+<h2 id="Significance"><a href="#Significance" class="headerlink" title="Significance"></a>Significance</h2><p>Regarding the question above, some people might answer: “To standardize the storage location of files for easy retrieval.” This is not wrong, but it’s too superficial and doesn’t get to the essence.</p>
+<p>Others might say: “The directory structure is actually a reflection of module division and is part of the architecture. Its division method should guide developers to place files in the correct locations.” I think this statement gets to the essence and is also my current view.</p>
+<p>Precisely because people have different understandings of the significance of organizing directory structures, various patterns of directory structure division have emerged.</p>
+<h2 id="Patterns"><a href="#Patterns" class="headerlink" title="Patterns"></a>Patterns</h2><p>For a front-end project, there are mainly three patterns of directory structure division:</p>
+<h3 id="Wild"><a href="#Wild" class="headerlink" title="Wild"></a>Wild</h3><p>This is a very common pattern adopted by most projects, with a directory structure roughly as follows:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">project/src<br>   ├── api<br>   │   └── ...<br>   ├── assets<br>   │   └── ...<br>   ├── components<br>   │   └── ...<br>   ├── pages<br>   │   └── ...<br>   ├── plugins<br>   │   └── ...<br>   ├── router<br>   │   └── ...<br>   ├── types<br>   │   └── ...<br>   ├── App.vue<br>   └── main.ts<br></code></pre></td></tr></table></figure>
+
+<p>Although this example is a Vue project, whether it’s a React project, a jQuery project, or other non-Angular projects, this pattern is generally adopted.</p>
+<p>The biggest feature of this pattern is that it is “intuitive,” dividing according to the type of file or the “role” it plays: pure resource files are placed in <code>assets</code>, UI components in <code>components</code>, and all pages in <code>pages</code>…</p>
+<p>What about the advantages of this pattern? If being “intuitive” can be considered an advantage, I think that’s its only one… This “advantage” allows for high flexibility in development; as long as there’s a demand, just go for it, regardless of the consequences!</p>
+<p>However, in reality, being “intuitive” is the root cause of many of its disadvantages—</p>
+<p>It easily leads to a “page-driven” mindset, meaning that whether it’s product requirements, UI design, or development, everything is thought about, communicated, and collaborated around pages, rather than domains or businesses; the consequence is that neither product requirements, UI design, nor development is systematic.</p>
+<p>Pages tend to couple a lot of logic that is not directly related to display and interaction, and these logics cannot be well automated tested.</p>
+<p>Modules are usually divided according to the menu structure, and resources of the same module are scattered everywhere. If the business requirements corresponding to the module change, one has to search everywhere for the files to modify. When the project or personnel become complex, code maintenance becomes more difficult.</p>
+<p>The dependency relationships between modules are chaotic, with situations like B module pages depending on UI components defined in A module page folders, and B module pages depending on A module HTTP APIs while A module pages also depend on B module HTTP APIs in reverse.</p>
+<p>Moreover, it is difficult to see the shape of the front-end architecture in this pattern, and it lacks guidance and constraints for developers.</p>
+<p>The reason I call this pattern “wild” is that it is “intuitive,” “instinctive,” and has no constraints, not “tamed” by business requirements.</p>
+<p>It might seem like this pattern should not exist at all! But it does have its applicable scenarios, such as projects with a short life cycle, relatively simple functions, and no long-term maintenance.</p>
+<h3 id="Layered"><a href="#Layered" class="headerlink" title="Layered"></a>Layered</h3><p>When a project that needs long-term maintenance becomes increasingly complex, if it initially adopts the “wild” pattern, it may be time to consider a refactoring to solve and avoid the various problems it brings.</p>
+<p>A pattern more suitable for complex front-end projects than the “wild” pattern is the “presentation-domain-data” separation “layered” directory structure. It should be noted that the “domain” here does not necessarily mean the strict “domain logic,” but can also be “business logic.”</p>
+<p><img src="/layered-architecture.png" alt="Presentation-Domain-Data Layered Architecture"></p>
+<p>Although it is “presentation-domain-data,” in a front-end project, most of the time only “presentation-domain” is enough:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">project/src<br>   ├── domain<br>   │   └── ...<br>   ├── presentation<br>   │   └── ...<br>   ├── shared<br>   │   └── ...<br>   ├── App.vue<br>   └── main.ts<br></code></pre></td></tr></table></figure>
+
+<p>It can be seen that, compared with the “wild” pattern, the <code>src</code> folder is divided into three folders named with relatively broad terms - the <code>presentation</code> and <code>domain</code> folders corresponding to “presentation-domain,” and the <code>shared</code> folder for storing shared resources.</p>
+<p>Shared resources are type definitions, utility functions, global styles, basic components, and other areas and business-irrelevant:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">shared<br>   ├── components<br>   │   ├── button<br>   │   │   └── ...<br>   │   ├── icon<br>   │   │   └── ...<br>   │   ├── ...<br>   │   └── index.ts<br>   ├── styles<br>   │   ├── normalize.scss<br>   │   ├── reset.scss<br>   │   └── utils.scss<br>   ├── types<br>   │   ├── ...<br>   │   └── index.ts<br>   ├── utils<br>   │   ├── date.ts<br>   │   ├── url.ts<br>   │   ├── ...<br>   │   └── index.ts<br>   └── ...<br></code></pre></td></tr></table></figure>
+
+<p>The domain layer only contains view library&#x2F;framework-agnostic code, so even if the view library&#x2F;framework is changed from Vue to React, etc., it will not affect the core domain logic&#x2F;business logic.</p>
+<p>Drawing on the ideas of Domain-Driven Design (DDD), first divide modules according to domains or businesses, and then maintain relevant files of domain models and business rules in each module; this part of the code will not change with the change of pages, but only with the change of business or the improvement of abstraction:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">domain<br>   ├── knowledge-base<br>   │   ├── model.ts<br>   │   ├── repository.ts<br>   │   ├── ...<br>   │   └── index.ts<br>   ├── knowledge-graph<br>   │   ├── model.ts<br>   │   ├── repository.ts<br>   │   ├── ...<br>   │   └── index.ts<br>   ├── robot<br>   │   ├── model.ts<br>   │   ├── repository.ts<br>   │   ├── ...<br>   │   └── index.ts<br>   └── ...<br></code></pre></td></tr></table></figure>
+
+<p><code>model.ts</code> describes the domain model or business entity, and <code>repository.ts</code> is mainly used for resource storage and retrieval; the structure of the data displayed and operated on the page is described in <code>model.ts</code>, and needs to be sent through the methods defined in <code>repository.ts</code> by requests or other ways to push or pull:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// model.ts</span><br><br>type <span class="hljs-title class_">RobotEntity</span> = &#123;<br>  id?: string;<br>  <span class="hljs-attr">name</span>: string;<br>  <span class="hljs-attr">description</span>: string;<br>&#125;;<br><br><span class="hljs-comment">// repository.ts</span><br><br><span class="hljs-keyword">class</span> <span class="hljs-title class_">RobotRepository</span> &#123;<br>  public <span class="hljs-keyword">async</span> <span class="hljs-title function_">getAll</span>(): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">RobotEntity</span>[]&gt; &#123;&#125;<br><br>  public <span class="hljs-keyword">async</span> <span class="hljs-title function_">getList</span>(<span class="hljs-attr">condition</span>: any): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">RobotEntity</span>[]&gt; &#123;&#125;<br><br>  public <span class="hljs-keyword">async</span> <span class="hljs-title function_">getOneById</span>(<span class="hljs-attr">id</span>: string): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-title class_">RobotEntity</span>&gt; &#123;&#125;<br><br>  public <span class="hljs-keyword">async</span> <span class="hljs-title function_">insert</span>(<span class="hljs-attr">data</span>: <span class="hljs-title class_">RobotEntity</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-keyword">void</span>&gt; &#123;&#125;<br><br>  public <span class="hljs-keyword">async</span> <span class="hljs-title function_">update</span>(<span class="hljs-attr">data</span>: <span class="hljs-title class_">RobotEntity</span>): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-keyword">void</span>&gt; &#123;&#125;<br><br>  public <span class="hljs-keyword">async</span> <span class="hljs-title function_">deleteOneById</span>(<span class="hljs-attr">id</span>: string): <span class="hljs-title class_">Promise</span>&lt;<span class="hljs-keyword">void</span>&gt; &#123;&#125;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>The data structure described in <code>model.ts</code> does not necessarily have to be consistent with what the backend returns, depending on the situation whether to be consistent and to what extent.</p>
+<p>In the <code>presentation</code> folder, maintain the code related to domains and businesses and affected by view libraries&#x2F;frameworks:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">presentation<br>   ├── aspects<br>   │   ├── http.ts<br>   │   ├── router.ts<br>   │   ├── ...<br>   │   └── index.ts<br>   ├── layouts<br>   │   └── ...<br>   ├── router<br>   │   └── ...<br>   ├── views<br>   │   ├── knowledge-base<br>   │   │   ├── knowledge-base-detail<br>   │   │   │   ├── KnowledgeBaseDetail.vue<br>   │   │   │   ├── ...<br>   │   │   │   └── style.scss<br>   │   │   ├── knowledge-base-form<br>   │   │   │   ├── KnowledgeBaseForm.vue<br>   │   │   │   ├── ...<br>   │   │   │   └── style.scss<br>   │   │   ├── knowledge-base-list<br>   │   │   │   ├── KnowledgeBaseList.vue<br>   │   │   │   ├── ...<br>   │   │   │   └── style.scss<br>   │   │   ├── helper.ts<br>   │   │   └── KnowledgeBaseView.ts<br>   │   └── ...<br>   └── widgets<br>       └── ...<br></code></pre></td></tr></table></figure>
+
+<p>Among them, <code>views</code> are the views&#x2F;pages divided by domains or businesses (corresponding to the domain layer); <code>widgets</code> are cross-module components&#x2F;business components; <code>layouts</code> are overall layouts used by views&#x2F;pages; <code>router</code> is the route configuration divided by menu structure; <code>aspects</code> are request interceptors, route guards, and other aspects.</p>
+<p>In this pattern, the dependency relationships between modules are roughly as follows:</p>
+<p><img src="/layered.png" alt="Dependency Relationships in &#39;Layered&#39; Mode"></p>
+<p>Obviously, compared with the “wild” pattern, the “layered” pattern can see the shape of the front-end architecture and leaves room for project expansion; the dependency relationships between modules are clearer and will not make the person reading the code feel confused; the logic that is not directly related to display and interaction is stripped away from various UI components, making the presentation layer as thin as Sophie and allowing this part of the logic to be better automated tested.</p>
+<p>More importantly, this pattern will prompt developers to think about what kind of code they are going to write and what the dependency relationships are before writing code, and then look at the drawn boundaries and dug pits, and decide which pit to put it in.</p>
+<p>If the “wild” pattern is the “primitive society,” then the “layered” pattern has entered the “civilized society” - there are constraints when writing code, and more emphasis is placed on process and system.</p>
+<h3 id="Modular"><a href="#Modular" class="headerlink" title="Modular"></a>Modular</h3><p>The “layered” pattern seems to have no disadvantages of the “wild” pattern and can cope with increasingly complex front-end projects. It looks very perfect. Why is there still this “modular” pattern? Aren’t the “wild” pattern and the “layered” pattern modular?</p>
+<p>Of course, the two patterns mentioned above are modular, and the “layered” pattern is also sufficient to cope with complex front-end projects, but it still lacks a bit of strength - the cohesion is not as high as desired.</p>
+<p>From the module dependency relationship diagram of the “layered” pattern, it can be seen that the same module (green block) divided according to domains or businesses is separated by layers; thus, although it seems to be a module, it has actually been split into two modules, and the module dependency relationship is not complete.</p>
+<p>The “modular” pattern is to make up for the shortcomings of the “layered” pattern, thereby improving the cohesion of the module and the completeness of the dependency relationship.</p>
+<p>The directory structure division method of the “layered” pattern is to first divide vertically and then horizontally according to domains or businesses; the “modular” pattern is just the opposite - first divide horizontally according to domains or businesses and then vertically in each module as needed - just as <a href="/people/taowen/">Master Tao</a> described in “What is Coupling, What is Cohesion” (<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/373962759">link</a>) “by moving the boundaries of inclusion, achieve cohesion.”</p>
+<p>The result of the directory structure adjustment based on the “layered” pattern is roughly as follows:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs plaintext">project/src<br>   ├── [domain-specific-module]<br>   │   ├── views<br>   │   │   ├── [detail-view]<br>   │   │   │   ├── [DetailViewComponent].vue<br>   │   │   │   ├── ...<br>   │   │   │   └── style.scss<br>   │   │   ├── [form-view]<br>   │   │   │   ├── [FormViewComponent].vue<br>   │   │   │   ├── ...<br>   │   │   │   └── style.scss<br>   │   │   └── [list-view]<br>   │   │       ├── [ListViewComponent].vue<br>   │   │       ├── ...<br>   │   │       └── style.scss<br>   │   ├── widgets<br>   │   │   └── [domain-specific-widget]<br>   │   │       └── ...<br>   │   ├── helper.ts<br>   │   ├── index.ts<br>   │   ├── model.ts<br>   │   ├── repository.ts<br>   │   └── ...<br>   ├── entry<br>   │   ├── aspects<br>   │   │   ├── http.ts<br>   │   │   ├── router.ts<br>   │   │   ├── ...<br>   │   │   └── index.ts<br>   │   ├── layouts<br>   │   │   └── ...<br>   │   └── router<br>   │       └── ...<br>   ├── shared<br>   │   └── ...<br>   ├── App.vue<br>   └── main.ts<br></code></pre></td></tr></table></figure>
+
+<p>The differences between the adjusted directory structure and the previous one are as follows:</p>
+<ul>
+<li><p>Remove <code>views</code> and <code>widgets</code> from <code>presentation</code> and rename it to <code>entry</code>, which, as the name suggests, is the “entry” that collects resources from other modules.</p>
+</li>
+<li><p>Integrate <code>domain</code> with <code>views</code> and <code>widgets</code> to form modules completely divided by domains or businesses. The naming in the directory structure diagram above with square brackets is formal, and the actual operation should be named according to the specific domains or businesses represented by the modules.</p>
+</li>
+<li><p>The meaning of the integrated <code>widgets</code> has changed; they are no longer cross-module but specific to the current module. However, they can still be used by other modules - through the form of module dependency designation.</p>
+</li>
+<li><p>There is an <code>index.ts</code> file under each domain&#x2F;business module, which describes the dependencies of this module on what resources (request services, components&#x2F;business components, etc.) of other modules, and what resources it provides to other modules.</p>
+</li>
+</ul>
+<p>To improve flexibility, it is best to design and implement a set of module registration and lookup mechanisms to replace the conventional <code>import</code> and <code>export</code>. Ideally, each module can be used across applications.</p>
+<p>How should developers view these modules? Just treat them as npm packages or Git Submodules.</p>
+<p>The improved dependency relationships are shown in the following figure:</p>
+<p><img src="/modularized.png" alt="Dependency Relationships in &#39;Modular&#39; Mode"></p>
+<p>Compared with the “layered” pattern, the “modular” pattern has entered the “industrial age” - highly cohesive and easy to integrate.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>The three patterns of directory structure division discussed in this article are based on conventional manual front-end projects. The first two patterns correspond one-to-one with the first two componentization systems mentioned by <a href="/people/xufei/">Uncle Min Gong</a> in “Is the World Flat? - Looking at the Front End from Different Perspectives” (<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/55294150">link</a>); the third pattern is somewhat similar to his third system.</p>
+<p>Although these three patterns are in a progressive relationship, with the latter being more perfect than the former, it is not necessarily the case that the latter is more suitable for the scenarios faced by the project, and the composition of the team members must also be considered. In short, it is necessary to teach according to the aptitude and adapt to local conditions.</p>
+
+</div>
+      <footer class="Article-footer col-md-3">
+  
+  <div class="Widget Widget--share">
+    <div class="Widget-body">
+      <p>分享到<i class="fa fa-share-alt"></i></p>
+      <div class="social-share" data-sites="wechat,weibo,twitter"></div>
+    </div>
+  </div>
+
+
+  <section class="Widget Widget--toc">
+  <div class="Widget-header">
+    <h2 class="Widget-title">目录</h2>
+  </div>
+  <div class="Widget-body"></div>
+</section>
+
+
+</footer>
+      
+      
+    </article>
+    
+
+  </div>
+</main>
+<footer class="Page-footer Footer">
+  <div class="container">
+    
+    <div class="Footer-description">
+      
+        <!-- Important links -->
+        <nav class="Footer-navs">
+          <ul><li><a href="https://x.com/ntksol?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>X</span></a>
+</li><li><a href="https://github.com/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>GitHub</span></a>
+</li><li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>LinkedIn</span></a>
+</li></ul>
+        </nav>
+      
+      
+        <!-- Copyright -->
+        <div class="Footer-copyright">
+          <p>
+
+&copy; 2023-2025 <a href="https://ourai.pro?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow">Ourai L.</a>
+
+</p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+    <script>$('.Article-content > table').addClass('table table-bordered')</script>
+    
+<script src="/javascripts/ksio/vendors/share.min.js"></script>
+
+<script src="/javascripts/ksio/components/page.js"></script>
+
+<script src="/javascripts/ksio/components/toc.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.zh-CN.js"></script>
+
+<script src="/javascripts/ksio/initializers/time.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.lazyload.js"></script>
+
+<script src="/javascripts/ksio/initializers/lazyload.js"></script>
+
+  </body>
+</html>
+
