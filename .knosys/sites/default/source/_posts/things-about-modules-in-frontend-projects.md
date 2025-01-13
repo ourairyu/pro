@@ -39,9 +39,9 @@ Enhancing module cohesion or refining models is a gradual, long-term task that p
 
 Each module is a subsystem of the business system, and they are each composed of sub-systems such as entity/model definitions, request services, and UI components; the parts are both independent and interconnected—internal module layering is the third basic criterion.
 
-It can be said that the principles of separation of concerns and single responsibility are always贯穿throughout the entire process of module splitting.
+It can be said that the principles of separation of concerns and single responsibility run through the entire process of module splitting.
 
-For a more in-depth discussion, see the [Business Logic Splitting Patterns](https://autonomy.design/) organized by [Master Tao](/people/taowen/).
+For a more in-depth discussion, see the [Business Logic Splitting Patterns](https://autonomy.design/) organized by Master Tao.
 
 ### File Reference Methods
 

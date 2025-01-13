@@ -1,7 +1,7 @@
 ---
 title: The Core Concepts of Front-end UI Components
 description: >-
-  Let’s start with this article and calm down and talk about things related to
+  Let's start with this article and calm down and talk about things related to
   front-end UI components.
 date: '2020-09-25 16:30:15 +0800'
 categories:
