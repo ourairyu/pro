@@ -233,7 +233,7 @@ From the module dependency relationship diagram of the "layered" pattern, it can
 
 The "modular" pattern is to make up for the shortcomings of the "layered" pattern, thereby improving the cohesion of the module and the completeness of the dependency relationship.
 
-The directory structure division method of the "layered" pattern is to first divide vertically and then horizontally according to domains or businesses; the "modular" pattern is just the opposite - first divide horizontally according to domains or businesses and then vertically in each module as needed - just as [Master Tao](/people/taowen/) described in "What is Coupling, What is Cohesion" ([link](https://zhuanlan.zhihu.com/p/373962759)) "by moving the boundaries of inclusion, achieve cohesion."
+The directory structure division method of the "layered" pattern is to first divide vertically and then horizontally according to domains or businesses; the "modular" pattern is just the opposite - first divide horizontally according to domains or businesses and then vertically in each module as needed - just as Master Tao described in "What is Coupling, What is Cohesion" - "by moving the boundaries of inclusion, achieve cohesion."
 
 The result of the directory structure adjustment based on the "layered" pattern is roughly as follows:
 
@@ -299,6 +299,6 @@ Compared with the "layered" pattern, the "modular" pattern has entered the "indu
 
 ## Summary
 
-The three patterns of directory structure division discussed in this article are based on conventional manual front-end projects. The first two patterns correspond one-to-one with the first two componentization systems mentioned by [Uncle Min Gong](/people/xufei/) in "Is the World Flat? - Looking at the Front End from Different Perspectives" ([link](https://zhuanlan.zhihu.com/p/55294150)); the third pattern is somewhat similar to his third system.
+The three patterns of directory structure division discussed in this article are based on conventional manual front-end projects. The first two patterns correspond one-to-one with the first two componentization systems mentioned by Uncle in "Is the World Flat? - Looking at the Front End from Different Perspectives"; the third pattern is somewhat similar to his third system.
 
 Although these three patterns are in a progressive relationship, with the latter being more perfect than the former, it is not necessarily the case that the latter is more suitable for the scenarios faced by the project, and the composition of the team members must also be considered. In short, it is necessary to teach according to the aptitude and adapt to local conditions.
