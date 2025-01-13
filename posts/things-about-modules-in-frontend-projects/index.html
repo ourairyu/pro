@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <title>Things About Modules in Front-end Projects</title>
+
+
+  <meta property="og:title" content="Things About Modules in Front-end Projects">
+
+
+  <meta name="description" content="Let’s talk about some things related to modules in front-end projects.">
+  <meta property="og:description" content="Let’s talk about some things related to modules in front-end projects.">
+
+
+
+  
+    
+  
+
+
+  <meta name="keywords" content="Ourai.PRO,ourai.pro,Ourai Lin,Ourai L.,Ourai,Ourairyu,欧雷,欧雷流,anti-chaos,ntks,反混沌,反混沌工程师,DnA ENGR,dna engr,frontend,front-end,indie developer">
+
+
+<!-- 页面渲染兼容性 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<!-- 订阅 -->
+
+<meta name="theme-color" content="#0871ab">
+<link rel="shortcut icon" href="/images/ksio/favicon.ico">
+
+
+    
+<link rel="stylesheet" href="/stylesheets/global.css">
+
+    
+<link rel="stylesheet" href="/stylesheets/ksio/vendors/share.css">
+
+<link rel="stylesheet" href="/stylesheets/pages/post.css">
+
+    
+<script src="/javascripts/ksio/vendors/jquery-1.11.3.min.js"></script>
+
+    
+<script src="/javascripts/ksio/vendors/bootstrap.min.js"></script>
+
+  </head>
+  
+  
+  <body class="Page" itemscope itemtype="http://schema.org/WebPage">
+    
+
+  <header class="Page-header">
+  <div class="navbar navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        
+          <button class="navbar-toggle collapsed" type="button" data-target=".Page-navs" data-toggle="collapse">
+            <span class="sr-only">Toggle navs</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+        
+          
+
+
+  <a class="navbar-brand" href="/">Ourai.PRO</a>
+
+
+        
+      </div>
+      <!-- Nav menus -->
+      <nav class="Page-navs navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Blog <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="/posts/">Posts</a>
+</li>
+  
+
+  
+    <li><a href="https://x.com/ntksol?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Tweets</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Works <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://producthunt.com/@ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Products</a>
+</li>
+  
+
+  
+    <li><a href="https://github.com/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Open-source software</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Cooperation <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.upwork.com/freelancers/~016baa7fae7cfff661?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Services</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">About <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Resume</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li><a href="https://yaol.in/?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">中文</a>
+</li>
+  
+
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="Page-content">
+  
+
+  <!-- 内容主体 -->
+  <div class="container">
+    <article class="Page-main Article">
+      <header class="Article-header">
+        
+  
+    <h1 class="Article-title">Things About Modules in Front-end Projects</h1>
+  
+  
+
+
+      </header>
+      <div class="Article-content col-md-9"><p>In the article “<a href="/posts/patterns-of-directory-structure-in-frontend-projects/">Patterns of Directory Structure in Front-end Projects</a>“, three modes of directory structure division were discussed: “wild”, “layered”, and “modular”. This article, assuming that the project has already adopted the “modular” mode with the highest cohesion for directory structure division, will delve into matters related to modules.</p>
+<h2 id="Module-Boundaries"><a href="#Module-Boundaries" class="headerlink" title="Module Boundaries"></a>Module Boundaries</h2><p>Modules must have clear boundaries of responsibility and effective means of constraint; otherwise, they will quickly become bloated and difficult to maintain. Eventually, they may spiral out of control and explode, turning the application into an unmanageable mess.</p>
+<p><img src="/cell.jpeg" alt="Cell about to explode"></p>
+<p>While some guiding principles and indicators can be provided to determine module boundaries, it largely depends on the subjective judgment of the person splitting the modules based on their knowledge and experience.</p>
+<h3 id="Module-Splitting-Criteria"><a href="#Module-Splitting-Criteria" class="headerlink" title="Module Splitting Criteria"></a>Module Splitting Criteria</h3><p>Whether using the “modular” or “layered” mode to divide the directory structure, the basic criterion is to split modules according to domains or business areas.</p>
+<p>So, what exactly do “domains” and “business areas” refer to, and what is the difference between them?</p>
+<p>Generally, in relatively simple contexts, “domains” and “business areas” can be considered equivalent, without the need for strict differentiation; they can be understood as a block of business logic. However, in more complex contexts, it may be necessary to clarify the relationship between them—“business areas” are more specific and closely tied to the actual business activities of an enterprise; “domains” are more generalized and can serve as the underlying foundation for multiple “business areas”, being neutral with respect to specific business concerns.</p>
+<p>In business systems, both “domains” and “business areas” can encompass models composed of entities, relationships, and rules (domain models or business models), which are the manifestations of business requirements in architecture or code.</p>
+<p>A module represents a domain or business area, corresponding to a model; the various elements within the same module should have a close relationship, that is, high cohesion, with as little unrelated content as possible—this is the second basic criterion.</p>
+<p>Enhancing module cohesion or refining models is a gradual, long-term task that progresses with a deeper understanding of the business and the accumulation of related knowledge. It is not static and cannot be done perfectly from the outset.</p>
+<p>Each module is a subsystem of the business system, and they are each composed of sub-systems such as entity&#x2F;model definitions, request services, and UI components; the parts are both independent and interconnected—internal module layering is the third basic criterion.</p>
+<p>It can be said that the principles of separation of concerns and single responsibility are always贯穿throughout the entire process of module splitting.</p>
+<p>For a more in-depth discussion, see the <a target="_blank" rel="noopener" href="https://autonomy.design/">Business Logic Splitting Patterns</a> organized by <a href="/people/taowen/">Master Tao</a>.</p>
+<h3 id="File-Reference-Methods"><a href="#File-Reference-Methods" class="headerlink" title="File Reference Methods"></a>File Reference Methods</h3><p>For individuals, seeking “convenience” is a natural human tendency (laziness), and while “convenience” can sometimes lead to errors and confusion, it must be restricted in the pursuit of order and stability in collaborative work among multiple people.</p>
+<p>Therefore, to ensure that the functional boundaries and dependency relationships of modules are clear and easy to understand, it is sometimes necessary to deliberately increase the cost of referencing external module resources, such as constraining file reference paths.</p>
+<p>In built frontend applications, it is common to configure <code>@</code> as an alias for the source code folder, and then during development, any reference to other file resources uses <code>@/*</code>. While this appears convenient on the surface, it actually causes many difficulties in understanding the system and maintaining functionality—much like the misuse of inheritance mechanisms.</p>
+<p>Given this, constraints should be placed on the paths for referencing internal and external module files—</p>
+<p>Module internal file references should use relative paths; module external references should only be made to <code>shared</code> and similar folders containing general resources and infrastructure, using the <code>@/*</code> form; framework-provided or custom (see below) rather than standard module systems like ES Modules and CommonJS should be used to reference resources from other modules, which may not necessarily be file-to-file references.</p>
+<h2 id="Module-Systems"><a href="#Module-Systems" class="headerlink" title="Module Systems"></a>Module Systems</h2><p>When discussing the “modular” mode, it was mentioned that—</p>
+<blockquote>
+  <p>Under each domain/business module, there is an <code>index.ts</code> file that describes which resources (request services, components/business components, etc.) the module depends on from other modules, as well as what resources it provides to other modules.</p>
+  <p>To increase flexibility, it is best to design and implement a module registration and lookup mechanism to replace the conventional <code>import</code> and <code>export</code>. Ideally, each module should be usable across applications.</p>
+  <footer>Ourai <cite><a href="/posts/patterns-of-directory-structure-in-frontend-projects/">Patterns of Directory Structure in Front-end Projects</a></cite></footer>
+</blockquote>
+
+<p>And as mentioned earlier, when referencing resources from other modules, a framework-provided or custom module system should be used. According to current development practices, there are hardly any module systems that meet project or architectural requirements, so it is almost necessary to customize or design one’s own.</p>
+<p>A module system can be simple or complex, but its basic function is dependency management, that is, the collection and loading of dependencies.</p>
+<h3 id="Module-Registration"><a href="#Module-Registration" class="headerlink" title="Module Registration"></a>Module Registration</h3><p>Module registration consists of two steps—</p>
+<p>First, design a module descriptor to describe module information. The simplest version only needs to include the module name, the resources it depends on from other modules, the resources it provides to other modules, and the UI components it will use:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;module-name&#x27;</span>,<br>  <span class="hljs-attr">imports</span>: [<span class="hljs-string">&#x27;[module-name].[resource-type].[resource-name]&#x27;</span>],<br>  <span class="hljs-attr">exports</span>: &#123;<br>    <span class="hljs-string">&#x27;[resource-type]&#x27;</span>: &#123;<br>      <span class="hljs-string">&#x27;[resource-name]&#x27;</span>: <span class="hljs-string">&#x27;foo&#x27;</span>,<br>    &#125;,<br>  &#125;,<br>  <span class="hljs-attr">components</span>: &#123;<br>    <span class="hljs-string">&#x27;[LocalComponentName]&#x27;</span>: <span class="hljs-string">&#x27;[DependencyRefName]&#x27;</span>,<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>Here, <code>[module-name]</code> is the module name; <code>[resource-type]</code> is the type of resource, which can be <code>services</code> (request services), <code>utils</code> (utility functions), <code>widgets</code> (components&#x2F;business components), and other arbitrary categories of resources; <code>[resource-name]</code> is the name of the resource.</p>
+<p><code>components</code> are a special type of dependency resource, declaring the UI components that the module will use—these can be either controls&#x2F;basic components or components&#x2F;business components. <code>[LocalComponentName]</code> is the name used for the UI component within the module, and <code>[DependencyRefName]</code> is the reference identifier of the dependent UI component.</p>
+<p>Next, design and implement a module registration function that takes the module descriptor as input. Generally, a <code>Map</code> is used to store the processed module information in memory:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">const</span> moduleMap = <span class="hljs-keyword">new</span> <span class="hljs-title class_">Map</span>();<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">resolveModule</span>(<span class="hljs-params">descriptor</span>) &#123;<br>  <span class="hljs-comment">// Interpret the module descriptor and return the processed information</span><br>&#125;<br><br><span class="hljs-keyword">function</span> <span class="hljs-title function_">registerModule</span>(<span class="hljs-params">descriptor</span>) &#123;<br>  moduleMap.<span class="hljs-title function_">set</span>(descriptor.<span class="hljs-property">name</span>, <span class="hljs-title function_">resolveModule</span>(descriptor));<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>In <code>resolveModule()</code>, not only should the module descriptor be interpreted, but it is also advisable to check for circular dependencies and implement some other more “advanced” features.</p>
+<p>Then, in the entry file of the frontend application (such as the <code>main.ts</code> of a Vue application), register the modules uniformly.</p>
+<h3 id="Module-Lookup"><a href="#Module-Lookup" class="headerlink" title="Module Lookup"></a>Module Lookup</h3><p>Looking up modules is to obtain the dependent resources of a specified module and to construct the module context (discussed later).</p>
+<p>Obtaining the dependent resources declared through the <code>imports</code> in the module descriptor is relatively straightforward; simply retrieve them based on the dependency reference from the module information saved in <code>moduleMap</code>. However, obtaining the UI components declared in <code>components</code> is a bit more complicated in terms of rules—</p>
+<p>When <code>[DependencyRefName]</code> is a string in the form of <code>[module-name].widgets.[resource-name]</code>, it refers to a component&#x2F;business component defined by another module; otherwise, it is a control&#x2F;basic component. If <code>[DependencyRefName]</code> is <code>true</code>, look for the control&#x2F;basic component according to <code>[LocalComponentName]</code>, otherwise search for it based on <code>[DependencyRefName]</code>.</p>
+<p>Theoretically, module lookup should be performed when using the module, ideally after all modules have been registered during application initialization. However, in practice, it is quite possible that a module tries to obtain its own information before it has been registered.</p>
+<p>For example, in the module descriptor, it is declared that a component&#x2F;business component will be provided to other modules, and this component&#x2F;business component itself uses resources from other modules. At this point, it is necessary to look up the current module and load its dependencies:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// `animation/index.ts` file</span><br><br><span class="hljs-keyword">import</span> <span class="hljs-title class_">AnimationTable</span> <span class="hljs-keyword">from</span> <span class="hljs-string">&#x27;./widgets/animation-table/AnimationTable.vue&#x27;</span>;<br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;animation&#x27;</span>,<br>  <span class="hljs-attr">imports</span>: [<br>    <span class="hljs-string">&#x27;common.widgets.TableView&#x27;</span>, <span class="hljs-comment">// Depends on the `TableView` component/business component from another module</span><br>  ],<br>  <span class="hljs-attr">exports</span>: &#123;<br>    <span class="hljs-attr">widgets</span>: &#123;<br>      <span class="hljs-title class_">AnimationTable</span>, <span class="hljs-comment">// Provides the `AnimationTable` component/business component to other modules</span><br>    &#125;,<br>  &#125;,<br>  <span class="hljs-attr">components</span>: &#123;<br>    <span class="hljs-title class_">DataTable</span>: <span class="hljs-string">&#x27;common.widgets.TableView&#x27;</span>, <span class="hljs-comment">// The `DataTable` component used in this module is the `TableView` component/business component provided by the `common` module</span><br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue">&lt;!-- `animation/widgets/animation-table/AnimationTable.vue` file --&gt;<br><br>&lt;template&gt;<br>  &lt;div class=&quot;AnimationTable&quot;&gt;<br>    &lt;data-table /&gt;<br>  &lt;/div&gt;<br>&lt;/template&gt;<br><br>&lt;script lang=&quot;ts&quot;&gt;<br>import &#123; Vue, Component &#125; from &#x27;vue-property-decorator&#x27;;<br><br>import context from &#x27;../../context&#x27;; // Module context<br><br>@Component(&#123;<br>  components: context.getComponents(),<br>&#125;)<br>export default class AnimationTable extends Vue &#123;&#125;<br>&lt;/script&gt;<br><br>&lt;style lang=&quot;scss&quot; src=&quot;./style.scss&quot; scoped&gt;&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+
+<p>Logically, in this situation, the specific dependent resource cannot be found.</p>
+<p>The reason for this issue is that the conventional <code>import</code> is static and synchronous, and the introduction of the component&#x2F;business component provided to other modules precedes the module registration, which is a timing issue.</p>
+<p>There are currently three solutions—</p>
+<p>The first is to change the static and synchronous <code>import &#39;*&#39;</code> to dynamic and asynchronous <code>import(&#39;*&#39;)</code>, provided that the runtime environment or build tool supports it:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-comment">// `animation/index.ts` file</span><br><br><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> &#123;<br>  <span class="hljs-attr">name</span>: <span class="hljs-string">&#x27;animation&#x27;</span>,<br>  <span class="hljs-attr">imports</span>: [<br>    <span class="hljs-string">&#x27;common.widgets.TableView&#x27;</span>,<br>  ],<br>  <span class="hljs-attr">exports</span>: &#123;<br>    <span class="hljs-attr">widgets</span>: &#123;<br>      <span class="hljs-title class_">AnimationTable</span>: <span class="hljs-function">() =&gt;</span> <span class="hljs-keyword">import</span>(<span class="hljs-string">&#x27;./widgets/animation-table/AnimationTable.vue&#x27;</span>),<br>    &#125;,<br>  &#125;,<br>  <span class="hljs-attr">components</span>: &#123;<br>    <span class="hljs-title class_">DataTable</span>: <span class="hljs-string">&#x27;common.widgets.TableView&#x27;</span>,<br>  &#125;,<br>&#125;;<br></code></pre></td></tr></table></figure>
+
+<p>The second is to obtain the dependent resources of the component&#x2F;business component during rendering:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue">&lt;!-- `animation/widgets/animation-table/AnimationTable.vue` file --&gt;<br><br>&lt;script lang=&quot;ts&quot;&gt;<br>import &#123; CreateElement, VNode &#125; from &#x27;vue&#x27;;<br>import &#123; Vue, Component &#125; from &#x27;vue-property-decorator&#x27;;<br><br>import context from &#x27;../../context&#x27;; // Module context<br><br>@Component<br>export default class AnimationTable extends Vue &#123;<br>  private render(h: CreateElement): VNode &#123;<br>    const &#123; DataTable &#125; = context.getComponents();<br><br>    return h(&#x27;div&#x27;, &#123; staticClass: &#x27;AnimationTable&#x27; &#125;, [h(DataTable)]);<br>  &#125;<br>&#125;<br>&lt;/script&gt;<br><br>&lt;style lang=&quot;scss&quot; src=&quot;./style.scss&quot; scoped&gt;&lt;/style&gt;<br></code></pre></td></tr></table></figure>
+
+<p>The last one is a bit tricky; when obtaining dependent resources, if the specified module does not exist, create a corresponding empty object as a placeholder on <code>moduleMap</code> and return it. In this way, the component&#x2F;business component has a memory reference address for the dependent resource; since the dependent resource is only actually used&#x2F;called when the component&#x2F;business component is rendered, and by that time the module has already been registered, the dependent resource can be successfully found.</p>
+<h2 id="Module-Context"><a href="#Module-Context" class="headerlink" title="Module Context"></a>Module Context</h2><p>In programming languages, “context” generally refers to a set of environmental variables that allow a program to execute normally, such as execution context; in application development, it is often derived as an object used to maintain states that act within a certain scope.</p>
+<p>Constructing and passing or injecting “context” is a good practice to make UI components “slim”—</p>
+<p>In the UI component tree, the UI components contained in a relatively independent subsystem from a certain layer downwards collaborate to complete the same task. States and operations related to this task do not need to be scattered across various UI components. By managing them centrally through “context”, states can be better maintained, and state changes can be more easily tracked.</p>
+<p>Additionally, because the core logic is isolated from the UI components, frontend automated testing becomes easier.</p>
+<p>In the series of articles discussed <a href="/series/talking-about-frontend-of-web-based-management-systems/">here</a>, there are mainly module contexts and view contexts. This article only discusses the module context, and the view context will be explained in subsequent articles.</p>
+<p>The “module context” is a module-level or model-level context, and relatively speaking, it is not very important and only plays a supporting role. What is more important is the “view context” that will be discussed later.</p>
+<p>The main function of the module context is to obtain dependent resources and send requests:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js">interface <span class="hljs-title class_">ModuleContext</span>&lt;R&gt; &#123;<br>  <span class="hljs-attr">getModuleName</span>: <span class="hljs-function">() =&gt;</span> string;<br>  <span class="hljs-attr">getDependencies</span>: <span class="hljs-function">(<span class="hljs-params">refPath?: string</span>) =&gt;</span> <span class="hljs-title class_">ModuleDependencies</span> | <span class="hljs-title class_">ModuleResources</span> | <span class="hljs-literal">undefined</span>;<br>  <span class="hljs-attr">getComponents</span>: <span class="hljs-function">() =&gt;</span> &#123; [<span class="hljs-attr">key</span>: string]: <span class="hljs-title class_">VueConstructor</span> &#125;;<br>  <span class="hljs-attr">execute</span>: <span class="hljs-title class_">RepositoryExecutor</span>&lt;keyof R&gt;;<br>&#125;<br></code></pre></td></tr></table></figure>
+
+<p>In addition, it can be combined with Vuex for <a target="_blank" rel="noopener" href="https://vuex.vuejs.org/zh/guide/modules.html">module-level state management</a>, providing namespace-encapsulated <code>commit</code> and <code>dispatch</code> methods, etc.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>“Modularization” is the application of divide and conquer or reductionism in the realm of human-made objects; it is a fundamental approach to dealing with complex problems.</p>
+<p>However, in software development, many times complex problems are not really well solved, which indicates that mere formal “modularization” is of little use. A series of measures must be taken around “modules”.</p>
+<p>A few months ago, I suddenly had a doubt—why can’t software be designed like hardware?</p>
+<p>The current conclusion is that the low threshold and various costs of software development are one of the reasons for poor quality and low reusability.</p>
+<p>What do you think?</p>
+
+</div>
+      <footer class="Article-footer col-md-3">
+  
+  <div class="Widget Widget--share">
+    <div class="Widget-body">
+      <p>分享到<i class="fa fa-share-alt"></i></p>
+      <div class="social-share" data-sites="wechat,weibo,twitter"></div>
+    </div>
+  </div>
+
+
+  <section class="Widget Widget--toc">
+  <div class="Widget-header">
+    <h2 class="Widget-title">目录</h2>
+  </div>
+  <div class="Widget-body"></div>
+</section>
+
+
+</footer>
+      
+      
+    </article>
+    
+
+  </div>
+</main>
+<footer class="Page-footer Footer">
+  <div class="container">
+    
+    <div class="Footer-description">
+      
+        <!-- Important links -->
+        <nav class="Footer-navs">
+          <ul><li><a href="https://x.com/ntksol?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>X</span></a>
+</li><li><a href="https://github.com/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>GitHub</span></a>
+</li><li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>LinkedIn</span></a>
+</li></ul>
+        </nav>
+      
+      
+        <!-- Copyright -->
+        <div class="Footer-copyright">
+          <p>
+
+&copy; 2023-2025 <a href="https://ourai.pro?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow">Ourai L.</a>
+
+</p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+    <script>$('.Article-content > table').addClass('table table-bordered')</script>
+    
+<script src="/javascripts/ksio/vendors/share.min.js"></script>
+
+<script src="/javascripts/ksio/components/page.js"></script>
+
+<script src="/javascripts/ksio/components/toc.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.zh-CN.js"></script>
+
+<script src="/javascripts/ksio/initializers/time.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.lazyload.js"></script>
+
+<script src="/javascripts/ksio/initializers/lazyload.js"></script>
+
+  </body>
+</html>
+
