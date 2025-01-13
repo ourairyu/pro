@@ -47,9 +47,9 @@ component
 
 ### HTML & CSS class
 
-Before the popularization of component-based development, also known as "componentization", in the web frontend field, there was a magical way of naming classes that could be considered a methodology—atomic classes.
+Before the popularization of component-based development, also known as "componentization", in the web front-end field, there was a magical way of naming classes that could be considered a methodology—atomic classes.
 
-Those who started their career in frontend development during the reign of React and Vue might have never heard of or seen what "atomic classes" are:
+Those who started their career in front-end development during the reign of React and Vue might have never heard of or seen what "atomic classes" are:
 
 ```html
 <style>
@@ -84,7 +84,7 @@ The "advantage" of atomic classes is that they break down classes to a very fine
 
 Why are the "advantages" mentioned above in quotes? I wonder, apart from possibly writing fewer characters, what's the difference between atomic classes and inline styles? Are they more semantic? Is readability better? Does it reduce the mental burden? Is it easier to maintain in medium to large projects?
 
-With the popularization of component-based development in the web frontend field, the身影 of atomic classes gradually disappeared; but recently, due to the rising popularity of a certain CSS framework, atomic classes have made a comeback...
+With the popularization of component-based development in the web front-end field, atomic classes have gradually disappeared; but recently, due to the rising popularity of a certain CSS framework, atomic classes have made a comeback...
 
 So, are atomic classes or style atomization wrong? No, it's all the fault of the times! Ah, no! It's all the fault of the utility-first mindset!
 
