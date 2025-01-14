@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+
+
+
+
+
+
+
+
+
+  
+  
+  
+
+
+  
+
+
+  
+
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+  <title>Things About Contexts in Front-end Projects</title>
+
+
+  <meta property="og:title" content="Things About Contexts in Front-end Projects">
+
+
+  <meta name="description" content="I can finally write a separate article to talk specifically about things related to “context”.">
+  <meta property="og:description" content="I can finally write a separate article to talk specifically about things related to “context”.">
+
+
+
+  
+    
+  
+
+
+  <meta name="keywords" content="Ourai.PRO,ourai.pro,Ourai Lin,Ourai L.,Ourai,Ourairyu,欧雷,欧雷流,anti-chaos,ntks,反混沌,反混沌工程师,DnA ENGR,dna engr,frontend,front-end,indie developer">
+
+
+<!-- 页面渲染兼容性 -->
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+
+<!-- 订阅 -->
+
+<meta name="theme-color" content="#0871ab">
+<link rel="shortcut icon" href="/images/ksio/favicon.ico">
+
+
+    
+<link rel="stylesheet" href="/stylesheets/global.css">
+
+    
+<link rel="stylesheet" href="/stylesheets/ksio/vendors/share.css">
+
+<link rel="stylesheet" href="/stylesheets/pages/post.css">
+
+    
+<script src="/javascripts/ksio/vendors/jquery-1.11.3.min.js"></script>
+
+    
+<script src="/javascripts/ksio/vendors/bootstrap.min.js"></script>
+
+  </head>
+  
+  
+  <body class="Page" itemscope itemtype="http://schema.org/WebPage">
+    
+
+  <header class="Page-header">
+  <div class="navbar navbar-static-top">
+    <div class="container">
+      <div class="navbar-header">
+        
+          <button class="navbar-toggle collapsed" type="button" data-target=".Page-navs" data-toggle="collapse">
+            <span class="sr-only">Toggle navs</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        
+        
+          
+
+
+  <a class="navbar-brand" href="/">Ourai.PRO</a>
+
+
+        
+      </div>
+      <!-- Nav menus -->
+      <nav class="Page-navs navbar-collapse collapse">
+        <ul class="nav navbar-nav navbar-right">
+          
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Blog <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="/posts/">Posts</a>
+</li>
+  
+
+  
+    <li><a href="https://x.com/ntksol?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Tweets</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Works <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://producthunt.com/@ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Products</a>
+</li>
+  
+
+  
+    <li><a href="https://github.com/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Open-source software</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">Cooperation <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.upwork.com/freelancers/~016baa7fae7cfff661?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Services</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li class="dropdown">
+      <a class="dropdown-toggle" href="javascript:void(0);" data-toggle="dropdown">About <span class="caret"></span></a>
+      <ul class="dropdown-menu">
+  
+    <li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">Resume</a>
+</li>
+  
+
+</ul>
+    </li>
+  
+
+  
+    <li><a href="https://yaol.in/?utm_source=https://ourai.pro&amp;utm_medium=common-header" target="_blank" rel="external nofollow">中文</a>
+</li>
+  
+
+
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main class="Page-content">
+  
+
+  <!-- 内容主体 -->
+  <div class="container">
+    <article class="Page-main Article">
+      <header class="Article-header">
+        
+  
+    <h1 class="Article-title">Things About Contexts in Front-end Projects</h1>
+  
+  
+
+
+      </header>
+      <div class="Article-content col-md-9"><p>After the two articles “<a href="/posts/things-about-modules-in-frontend-projects/">Things About Modules in Front-end Projects</a>“ and “<a href="/posts/the-system-of-ui-components-in-frontend-projects/">The System of UI Components in Front-end Projects</a>“, we can finally dedicate an article to the topic of “context” specifically.</p>
+<h2 id="Concept-Clarification"><a href="#Concept-Clarification" class="headerlink" title="Concept Clarification"></a>Concept Clarification</h2><p>Before delving into the main subject, let’s first clarify several concepts closely related to the theme: state, state management, and context.</p>
+<h3 id="State"><a href="#State" class="headerlink" title="State"></a>State</h3><p>Sometimes, two groups of people engage in a heated debate—one group claims, “Frontend is all about state; there is no data. It’s state that drives the view, not data”. The other group retorts, “Isn’t state just data? What else could it be?”—Both sides are not wrong; they are simply standing from different perspectives.</p>
+<p>Generally speaking, “data” refers to the persistent data stored in databases or file systems, which is “static” and “persistent”, often used as a shorthand for “data source”; “state”, on the other hand, is the transient data kept in memory, which is “dynamic” and “temporary”, originating from data read through HTTP requests or local storage, as well as user operations on the interface—yet, they are both data.</p>
+<p>In other words, it can be considered that in the classic three-layer architecture, all data above the data layer are “states”:</p>
+<p><img src="/layered-architecture.png" alt="Layered Architecture"></p>
+<p>For frontend, the communication counterpart of the data layer is the server and local storage.</p>
+<h3 id="State-Management"><a href="#State-Management" class="headerlink" title="State Management"></a>State Management</h3><p>What is “state management”? As the name suggests, it is the “management” of “state”. Although the term has become a buzzword in the frontend community with the popularity of Redux and the like, it is not a new concept.</p>
+<p>Everything in the world requires management; however, when it is not complex enough, there is no need to discuss it as a separate discipline or methodology.</p>
+<p>Due to the separation of frontend and backend and the emergence of single-page applications, the state in frontend has become more complex, making effective management a challenge, thus leading to the current situation where many people pay attention to and discuss “state management”.</p>
+<p>In the frontend projects I have encountered, the state management solutions are “polarized”—either scattered among various UI components or centralized in a so-called “global store”—I do not quite agree with either approach.</p>
+<h3 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h3><p>In the articles “<a href="/posts/things-about-modules-in-frontend-projects/">Things About Modules in Front-end Projects</a>“ and “<a href="/posts/the-system-of-ui-components-in-frontend-projects/">The System of UI Components in Front-end Projects</a>“, the concept of “context” has been described. Simply put, it serves a role in programs akin to the “context” that helps people understand things and make corresponding reactions, after all, their English term is also “context”.</p>
+<p>In practical applications, “context” is likely an object with many attributes and methods for reading and writing operations on them. The variables that have been exposed or not exposed are the aforementioned “states”, and the exposed methods or functions are for managing these “states”—together, they constitute the “context”.</p>
+<p>A context can be implemented using a class approach:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">class</span> <span class="hljs-title class_">ValueContext</span> &#123;<br>  private value;<br><br>  <span class="hljs-title function_">constructor</span>(<span class="hljs-params">&#123; initialValue &#125;</span>) &#123;<br>    <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> = initialValue;<br>  &#125;<br><br>  public <span class="hljs-title function_">getValue</span>(<span class="hljs-params"></span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span>;<br>  &#125;<br><br>  public <span class="hljs-title function_">setValue</span>(<span class="hljs-params">value</span>) &#123;<br>    <span class="hljs-keyword">return</span> <span class="hljs-variable language_">this</span>.<span class="hljs-property">value</span> = value;<br>  &#125;<br>&#125;<br><br><span class="hljs-keyword">const</span> context = <span class="hljs-keyword">new</span> <span class="hljs-title class_">ValueContext</span>(&#123; <span class="hljs-attr">initialValue</span>: <span class="hljs-string">&#x27;Hello, Ourai!&#x27;</span> &#125;);<br></code></pre></td></tr></table></figure>
+
+<p>Or using a functional approach:</p>
+<figure class="highlight js"><table><tr><td class="code"><pre><code class="hljs js"><span class="hljs-keyword">function</span> <span class="hljs-title function_">createValueContext</span>(<span class="hljs-params">&#123; initialValue &#125;</span>) &#123;<br>  <span class="hljs-keyword">let</span> value = initialValue;<br><br>  <span class="hljs-keyword">return</span> &#123;<br>    <span class="hljs-attr">getValue</span>: <span class="hljs-function">() =&gt;</span> value,<br>    <span class="hljs-attr">setValue</span>: <span class="hljs-function"><span class="hljs-params">newValue</span> =&gt;</span> (value = newValue),<br>  &#125;;<br>&#125;<br><br><span class="hljs-keyword">const</span> context = <span class="hljs-title function_">createValueContext</span>(&#123; <span class="hljs-attr">initialValue</span>: <span class="hljs-string">&#x27;Hello, Ourai!&#x27;</span> &#125;);<br></code></pre></td></tr></table></figure>
+
+<p>Regardless of the implementation method or specific logic, for consumers of the context, it is an API—“context” is the interface that connects various parts of logic and has a certain degree of generalized business semantics.</p>
+<h2 id="Components-and-State"><a href="#Components-and-State" class="headerlink" title="Components and State"></a>Components and State</h2><p>Interaction and state are inseparable. Apart from purely display-oriented UI components, generally, UI components will have associated states, albeit maintained in different places.</p>
+<p>Based on whether a UI component maintains its own state internally, they can be divided into “stateless components” and “stateful components”.</p>
+<p>Purely display-oriented UI components are undoubtedly “stateless components”. For interactive UI components, if the state is maintained externally, they are “stateless components”; otherwise, they are “stateful components”—</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;input :value=&quot;value&quot; @input=&quot;handleInput&quot; /&gt;<br>&lt;/template&gt;<br><br>&lt;script lang=&quot;ts&quot;&gt;<br>import &#123; Vue, Component &#125; from &#x27;vue-property-decorator&#x27;;<br><br>@Component<br>export default class StatefulInput extends Vue &#123;<br>  private value: string = &#x27;&#x27;;<br><br>  private handleInput(evt): void &#123;<br>    this.value = evt.target.value;<br>  &#125;<br>&#125;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>The above example is a stateful component, while the one below is a stateless component:</p>
+<figure class="highlight plaintext"><table><tr><td class="code"><pre><code class="hljs vue">&lt;template&gt;<br>  &lt;input :value=&quot;value&quot; @input=&quot;handleInput&quot; /&gt;<br>&lt;/template&gt;<br><br>&lt;script lang=&quot;ts&quot;&gt;<br>import &#123; Vue, Component, Prop &#125; from &#x27;vue-property-decorator&#x27;;<br><br>@Component<br>export default class StatelessInput extends Vue &#123;<br>  @Prop(&#123; type: String, default: &#x27;&#x27; &#125;)<br>  private readonly value!: string;<br><br>  private handleInput(evt): void &#123;<br>    this.$emit(&#x27;input&#x27;, evt.target.value);<br>  &#125;<br>&#125;<br>&lt;/script&gt;<br></code></pre></td></tr></table></figure>
+
+<p>In comparison, stateful components can expose fewer properties and events while ensuring normal functionality, but their reusability is reduced. Stateless components are the opposite.</p>
+<p>Controls are typically designed as stateless components, especially those with simple interactions and purely display-oriented ones; to ensure basic functionality, complex interactive controls may be designed as stateful components.</p>
+<p>When encapsulating components, most people’s approach is similar to encapsulating controls, which leads to—</p>
+<blockquote>
+  <p>In relatively large-grained components, if they mainly rely on properties and events for communication, their numbers can easily get out of control, and the internal structure and logic will also be distorted beyond recognition, making maintenance extremely difficult and unpleasant—it becomes a mess💩!</p>
+  <footer>Ourai <cite><a href="/posts/the-system-of-ui-components-in-frontend-projects/">The System of UI Components in Front-end Projects</a></cite></footer>
+</blockquote>
+
+<p>Encapsulating components in the same way as controls can easily lead to an uncontrollable number of properties and events, or an expansion of internal logic, making the components very bloated—either way, it increases the maintenance cost.</p>
+<p>I believe that components should ideally not have interaction logic or business logic internally, nor should they maintain any state—the state and logic of the business should be elevated to the context, interaction logic should be sunk into the controls, and the display state should be calculated from the business state—ideally, the only logic in the components is the conversion between business and interaction&#x2F;display.</p>
+<p>In an ideal scenario, all dependencies within components are obtained through the context, rather than being imported from somewhere else.</p>
+<p>In short, in the “organism” of a frontend application, controls and components are the “tissues” and “organs” that produce specific functions, while the context is the “nerves” and “blood vessels” that convey information and nutrients to them.</p>
+<h2 id="Context-Overview"><a href="#Context-Overview" class="headerlink" title="Context Overview"></a>Context Overview</h2><p>In addition to the states to be maintained and their read&#x2F;write methods&#x2F;functions mentioned earlier, the basic elements that make up a context also include a synchronization mechanism, mostly based on the observer pattern, to keep the data inside and outside the context consistent.</p>
+<p>In the system described in this series of articles, contexts are roughly divided into three categories: application context, module context, and data context.</p>
+<p>The “application context” is a context that acts on the entire application. If there is only one application running, it can be considered a “global” context; if there are multiple applications running, then each application has its own application context.</p>
+<p>The application context maintains states shared within a single application, such as routing, theme, internationalization configuration information, and user basic information and permissions.</p>
+<p>The “module context” is mainly used to maintain states centered around “modules”, such as dependency information on other modules’ resources that a specific module relies on and the available resources it provides to other modules, as well as metadata such as the module’s model, view, and server actions (functions for HTTP requests to communicate with the server).</p>
+<p>The “data context” is the main force that makes data flow in frontend applications, which will be elaborated later.</p>
+<h2 id="Data-Context"><a href="#Data-Context" class="headerlink" title="Data Context"></a>Data Context</h2><p>Before continuing with the “data context”, it is essential to understand the “<a href="/posts/the-system-of-ui-components-in-frontend-projects/#Data-Perspective">viewing frontend from the perspective of data</a>“ mentioned in “<a href="/posts/the-system-of-ui-components-in-frontend-projects/">The System of UI Components in Front-end Projects</a>“.</p>
+<p>The “data context” is further divided into “view context” and “search context”, and depending on the complexity of the entire system, they can be further divided into “field context” and “filter context”. In fact, the “search context” can be considered a specialized “view context” for collecting list data filtering conditions.</p>
+<h3 id="Abstraction-of-“Value”"><a href="#Abstraction-of-“Value”" class="headerlink" title="Abstraction of “Value”"></a>Abstraction of “Value”</h3><p>The common feature of various “data contexts” is the operation on “values”, so some abstractions can be made around “values”—</p>
+<p>Based on their usage, there are three states of “values”—the “current value” that is always active, represented by <code>value</code>; the “initial value” and “default value” used for assignment during initialization and reset, represented by <code>initialValue</code> and <code>defaultValue</code>, respectively.</p>
+<p>The meaning of the “current value” varies in different specific data contexts. For example, in the object view context, it refers to the collection of field key-value pairs that change with user operations, while in the list view context, it refers to the selected records.</p>
+<p>In practical applications, the main difference between “initial value” and “default value” is the priority. The “initial value” has a higher priority than the “default value”, meaning that the “default value” is used only in the absence of an “initial value”.</p>
+<p>There are basically only four operations related to “values”, which are reading and writing the “current value” with <code>getValue()</code> and <code>setValue()</code>, passing the “current value” outward&#x2F;upward with <code>submit()</code>, and restoring the “current value” to the “initial value” or “default value” with <code>reset()</code>.</p>
+<p>Accordingly, there are four “events” for external data synchronization at different times—the <code>ready</code> event indicating that the data is ready; the <code>change</code> event triggered by each change of the “current value”; and the corresponding <code>submit</code> and <code>reset</code> events triggered when calling <code>submit()</code> or <code>reset()</code>.</p>
+<p>Regarding the <code>ready</code> event, there is a use case: after the webpage is loaded, the list data needs to wait for the filtering conditions to be collected before making a request to obtain it, but the filtering conditions need to be restored first from the URL query parameters—this requires the list view context to listen to the <code>ready</code> event of the search context to then make a request to get the data.</p>
+<h3 id="Validation-of-“Value”"><a href="#Validation-of-“Value”" class="headerlink" title="Validation of “Value”"></a>Validation of “Value”</h3><p>To ensure the safety and purity of data, it is a fundamental operation to perform legality or validity checks before processing data, so there will be an internal check when calling <code>setValue()</code>.</p>
+<p>The validation of “values” is essentially the execution of various constraints according to priority. This implies that constraints can be explicitly defined and are extensible.</p>
+<p>The constraints of “values” can be divided into natural constraints from data types and structures, and non-natural constraints originating from model relationships and business rules. The term “natural” here is purely from the perspective of data characteristics.</p>
+<h2 id="Summary"><a href="#Summary" class="headerlink" title="Summary"></a>Summary</h2><p>When the term “application” is mentioned, many people’s first reaction is: “This thing is so heavy and huge!” In their minds, it is like the huge boulder of the Five Elements Mountain that pressed down on Sun Wukong.</p>
+<p>However, a better perspective is to view “application” as a combination of “interfaces” and “implementations”. More accurately, it might be a “production line” and “materials”—generalize and interface the parts that are less likely to change and have relatively fixed relationships and rules, connecting them to form a “production line”; the parts that are more likely to change exist as “materials” flowing on the “production line”.</p>
+<p>As I said at the end of “<a href="/posts/the-system-of-ui-components-in-frontend-projects/">The System of UI Components in Front-end Projects</a>“—</p>
+<blockquote>
+  <p>Ideally, it will be found that—except for business logic, it seems that almost all other parts are interfaces (interface)—the specific implementation can be arbitrarily removed and freely replaced!</p>
+  <footer>Ourai <cite><a href="/posts/the-system-of-ui-components-in-frontend-projects/">The System of UI Components in Front-end Projects</a></cite></footer>
+</blockquote>
+
+<p>Without further explanation, the above description might be a bit confusing—</p>
+<p>In a mid-backend frontend application, the most changeable parts are business logic and UI design, while the least changeable parts are the natural constraints of “values”, the inherent relationships between “views” and “fields”, and the properties and events of controls.</p>
+<p>Construct a system where the changeable parts become metadata or configurations existing as “materials”, and the interconnected contexts become the “production line”.</p>
+
+</div>
+      <footer class="Article-footer col-md-3">
+  
+  <div class="Widget Widget--share">
+    <div class="Widget-body">
+      <p>分享到<i class="fa fa-share-alt"></i></p>
+      <div class="social-share" data-sites="wechat,weibo,twitter"></div>
+    </div>
+  </div>
+
+
+  <section class="Widget Widget--toc">
+  <div class="Widget-header">
+    <h2 class="Widget-title">目录</h2>
+  </div>
+  <div class="Widget-body"></div>
+</section>
+
+
+</footer>
+      
+      
+    </article>
+    
+
+  </div>
+</main>
+<footer class="Page-footer Footer">
+  <div class="container">
+    
+    <div class="Footer-description">
+      
+        <!-- Important links -->
+        <nav class="Footer-navs">
+          <ul><li><a href="https://x.com/ntksol?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>X</span></a>
+</li><li><a href="https://github.com/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>GitHub</span></a>
+</li><li><a href="https://www.linkedin.com/in/ourai?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow"><span>LinkedIn</span></a>
+</li></ul>
+        </nav>
+      
+      
+        <!-- Copyright -->
+        <div class="Footer-copyright">
+          <p>
+
+&copy; 2023-2025 <a href="https://ourai.pro?utm_source=https://ourai.pro&amp;utm_medium=common-footer" target="_blank" rel="external nofollow">Ourai L.</a>
+
+</p>
+        </div>
+      
+    </div>
+  </div>
+</footer>
+
+
+
+
+
+
+    <script>$('.Article-content > table').addClass('table table-bordered')</script>
+    
+<script src="/javascripts/ksio/vendors/share.min.js"></script>
+
+<script src="/javascripts/ksio/components/page.js"></script>
+
+<script src="/javascripts/ksio/components/toc.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.timeago.zh-CN.js"></script>
+
+<script src="/javascripts/ksio/initializers/time.js"></script>
+
+<script src="/javascripts/ksio/vendors/jquery.lazyload.js"></script>
+
+<script src="/javascripts/ksio/initializers/lazyload.js"></script>
+
+  </body>
+</html>
+
