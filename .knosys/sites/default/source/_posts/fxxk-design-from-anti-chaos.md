@@ -27,7 +27,7 @@ For me, those two UI component libraries have almost no highlights, but each has
 
 Before talking about 'Fxxk Design', let's first review some characteristics of the currently popular UI component libraries—
 
-The most直观intuitive thing is that they are deeply bound to a specific technology stack and provided to users in the form of an entire UI component collection. The language people use in communication is 'React/Vue UI component library XXX', not 'XXX component'.
+The most intuitive thing is that they are deeply bound to a specific technology stack and provided to users in the form of an entire UI component collection. The language people use in communication is 'React/Vue UI component library XXX', not 'XXX component'.
 
 It can be said that this is a 'monolithic architecture'. If a UI component adds a feature or fixes a bug, the entire component library needs to be upgraded. It is impossible to upgrade at the component granularity. Moreover, even on the same technology stack, seamless migration between different component libraries does not exist.
 
@@ -75,7 +75,7 @@ In addition to the infrastructure directly related to UI components in Petals, i
 
 ### Planned
 
-The role of Petals and Kokiri can only be considered as basic operations in the UI component system. To create greater value for design-to-code, it is necessary to build a rich material market and connect with the UX/UI design环节环节.
+The role of Petals and Kokiri can only be considered as basic operations in the UI component system. To create greater value for design-to-code, it is necessary to build a rich material market and connect with the UX/UI design links.
 
 The material market will not only have individual UI components but also UI component collections, UI component library adapters, themes, and more.
 
